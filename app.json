@@ -2,9 +2,7 @@
   "expo": {
     "name": "anotreino",
     "slug": "anotreino",
-    "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ]
+    "version": "1.0.1",
+    "assetBundlePatterns": ["**/*"]
   }
 }
