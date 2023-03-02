@@ -2,12 +2,14 @@
   "compilerOptions": {
     "strict": true,
     "baseUrl": "./src",
+    "allowSyntheticDefaultImports": true,
     "paths": {
-      "@components": ["./components"],
-      "@routes": ["./routes"],
-      "@screens": ["./screens"],
-      "@global": ["./global"],
-      "@context": ["./context"]
+      "@Components/*": ["./components/*"],
+      "@Routes/*": ["./routes/*"],
+      "@Screens/*": ["./screens/*"],
+      "@Global/*": ["./global/*"],
+      "@Assets/*": ["./assets/*"],
+      "@Context/*": ["./context/*"]
     }
   },
   "extends": "expo/tsconfig.base"
