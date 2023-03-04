@@ -5,5 +5,7 @@ export default {
     tertiary: "#9CED8D",
     quarternary: "#4AC5B4",
     white: "#FFF",
+    text: "#868e96",
+    attention: "#f03e3e",
   },
 };

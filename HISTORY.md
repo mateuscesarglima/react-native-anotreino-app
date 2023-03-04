@@ -1,8 +1,12 @@
 # Release History
 
-## 1.0.1
+## 1.2.0
 
-- Added styled-components, themes, HISTORY.md and README.md.
+- Added login screen
+
+## 1.1.0
+
+- Added styled-components, themes, HISTORY.md, README.md, Alias config
 
 ## 1.0.0
 
