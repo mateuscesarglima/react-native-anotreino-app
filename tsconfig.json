@@ -8,8 +8,8 @@
       "@Routes/*": ["./routes/*"],
       "@Screens/*": ["./screens/*"],
       "@Global/*": ["./global/*"],
-      "@Assets/*": ["./assets/*"],
-      "@Context/*": ["./context/*"]
+      "@Context/*": ["./context/*"],
+      "@Assets/*": ["./assets/*"]
     }
   },
   "extends": "expo/tsconfig.base"
