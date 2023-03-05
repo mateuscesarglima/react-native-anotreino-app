@@ -25,10 +25,12 @@ export const Login = () => {
   } = useForm<FormData>({
     resolver: yupResolver(schema),
   });
-
   const formControll = control as unknown as Control<FieldValues, any>;
 
-  const loginHandle = (form: FormData) => {};
+  const loginHandle = (form: FormData) => {
+    console.log("Realizar login");
+    reset();
+  };
 
   return (
     <Container>
