@@ -1,12 +1,14 @@
+import themes from "@Global/themes";
+import { Login } from "@Screens/Login";
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { Text, View } from "react-native";
+import { ThemeProvider } from "styled-components";
 
 export default function App(): JSX.Element {
   return (
-    <View>
-      <Text>Open up App.js to start working on your app!</Text>
+    <ThemeProvider theme={themes}>
+      <Login />
       <StatusBar style="auto" />
-    </View>
+    </ThemeProvider>
   );
 }
