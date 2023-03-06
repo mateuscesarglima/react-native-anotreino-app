@@ -9,7 +9,8 @@
       "@Screens/*": ["./screens/*"],
       "@Global/*": ["./global/*"],
       "@Context/*": ["./context/*"],
-      "@Assets/*": ["./assets/*"]
+      "@Assets/*": ["./assets/*"],
+      "@Config/*": ["./config/*"]
     }
   },
   "extends": "expo/tsconfig.base"

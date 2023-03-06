@@ -1,22 +1,26 @@
 import { LoginButton } from "@Components/ui/atom/LoginButton";
 import { LoginInputForm } from "@Components/ui/molecule/LoginInputForm";
+import { useAuth } from "@Context/auth";
+
 import { yupResolver } from "@hookform/resolvers/yup";
-import React from "react";
+import { auth } from "../../config/firebase";
+import React, { useEffect } from "react";
 import { Control, FieldValues, useForm } from "react-hook-form";
 import * as Yup from "yup";
 import { Container, Form, LogoBox, LogoImg } from "./styles";
 
 export interface FormData {
-  name: string;
+  email: string;
   password: string;
 }
 
 const schema = Yup.object().shape({
-  name: Yup.string().required("Email é obrigatório"),
+  email: Yup.string().required("Email é obrigatório"),
   password: Yup.string().required("Informe uma senha válida"),
 });
 
 export const Login = () => {
+  const { signIn } = useAuth();
   const {
     control,
     handleSubmit,
@@ -25,10 +29,11 @@ export const Login = () => {
   } = useForm<FormData>({
     resolver: yupResolver(schema),
   });
+
   const formControll = control as unknown as Control<FieldValues, any>;
 
-  const loginHandle = (form: FormData) => {
-    console.log("Realizar login");
+  const loginHandle = async (form: FormData) => {
+    await signIn(form);
     reset();
   };
 
@@ -42,7 +47,7 @@ export const Login = () => {
           placeholder="Email"
           name="email"
           control={formControll}
-          error={errors.name && errors?.name.message}
+          error={errors.email && errors?.email.message}
         />
         <LoginInputForm
           placeholder="Senha"
@@ -50,8 +55,8 @@ export const Login = () => {
           control={formControll}
           error={errors.password && errors?.password.message}
         />
+        <LoginButton onPress={handleSubmit(loginHandle)} />
       </Form>
-      <LoginButton onPress={handleSubmit(loginHandle)} />
     </Container>
   );
 };

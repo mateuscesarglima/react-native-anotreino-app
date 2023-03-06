@@ -3,6 +3,7 @@ module.exports = function (api) {
   return {
     presets: ["babel-preset-expo"],
     plugins: [
+      ["inline-dotenv"],
       [
         "module-resolver",
         {
@@ -13,6 +14,7 @@ module.exports = function (api) {
             "@Routes": "./src/routes",
             "@Context": "./src/context",
             "@Assets": "./src/assets",
+            "@Config": "./src/config",
           },
           extensions: [".js", ".jsx", ".ts", ".tsx"],
         },
