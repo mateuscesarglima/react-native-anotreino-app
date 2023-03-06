@@ -1,6 +1,6 @@
 {
   "name": "anotreino",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "main": "index.js",
   "scripts": {
     "start": "expo start --dev-client",
