@@ -11,7 +11,10 @@ export const Container = styled.View`
 export const Button = styled(TouchableOpacity)`
   background-color: ${({ theme }) => theme.colors.primary};
   border-radius: 8px;
-  padding: 15px 50px;
+  width: 150px;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const Text = styled.Text`
