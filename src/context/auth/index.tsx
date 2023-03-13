@@ -39,15 +39,15 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
   const signIn = async ({ email, password }: ILoginProps) => {
     setIsLoading(true);
     await signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        let user = userCredential.user;
+      .then(() => {
         setIsLoading(false);
       })
       .catch((err: FirebaseError) => {
         setIsLoading(false);
         if (
           err.code === "auth/invalid-email" ||
-          err.code === "auth/wrong-password"
+          err.code === "auth/wrong-password" ||
+          err.code === "auth/user-not-found"
         ) {
           Alert.alert("Email ou senha inválidos");
         }
