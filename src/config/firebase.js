@@ -7,13 +7,13 @@ import {
 } from "firebase/auth/react-native";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAd0cYvolX23m6b5JikMD7e6vUp6wv1ngI",
-  authDomain: "anotreinoapp.firebaseapp.com",
-  projectId: "anotreinoapp",
-  storageBucket: "anotreinoapp.appspot.com",
-  messagingSenderId: "713979397223",
-  appId: "1:713979397223:web:fc957917613c863cb600c2",
-  measurementId: "G-7ESZPCLMBD",
+  apiKey: process.env.API_KEY,
+  authDomain: process.env.AUTH_DOMAIN,
+  projectId: process.env.PROJECT_ID,
+  storageBucket: process.env.STORAGE_BUCKET,
+  messagingSenderId: process.env.MESSAGIN_SENDER_ID,
+  appId: process.env.APP_ID,
+  measurementId: process.env.MEASUREMENT,
 };
 
 // Initialize Firebase
