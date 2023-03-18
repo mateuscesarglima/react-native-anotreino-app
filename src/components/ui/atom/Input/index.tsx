@@ -5,7 +5,7 @@ import { useTheme } from "styled-components";
 
 interface loginInputProps extends TextInputProps {}
 
-export const LoginInput = ({ ...rest }: loginInputProps) => {
+export const Input = ({ ...rest }: loginInputProps) => {
   const theme = useTheme();
   return <Container {...rest} placeholderTextColor={theme.colors.text} />;
 };

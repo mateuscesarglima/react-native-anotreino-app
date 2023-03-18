@@ -4,9 +4,9 @@ import { TouchableOpacityProps, ActivityIndicator } from "react-native";
 import { useTheme } from "styled-components/native";
 import { Button, Container, Text } from "./styles";
 
-interface LoginButtonProps extends TouchableOpacityProps {}
+interface ButtonPrimaryProps extends TouchableOpacityProps {}
 
-export const LoginButton = ({ ...rest }: LoginButtonProps) => {
+export const ButtonPrimary = ({ ...rest }: ButtonPrimaryProps) => {
   const theme = useTheme();
   const { isLoading } = useAuth();
 

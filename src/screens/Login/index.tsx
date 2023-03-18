@@ -1,10 +1,9 @@
-import { LoginButton } from "@Components/ui/atom/LoginButton";
-import { LoginInputForm } from "@Components/ui/molecule/LoginInputForm";
+import { ButtonPrimary } from "@Components/ui/atom/Button";
+import { InputForm } from "@Components/ui/molecule/InputForm";
 import { useAuth } from "@Context/auth";
 
 import { yupResolver } from "@hookform/resolvers/yup";
-import { auth } from "../../config/firebase";
-import React, { useEffect } from "react";
+import React from "react";
 import { Control, FieldValues, useForm } from "react-hook-form";
 import * as Yup from "yup";
 import { Container, Form, LogoBox, LogoImg } from "./styles";
@@ -43,19 +42,20 @@ export const Login = () => {
         <LogoImg source={require("../../assets/logo.png")} />
       </LogoBox>
       <Form>
-        <LoginInputForm
+        <InputForm
           placeholder="Email"
           name="email"
           control={formControll}
           error={errors.email && errors?.email.message}
         />
-        <LoginInputForm
+        <InputForm
           placeholder="Senha"
           name="password"
           control={formControll}
           error={errors.password && errors?.password.message}
+          secureTextEntry
         />
-        <LoginButton onPress={handleSubmit(loginHandle)} />
+        <ButtonPrimary onPress={handleSubmit(loginHandle)} />
       </Form>
     </Container>
   );
