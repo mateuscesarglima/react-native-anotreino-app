@@ -6,9 +6,10 @@ import { AuthRoutes } from "./auth.routes";
 
 export const Routes = () => {
   const { isAuthenticated } = useAuth();
+
   return (
     <NavigationContainer>
-      {isAuthenticated ? <AppRoutes /> : <AuthRoutes />}
+      {isAuthenticated ? <AuthRoutes /> : <AppRoutes />}
     </NavigationContainer>
   );
 };
