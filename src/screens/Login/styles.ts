@@ -21,4 +21,11 @@ export const Form = styled.View`
   width: 100%;
   margin-top: 50px;
 `;
+
+export const ButtonContainer = styled.View`
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+`;
+
 export const Button = styled(TouchableOpacity)``;

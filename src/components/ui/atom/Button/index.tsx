@@ -4,9 +4,11 @@ import { TouchableOpacityProps, ActivityIndicator } from "react-native";
 import { useTheme } from "styled-components/native";
 import { Button, Container, Text } from "./styles";
 
-interface LoginButtonProps extends TouchableOpacityProps {}
+interface ButtonPrimaryProps extends TouchableOpacityProps {
+  title: string;
+}
 
-export const LoginButton = ({ ...rest }: LoginButtonProps) => {
+export const ButtonPrimary = ({ title, ...rest }: ButtonPrimaryProps) => {
   const theme = useTheme();
   const { isLoading } = useAuth();
 
@@ -17,7 +19,7 @@ export const LoginButton = ({ ...rest }: LoginButtonProps) => {
           {isLoading ? (
             <ActivityIndicator size={"small"} color={theme.colors.white} />
           ) : (
-            "Entrar"
+            title
           )}
         </Text>
       </Button>

@@ -1,6 +1,5 @@
-import { LoginButton } from "@Components/ui/atom/LoginButton";
-import { auth } from "../../config/firebase";
-import { Button } from "react-native";
+import { ButtonPrimary } from "@Components/ui/atom/Button";
+
 import { Container, Title } from "./styles";
 import { useAuth } from "@Context/auth";
 
@@ -9,7 +8,7 @@ export const Home = () => {
   return (
     <Container>
       <Title>Home</Title>
-      <LoginButton onPress={signOut} />
+      <ButtonPrimary onPress={signOut} title="Sair" />
     </Container>
   );
 };

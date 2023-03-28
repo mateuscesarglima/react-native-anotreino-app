@@ -1,4 +1,7 @@
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+} from "firebase/auth";
 import React, {
   createContext,
   ReactNode,
@@ -24,6 +27,7 @@ interface IAuthContextProps {
   signOut: () => Promise<void>;
   isLoading: boolean;
   isAuthenticated: boolean;
+  register: ({ email, password }: ILoginProps) => Promise<void>;
 }
 
 const AuthContext = createContext({} as IAuthContextProps);
@@ -63,11 +67,22 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
       .catch((err) => console.log(err));
   };
 
-  const register = () => {};
+  const register = async ({ email, password }: ILoginProps) => {
+    setIsLoading(true);
+    await createUserWithEmailAndPassword(auth, email, password)
+      .then((response) => {
+        console.log(response);
+        setIsLoading(false);
+      })
+      .catch((err: FirebaseError) => {
+        setIsLoading(false);
+        console.log(err);
+      });
+  };
 
   return (
     <AuthContext.Provider
-      value={{ signIn, signOut, isAuthenticated, isLoading }}
+      value={{ signIn, signOut, isAuthenticated, isLoading, register }}
     >
       {children}
     </AuthContext.Provider>
@@ -75,7 +90,7 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
 };
 
 export const useAuth = () => {
-  const { signIn, isAuthenticated, signOut, isLoading } =
+  const { signIn, isAuthenticated, signOut, isLoading, register } =
     useContext(AuthContext);
-  return { signIn, isAuthenticated, signOut, isLoading };
+  return { signIn, isAuthenticated, signOut, isLoading, register };
 };
