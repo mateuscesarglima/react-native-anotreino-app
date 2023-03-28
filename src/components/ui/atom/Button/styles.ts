@@ -2,11 +2,7 @@ import { TouchableOpacity } from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
 import styled from "styled-components/native";
 
-export const Container = styled.View`
-  width: 100%;
-  align-items: center;
-  margin-top: 10px;
-`;
+export const Container = styled.View``;
 
 export const Button = styled(TouchableOpacity)`
   background-color: ${({ theme }) => theme.colors.primary};

@@ -8,6 +8,8 @@ export const Container = styled.View`
 
 export const Error = styled(TextInput)`
   font-size: ${RFValue(15)}px;
+  font-weight: bold;
+  padding-left: 10px;
 
   color: ${({ theme }) => theme.colors.attention};
 `;
