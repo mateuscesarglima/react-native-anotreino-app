@@ -65,6 +65,12 @@ target 'anotreino' do
       # necessary for Mac Catalyst builds
       :mac_catalyst_enabled => false
     )
+      installer.pods_project.targets.each do |target|
+           target.build_configurations.each do |config|
+                  config.build_settings['SWIFT_VERSION'] = '5.0'
+                  config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
+          end
+      end
     __apply_Xcode_12_5_M1_post_install_workaround(installer)
 
     # This is necessary for Xcode 14, because it signs resource bundles by default
