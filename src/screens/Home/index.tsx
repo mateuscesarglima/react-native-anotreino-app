@@ -1,14 +1,57 @@
-import { ButtonPrimary } from "@Components/ui/atom/Button";
-
-import { Container, Title } from "./styles";
+import {
+  AddWorkoutButton,
+  AddWorkoutContainer,
+  AddWorkoutHeader,
+  Container,
+  Header,
+  Icon,
+  Title,
+  WorkoutList,
+  WorkoutListContainer,
+} from "./styles";
 import { useAuth } from "@Context/auth";
+import { RFValue } from "react-native-responsive-fontsize";
+import { WorkoutItem } from "@Components/ui/molecule/WorkoutItem";
+import { data } from "../../utils/mockedData";
+import React, { useState } from "react";
+import { ITreino } from "interfaces";
+import { AddTreinoModal } from "@Components/ui/organism/AddTreinoModal";
 
 export const Home = () => {
-  const { signOut } = useAuth();
+  const { signOut, isLoading } = useAuth();
+  const [initData, setInitData] = useState<ITreino[]>(data);
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <Container>
-      <Title>Home</Title>
-      <ButtonPrimary onPress={signOut} title="Sair" />
+      <AddTreinoModal setShowModal={setShowModal} showModal={showModal} />
+      <Header>
+        {!initData ? (
+          <Title>Meus treinos</Title>
+        ) : (
+          <AddWorkoutHeader>
+            <Title>Meus treinos</Title>
+            <AddWorkoutButton onPress={() => setShowModal(!showModal)}>
+              <Icon name="plus-circle" size={RFValue(40)} hasData={true} />
+            </AddWorkoutButton>
+          </AddWorkoutHeader>
+        )}
+      </Header>
+      {initData.length > 0 ? (
+        <WorkoutListContainer>
+          <WorkoutList
+            data={data}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => <WorkoutItem itemName={item.title} />}
+          />
+        </WorkoutListContainer>
+      ) : (
+        <AddWorkoutContainer>
+          <AddWorkoutButton>
+            <Icon name="plus-circle" size={RFValue(70)} />
+          </AddWorkoutButton>
+        </AddWorkoutContainer>
+      )}
     </Container>
   );
 };

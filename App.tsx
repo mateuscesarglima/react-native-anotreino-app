@@ -10,7 +10,7 @@ export default function App(): JSX.Element {
     <ThemeProvider theme={themes}>
       <AuthProvider>
         <Routes />
-        <StatusBar style="auto" />
+        <StatusBar style="dark" />
       </AuthProvider>
     </ThemeProvider>
   );

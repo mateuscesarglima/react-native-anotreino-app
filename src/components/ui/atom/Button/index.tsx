@@ -6,12 +6,15 @@ import { Button, Container, Text } from "./styles";
 
 interface ButtonPrimaryProps extends TouchableOpacityProps {
   title: string;
+  isLoading?: boolean;
 }
 
-export const ButtonPrimary = ({ title, ...rest }: ButtonPrimaryProps) => {
+export const ButtonPrimary = ({
+  title,
+  isLoading,
+  ...rest
+}: ButtonPrimaryProps) => {
   const theme = useTheme();
-  const { isLoading } = useAuth();
-
   return (
     <Container>
       <Button {...rest} activeOpacity={0.7}>
