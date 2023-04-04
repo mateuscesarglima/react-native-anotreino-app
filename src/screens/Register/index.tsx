@@ -37,7 +37,7 @@ const schema = Yup.object().shape({
 });
 
 export const Register = () => {
-  const { register } = useAuth();
+  const { register, isLoading } = useAuth();
   const {
     control,
     handleSubmit,
@@ -89,6 +89,7 @@ export const Register = () => {
           <ButtonContainer>
             <ButtonPrimary
               title="Registrar"
+              isLoading={isLoading}
               onPress={handleSubmit(registerHandle)}
             />
           </ButtonContainer>

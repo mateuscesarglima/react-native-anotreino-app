@@ -53,7 +53,7 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
           err.code === "auth/wrong-password" ||
           err.code === "auth/user-not-found"
         ) {
-          Alert.alert("Email ou senha inválidos");
+          Alert.alert("Email ou senha inválidos.");
         }
       });
   };
@@ -62,7 +62,7 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
     await auth
       .signOut()
       .then(() => {
-        Alert.alert("Logout realizado com sucesso");
+        Alert.alert("Logout realizado com sucesso.");
       })
       .catch((err) => console.log(err));
   };
@@ -71,12 +71,16 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
     setIsLoading(true);
     await createUserWithEmailAndPassword(auth, email, password)
       .then((response) => {
-        console.log(response);
         setIsLoading(false);
       })
       .catch((err: FirebaseError) => {
         setIsLoading(false);
-        console.log(err);
+        if (err.code === "auth/weak-password") {
+          Alert.alert("A senha deve ter pelo menos 6 caracteres.");
+        }
+        if (err.code === "auth/email-already-in-use") {
+          Alert.alert("Email já está sendo utilizado.");
+        }
       });
   };
 

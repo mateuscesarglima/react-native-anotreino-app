@@ -26,7 +26,7 @@ const schema = Yup.object().shape({
 });
 
 export const Login = () => {
-  const { signIn } = useAuth();
+  const { signIn, isLoading } = useAuth();
   const { navigate }: NavigationProp<ParamListBase> = useNavigation();
   const {
     control,
@@ -65,7 +65,11 @@ export const Login = () => {
             secureTextEntry
           />
           <ButtonContainer>
-            <ButtonPrimary title="Entrar" onPress={handleSubmit(loginHandle)} />
+            <ButtonPrimary
+              title="Entrar"
+              isLoading={isLoading}
+              onPress={handleSubmit(loginHandle)}
+            />
             <ButtonPrimary
               title="Cadastre-se"
               onPress={() => navigate("Register")}
