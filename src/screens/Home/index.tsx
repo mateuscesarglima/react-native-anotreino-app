@@ -9,24 +9,35 @@ import {
   WorkoutList,
   WorkoutListContainer,
 } from "./styles";
-import { useAuth } from "@Context/auth";
+
 import { RFValue } from "react-native-responsive-fontsize";
 import { WorkoutItem } from "@Components/ui/molecule/WorkoutItem";
 import { data } from "../../utils/mockedData";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ITreino } from "interfaces";
 import { AddTreinoModal } from "@Components/ui/organism/AddTreinoModal";
 
 export const Home = () => {
-  const { signOut, isLoading } = useAuth();
   const [initData, setInitData] = useState<ITreino[]>(data);
   const [showModal, setShowModal] = useState(false);
+  const [newTreino, setNewTreino] = useState<string>("");
+
+  const handleAddNewTreino = (newTreino: ITreino) => {
+    const { id, title } = newTreino;
+    setInitData((prev) => [...prev, { id: id, title: title }]);
+  };
 
   return (
     <Container>
-      <AddTreinoModal setShowModal={setShowModal} showModal={showModal} />
+      <AddTreinoModal
+        setShowModal={setShowModal}
+        showModal={showModal}
+        handleAddNewTreino={handleAddNewTreino}
+        setNewTreino={setNewTreino}
+        newTreino={newTreino}
+      />
       <Header>
-        {!initData ? (
+        {initData.length < 0 ? (
           <Title>Meus treinos</Title>
         ) : (
           <AddWorkoutHeader>
@@ -40,14 +51,14 @@ export const Home = () => {
       {initData.length > 0 ? (
         <WorkoutListContainer>
           <WorkoutList
-            data={data}
+            data={initData}
             keyExtractor={(item) => item.id}
             renderItem={({ item }) => <WorkoutItem itemName={item.title} />}
           />
         </WorkoutListContainer>
       ) : (
         <AddWorkoutContainer>
-          <AddWorkoutButton>
+          <AddWorkoutButton onPress={() => setShowModal(!showModal)}>
             <Icon name="plus-circle" size={RFValue(70)} />
           </AddWorkoutButton>
         </AddWorkoutContainer>

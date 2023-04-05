@@ -1,16 +1,23 @@
+import React from "react";
+import { Modal } from "react-native";
+import { Container, ModalView } from "./styles";
+import { AddNewTreino } from "../AddNewTreino";
+import { ITreino } from "interfaces";
+
 interface AddTreinoModalProps {
   showModal: boolean;
   setShowModal: (value: boolean) => void;
+  handleAddNewTreino: (newTreino: ITreino) => void;
+  setNewTreino: (value: string) => void;
+  newTreino: string;
 }
-
-import React, { useState } from "react";
-import { Modal, StyleSheet, Text, Pressable } from "react-native";
-import { Container, ModalView } from "./styles";
-import { AddNewTreino } from "../AddNewTreino";
 
 export const AddTreinoModal = ({
   setShowModal,
   showModal,
+  handleAddNewTreino,
+  setNewTreino,
+  newTreino,
 }: AddTreinoModalProps) => {
   return (
     <Container>
@@ -24,52 +31,16 @@ export const AddTreinoModal = ({
       >
         <Container>
           <ModalView>
-            <AddNewTreino setShowModal={setShowModal} showModal={showModal} />
+            <AddNewTreino
+              setShowModal={setShowModal}
+              showModal={showModal}
+              handleAddNewTreino={handleAddNewTreino}
+              setNewTreino={setNewTreino}
+              newTreino={newTreino}
+            />
           </ModalView>
         </Container>
       </Modal>
     </Container>
   );
 };
-
-const styles = StyleSheet.create({
-  centeredView: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  modalView: {
-    backgroundColor: "white",
-    borderRadius: 20,
-    padding: 35,
-    alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-  },
-  button: {
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
-  },
-  buttonOpen: {
-    backgroundColor: "#F194FF",
-  },
-  buttonClose: {
-    backgroundColor: "#2196F3",
-  },
-  textStyle: {
-    color: "white",
-    fontWeight: "bold",
-    textAlign: "center",
-  },
-  modalText: {
-    marginBottom: 15,
-    textAlign: "center",
-  },
-});
