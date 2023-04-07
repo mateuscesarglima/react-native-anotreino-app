@@ -11,30 +11,40 @@ import {
 } from "./styles";
 import { ITreino } from "interfaces";
 import uuid from "react-native-uuid";
+import { salvarFicha } from "@Context/service/firestore";
 
 interface AddNewTreinoProps {
   showModal: boolean;
   setShowModal: (value: boolean) => void;
-  handleAddNewTreino: (newTreino: ITreino) => void;
   setNewTreino: (value: string) => void;
   newTreino: string;
 }
 export const AddNewTreino = ({
   setShowModal,
   showModal,
-  handleAddNewTreino,
-  setNewTreino,
   newTreino,
 }: AddNewTreinoProps) => {
+  const handleAddNewTreino = async (newTreino: ITreino) => {
+    try {
+      const response = await salvarFicha(newTreino);
+      console.log(response);
+      setShowModal(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const [tituloFicha, setTituloFicha] = React.useState("");
+
   return (
     <Container>
       <Title>Ficha</Title>
       <Input
         placeholder="Informe o nome da ficha"
-        onChangeText={setNewTreino}
+        onChangeText={(value) => setTituloFicha(value)}
       />
       <ButtonContainer>
-        <CancelButton onPress={() => setShowModal(!showModal)}>
+        <CancelButton onPress={() => setShowModal(false)}>
           <ButtonText>Cancelar</ButtonText>
         </CancelButton>
         <ApplyButton>
@@ -42,9 +52,8 @@ export const AddNewTreino = ({
             onPress={() => {
               handleAddNewTreino({
                 id: uuid.v4().toString(),
-                title: newTreino,
-              }),
-                setShowModal(!showModal);
+                title: tituloFicha,
+              });
             }}
           >
             Criar

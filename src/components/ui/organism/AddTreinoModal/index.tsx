@@ -15,7 +15,6 @@ interface AddTreinoModalProps {
 export const AddTreinoModal = ({
   setShowModal,
   showModal,
-  handleAddNewTreino,
   setNewTreino,
   newTreino,
 }: AddTreinoModalProps) => {
@@ -34,7 +33,6 @@ export const AddTreinoModal = ({
             <AddNewTreino
               setShowModal={setShowModal}
               showModal={showModal}
-              handleAddNewTreino={handleAddNewTreino}
               setNewTreino={setNewTreino}
               newTreino={newTreino}
             />
