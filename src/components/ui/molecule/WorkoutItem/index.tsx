@@ -3,12 +3,20 @@ import { WorkoutItemContainer, ItemName } from "./styles";
 import { Trash } from "phosphor-react-native";
 
 interface WorkoutItemProps {
+  itemId: string;
   itemName: string;
+  handleOnSelectWorkout: (id: string, name: string) => void;
 }
 
-export const WorkoutItem = ({ itemName }: WorkoutItemProps) => {
+export const WorkoutItem = ({
+  itemId,
+  itemName,
+  handleOnSelectWorkout,
+}: WorkoutItemProps) => {
   return (
-    <WorkoutItemContainer>
+    <WorkoutItemContainer
+      onPress={() => handleOnSelectWorkout(itemId, itemName)}
+    >
       <ItemName>{itemName}</ItemName>
       <Trash />
     </WorkoutItemContainer>
