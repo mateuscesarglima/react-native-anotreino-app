@@ -12,7 +12,7 @@ interface IconProps {
 export const Container = styled.View``;
 
 export const Header = styled.View`
-  padding-top: ${getStatusBarHeight() + 40}px
+  padding-top: ${getStatusBarHeight() + 40}px;
   padding-bottom: 20px;
   background-color: ${({ theme }) => theme.colors.primary};
 `;

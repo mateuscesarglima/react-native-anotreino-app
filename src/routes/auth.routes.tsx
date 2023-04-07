@@ -1,5 +1,5 @@
-import { MaterialIcons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Exercises } from "@Screens/Exercises";
 import { Hit } from "@Screens/Hit";
 import { Home } from "@Screens/Home";
 import { Profile } from "@Screens/Profile";
@@ -47,6 +47,13 @@ export const AuthRoutes = () => {
           tabBarIcon: ({ size, color }) => (
             <UserCircle size={size} color={color} />
           ),
+        }}
+      />
+      <Screen
+        name="Exercises"
+        component={Exercises}
+        options={{
+          tabBarButton: () => null,
         }}
       />
     </Navigator>

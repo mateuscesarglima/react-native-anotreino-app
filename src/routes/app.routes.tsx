@@ -1,4 +1,5 @@
 import { createStackNavigator } from "@react-navigation/stack";
+import { Exercises } from "@Screens/Exercises";
 import { Login } from "@Screens/Login";
 import { Register } from "@Screens/Register";
 import React from "react";
