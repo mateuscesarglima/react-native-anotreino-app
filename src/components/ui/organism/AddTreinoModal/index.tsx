@@ -1,7 +1,7 @@
 import React from "react";
 import { Modal } from "react-native";
 import { Container, ModalView } from "./styles";
-import { AddNewTreino } from "../AddNewTreino";
+import { AddNewTreino } from "../../molecule/AddNewTreino";
 import { ITreino } from "interfaces";
 
 interface AddTreinoModalProps {

@@ -9,3 +9,8 @@ export interface IExercise {
   name: string;
   description: string;
 }
+
+export interface IExerciseCategory {
+  key: string;
+  label: string;
+}

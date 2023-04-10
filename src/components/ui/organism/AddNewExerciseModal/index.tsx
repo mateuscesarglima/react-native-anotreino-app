@@ -1,8 +1,8 @@
 import React from "react";
 import { Modal } from "react-native";
 import { Container, ModalView } from "./styles";
-import { IExercise } from "interfaces";
-import { AddNewExercise } from "../AddNewExercise";
+import { IExercise, IExerciseCategory } from "interfaces";
+import { AddNewExercise } from "../../molecule/AddNewExercise";
 
 export interface AddNewExerciseModalProps {
   showModal: boolean;
@@ -10,6 +10,7 @@ export interface AddNewExerciseModalProps {
   HandleAddNewExercise: (newTreino: IExercise) => void;
   setNewExercise: (value: string) => void;
   newExercise: string;
+  exerciseCategory: IExerciseCategory[];
 }
 
 export const AddNewExerciseModal = ({
@@ -18,6 +19,7 @@ export const AddNewExerciseModal = ({
   HandleAddNewExercise,
   setNewExercise,
   newExercise,
+  exerciseCategory,
 }: AddNewExerciseModalProps) => {
   return (
     <Container>
@@ -29,17 +31,16 @@ export const AddNewExerciseModal = ({
           setShowModal(!showModal);
         }}
       >
-        <Container>
-          <ModalView>
-            <AddNewExercise
-              setShowModal={setShowModal}
-              showModal={showModal}
-              HandleAddNewExercise={HandleAddNewExercise}
-              setNewExercise={setNewExercise}
-              newExercise={newExercise}
-            />
-          </ModalView>
-        </Container>
+        <ModalView>
+          <AddNewExercise
+            exerciseCategory={exerciseCategory}
+            setShowModal={setShowModal}
+            showModal={showModal}
+            HandleAddNewExercise={HandleAddNewExercise}
+            setNewExercise={setNewExercise}
+            newExercise={newExercise}
+          />
+        </ModalView>
       </Modal>
     </Container>
   );

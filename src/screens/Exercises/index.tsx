@@ -11,7 +11,7 @@ import {
   ButtonContainer,
 } from "./styles";
 import { CaretLeft } from "phosphor-react-native";
-import { exercisesData } from "../../utils/mockedData";
+import { exercisesData, exerciseCategory } from "../../utils/mockedData";
 import {
   NavigationProp,
   ParamListBase,
@@ -19,7 +19,7 @@ import {
 } from "@react-navigation/native";
 import { ButtonAddWorkout } from "@Components/ui/atom/AddWorkoutButton";
 import { AddNewExerciseModal } from "@Components/ui/organism/AddNewExerciseModal";
-import { IExercise, ITreino } from "interfaces";
+import { IExercise } from "interfaces";
 import uuid from "react-native-uuid";
 
 interface ExercisesProps {
@@ -58,6 +58,7 @@ export const Exercises = ({ route }: ExercisesProps) => {
         setNewExercise={setNewExercise}
         setShowModal={setShowModal}
         showModal={showModal}
+        exerciseCategory={exerciseCategory}
       />
       <Header>
         <BackButton onPress={goBack}>
