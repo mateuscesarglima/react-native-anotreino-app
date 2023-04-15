@@ -20,7 +20,6 @@ export const HeaderText = styled.Text`
   font-size: 30px;
   font-weight: bold;
   color: #fff;
-  align-content: center;
   align-self: center;
 `;
 

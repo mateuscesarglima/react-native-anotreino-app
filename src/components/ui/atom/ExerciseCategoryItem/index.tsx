@@ -7,7 +7,7 @@ interface ExerciseCategoryItemProps {
 
 export const ExerciseCategoryItem = ({ label }: ExerciseCategoryItemProps) => {
   return (
-    <Container>
+    <Container activeOpacity={0.8}>
       <Text>{label}</Text>
     </Container>
   );

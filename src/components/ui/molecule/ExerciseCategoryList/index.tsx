@@ -1,5 +1,5 @@
 import React from "react";
-import { ExerciseCategoryListContainer } from "./styles";
+import { Container, ExerciseCategoryListContainer } from "./styles";
 import { IExerciseCategory } from "interfaces";
 import { ExerciseCategoryItem } from "@Components/ui/atom/ExerciseCategoryItem";
 
@@ -11,10 +11,12 @@ export const ExerciseCategoryList = ({
   exerciseCategory,
 }: ExerciseCategoryListProps) => {
   return (
-    <ExerciseCategoryListContainer
-      data={exerciseCategory}
-      keyExtractor={(item) => item.key}
-      renderItem={({ item }) => <ExerciseCategoryItem label={item.label} />}
-    />
+    <Container>
+      <ExerciseCategoryListContainer
+        data={exerciseCategory}
+        keyExtractor={(item) => item.key}
+        renderItem={({ item }) => <ExerciseCategoryItem label={item.label} />}
+      />
+    </Container>
   );
 };
