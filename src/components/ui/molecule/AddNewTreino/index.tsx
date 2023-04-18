@@ -9,20 +9,21 @@ import {
   ApplyButton,
   ButtonText,
 } from "./styles";
-import { ITreino } from "interfaces";
+
 import uuid from "react-native-uuid";
+import { IFicha } from "interfaces";
 
 interface AddNewTreinoProps {
   showModal: boolean;
   setShowModal: (value: boolean) => void;
-  handleAddNewTreino: (newTreino: ITreino) => void;
+  handleAddNewFicha: (newFicha: IFicha) => void;
   setNewTreino: (value: string) => void;
   newTreino: string;
 }
 export const AddNewTreino = ({
   setShowModal,
   showModal,
-  handleAddNewTreino,
+  handleAddNewFicha,
   setNewTreino,
   newTreino,
 }: AddNewTreinoProps) => {
@@ -40,9 +41,10 @@ export const AddNewTreino = ({
         <ApplyButton>
           <ButtonText
             onPress={() => {
-              handleAddNewTreino({
+              handleAddNewFicha({
                 id: uuid.v4().toString(),
                 title: newTreino,
+                exercicios: [],
               }),
                 setShowModal(!showModal);
             }}

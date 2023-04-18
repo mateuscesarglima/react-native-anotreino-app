@@ -12,9 +12,7 @@ import {
 
 import { RFValue } from "react-native-responsive-fontsize";
 import { WorkoutItem } from "@Components/ui/molecule/WorkoutItem";
-import { data } from "../../utils/mockedData";
-import React, { useState } from "react";
-import { ITreino } from "interfaces";
+import React, { useEffect, useState } from "react";
 import { AddTreinoModal } from "@Components/ui/organism/AddTreinoModal";
 import { routeCodes } from "@Constants/routes/index";
 import {
@@ -22,38 +20,39 @@ import {
   ParamListBase,
   useNavigation,
 } from "@react-navigation/native";
+import { useFicha } from "@Context/Ficha";
+import { IFicha } from "interfaces";
 
 export const Home = () => {
   const { navigate }: NavigationProp<ParamListBase> = useNavigation();
-  const [initData, setInitData] = useState<ITreino[]>(data);
+  const { fichas, handleAddNewFicha } = useFicha();
+  const [fichaData, setFichaData] = useState<IFicha[]>(fichas);
   const [showModal, setShowModal] = useState(false);
   const [newTreino, setNewTreino] = useState<string>("");
 
-  const handleAddNewTreino = (newTreino: ITreino) => {
-    const { id, title } = newTreino;
-    setInitData((prev) => [...prev, { id: id, title: title }]);
-  };
-
-  const handleOnSelectWorkout = (workoutId: string, workoutName: string) => {
+  const handleOnSelectWorkout = (ficha: IFicha) => {
     {
       navigate(routeCodes.EXERCISES, {
-        workoutId: workoutId,
-        workoutName: workoutName,
+        fichaData: ficha,
       });
     }
   };
+
+  useEffect(() => {
+    setFichaData(fichas);
+  }, [fichas]);
 
   return (
     <Container>
       <AddTreinoModal
         setShowModal={setShowModal}
         showModal={showModal}
-        handleAddNewTreino={handleAddNewTreino}
+        handleAddNewFicha={handleAddNewFicha}
         setNewTreino={setNewTreino}
         newTreino={newTreino}
       />
       <Header>
-        {initData.length < 0 ? (
+        {fichaData.length < 0 ? (
           <Title>Meus treinos</Title>
         ) : (
           <AddWorkoutHeader>
@@ -64,15 +63,14 @@ export const Home = () => {
           </AddWorkoutHeader>
         )}
       </Header>
-      {initData.length > 0 ? (
+      {fichaData.length > 0 ? (
         <WorkoutListContainer>
           <WorkoutList
-            data={initData}
+            data={fichaData}
             keyExtractor={(item) => item.id}
             renderItem={({ item }) => (
               <WorkoutItem
-                itemId={item.id}
-                itemName={item.title}
+                ficha={item}
                 handleOnSelectWorkout={handleOnSelectWorkout}
               />
             )}

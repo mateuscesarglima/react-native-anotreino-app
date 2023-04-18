@@ -1,73 +1,109 @@
-import React, { useState } from "react";
-import {
-  Container,
-  Header,
-  Main,
-  Text,
-  BackButton,
-  HeaderText,
-  AddExerciseContainer,
-  ExerciseListContainer,
-  ButtonContainer,
-} from "./styles";
-import { CaretLeft } from "phosphor-react-native";
-import { exercisesData, exerciseCategory } from "../../utils/mockedData";
+import { ButtonAddWorkout } from "@Components/ui/atom/AddWorkoutButton";
+import { ExerciseFichaItem } from "@Components/ui/atom/ExerciseFichaItem";
+import { AddNewExerciseModal } from "@Components/ui/organism/AddNewExerciseModal";
+import { ExerciseSelectModal } from "@Components/ui/organism/ExerciseSelectModal";
 import {
   NavigationProp,
   ParamListBase,
   useNavigation,
 } from "@react-navigation/native";
-import { ButtonAddWorkout } from "@Components/ui/atom/AddWorkoutButton";
-import { AddNewExerciseModal } from "@Components/ui/organism/AddNewExerciseModal";
-import { IExercise } from "interfaces";
-import uuid from "react-native-uuid";
+import { IExercise, IExerciseType, IFicha } from "interfaces";
+import { CaretLeft } from "phosphor-react-native";
+import React, { useEffect, useState } from "react";
+import {
+  exerciseCategory,
+  exerciseCategoryData,
+  ficha,
+} from "../../utils/mockedData";
+import {
+  AddExerciseButton,
+  AddExerciseContainer,
+  BackButton,
+  ButtonContainer,
+  Container,
+  ExerciseListContainer,
+  Header,
+  HeaderText,
+  Icon,
+  Main,
+  Text,
+} from "./styles";
+import { useFicha } from "@Context/Ficha";
+import { RefreshControl } from "react-native";
 
 interface ExercisesProps {
   route: any;
 }
 
 export const Exercises = ({ route }: ExercisesProps) => {
-  const [exercises, setExercises] = useState<IExercise[]>(exercisesData);
-  const [newExercise, setNewExercise] = useState<string>("");
+  // const [exercises, setExercises] = useState<IExercise[]>(exercisesData);
+  const { fichas, handleAddNewExercise } = useFicha();
+  const { title, id } = route.params?.fichaData;
   const { goBack }: NavigationProp<ParamListBase> = useNavigation();
-  const { workoutName } = route.params;
-  const [showModal, setShowModal] = useState(false);
 
-  const HandleAddNewExercise = (newExercise: IExercise) => {
-    const { id, TreinoId, description, name } = newExercise;
-    setExercises((prev) => [
-      ...prev,
-      {
-        id: uuid.v4().toString(),
-        name: name,
-        description: description,
-        TreinoId: TreinoId,
-      },
-    ]);
-  };
+  const [exercises, setExercises] =
+    useState<IExerciseType>(exerciseCategoryData);
+
+  const [myExercises, setMyExercises] = useState<IExercise[]>([]);
+  const [newExercise, setNewExercise] = useState<string>("");
+
+  const [showModal, setShowModal] = useState(false);
+  const [showExerciseSelectModal, setShowExerciseSelectModal] = useState(false);
+  const [exerciseName, setExerciseName] = useState<string>("");
 
   const handleOnPress = () => {
     setShowModal(!showModal);
   };
 
+  const handleShowExerciseSelectModal = (exerciseName: string) => {
+    handleOnPress();
+    setExerciseName(exerciseName);
+    setShowExerciseSelectModal(!showExerciseSelectModal);
+  };
+
+  useEffect(() => {
+    fichas.find((ficha) =>
+      ficha.id === id ? setMyExercises(ficha.exercicios) : null
+    );
+  }, [id]);
+
+  useEffect(() => {
+    fichas.find((ficha) =>
+      ficha.id === id ? setMyExercises(ficha.exercicios) : null
+    );
+  }, [fichas]);
+
   return (
     <Container>
       <AddNewExerciseModal
-        HandleAddNewExercise={HandleAddNewExercise}
         newExercise={newExercise}
         setNewExercise={setNewExercise}
         setShowModal={setShowModal}
         showModal={showModal}
         exerciseCategory={exerciseCategory}
+        handleShowExerciseSelectModal={handleShowExerciseSelectModal}
+      />
+      <ExerciseSelectModal
+        handleShowExerciseSelectModal={handleShowExerciseSelectModal}
+        showModal={showExerciseSelectModal}
+        exercises={exercises}
+        exerciseName={exerciseName}
+        handleAddNewExercise={handleAddNewExercise}
+        fichaId={id}
       />
       <Header>
         <BackButton onPress={goBack}>
           <CaretLeft size={40} color="#FFF" />
         </BackButton>
-        <HeaderText>{workoutName}</HeaderText>
+        <HeaderText>{title}</HeaderText>
+        {myExercises.length === 0 ? null : (
+          <AddExerciseButton onPress={handleOnPress}>
+            <Icon name="plus-circle" size={50} color={"#FFF"} />
+          </AddExerciseButton>
+        )}
       </Header>
       <Main>
-        {true ? (
+        {myExercises.length === 0 ? (
           <AddExerciseContainer>
             <Text>
               Lista vazia {`\n`} Adicione os exercicios clicando no ícone abaixo
@@ -77,7 +113,18 @@ export const Exercises = ({ route }: ExercisesProps) => {
             </ButtonContainer>
           </AddExerciseContainer>
         ) : (
-          <ExerciseListContainer></ExerciseListContainer>
+          <ExerciseListContainer
+            horizontal={false}
+            data={myExercises}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => (
+              <ExerciseFichaItem
+                name={item.name}
+                img={""}
+                description={item.description}
+              />
+            )}
+          />
         )}
       </Main>
     </Container>

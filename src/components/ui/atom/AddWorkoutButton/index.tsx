@@ -8,7 +8,7 @@ interface AddWorkoutButtonProps {
 
 export const ButtonAddWorkout = ({ handleOnPress }: AddWorkoutButtonProps) => {
   return (
-    <AddWorkoutButton onPress={handleOnPress} activeOpacity={1}>
+    <AddWorkoutButton onPress={handleOnPress}>
       <Icon name="plus-circle" size={RFValue(70)} />
     </AddWorkoutButton>
   );

@@ -1,13 +1,13 @@
+import { IFicha } from "interfaces";
 import React from "react";
 import { Modal } from "react-native";
-import { Container, ModalView } from "./styles";
 import { AddNewTreino } from "../../molecule/AddNewTreino";
-import { ITreino } from "interfaces";
+import { Container, ModalView } from "./styles";
 
 interface AddTreinoModalProps {
   showModal: boolean;
   setShowModal: (value: boolean) => void;
-  handleAddNewTreino: (newTreino: ITreino) => void;
+  handleAddNewFicha: (newTreino: IFicha) => void;
   setNewTreino: (value: string) => void;
   newTreino: string;
 }
@@ -15,7 +15,7 @@ interface AddTreinoModalProps {
 export const AddTreinoModal = ({
   setShowModal,
   showModal,
-  handleAddNewTreino,
+  handleAddNewFicha,
   setNewTreino,
   newTreino,
 }: AddTreinoModalProps) => {
@@ -34,7 +34,7 @@ export const AddTreinoModal = ({
             <AddNewTreino
               setShowModal={setShowModal}
               showModal={showModal}
-              handleAddNewTreino={handleAddNewTreino}
+              handleAddNewFicha={handleAddNewFicha}
               setNewTreino={setNewTreino}
               newTreino={newTreino}
             />

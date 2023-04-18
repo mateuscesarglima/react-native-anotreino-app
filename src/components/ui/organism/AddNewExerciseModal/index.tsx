@@ -7,19 +7,19 @@ import { AddNewExercise } from "../../molecule/AddNewExercise";
 export interface AddNewExerciseModalProps {
   showModal: boolean;
   setShowModal: (value: boolean) => void;
-  HandleAddNewExercise: (newTreino: IExercise) => void;
   setNewExercise: (value: string) => void;
   newExercise: string;
   exerciseCategory: IExerciseCategory[];
+  handleShowExerciseSelectModal: (exerciseName: string) => void;
 }
 
 export const AddNewExerciseModal = ({
   setShowModal,
   showModal,
-  HandleAddNewExercise,
   setNewExercise,
   newExercise,
   exerciseCategory,
+  handleShowExerciseSelectModal,
 }: AddNewExerciseModalProps) => {
   return (
     <Container>
@@ -36,9 +36,9 @@ export const AddNewExerciseModal = ({
             exerciseCategory={exerciseCategory}
             setShowModal={setShowModal}
             showModal={showModal}
-            HandleAddNewExercise={HandleAddNewExercise}
             setNewExercise={setNewExercise}
             newExercise={newExercise}
+            handleShowExerciseSelectModal={handleShowExerciseSelectModal}
           />
         </ModalView>
       </Modal>

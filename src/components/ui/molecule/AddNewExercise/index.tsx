@@ -4,21 +4,15 @@ import { IExerciseCategory } from "interfaces";
 import { RFValue } from "react-native-responsive-fontsize";
 import { AddNewExerciseModalProps } from "../../organism/AddNewExerciseModal";
 
+import { ExerciseCategoryList } from "../ExerciseCategoryList";
 import {
+  BackButton,
   Container,
   Header,
+  HeaderText,
   Icon,
   Main,
-  HeaderText,
-  BackButton,
 } from "./styles";
-import { ExerciseCategoryList } from "../ExerciseCategoryList";
-import { TouchableOpacity } from "react-native-gesture-handler";
-import {
-  NavigationProp,
-  ParamListBase,
-  useNavigation,
-} from "@react-navigation/native";
 
 interface AddNewExerciseProps extends AddNewExerciseModalProps {
   exerciseCategory: IExerciseCategory[];
@@ -27,21 +21,22 @@ interface AddNewExerciseProps extends AddNewExerciseModalProps {
 export const AddNewExercise = ({
   showModal,
   setShowModal,
-  HandleAddNewExercise,
-  setNewExercise,
-  newExercise,
   exerciseCategory,
+  handleShowExerciseSelectModal,
 }: AddNewExerciseProps) => {
   return (
     <Container>
       <Header>
         <BackButton onPress={() => setShowModal(!showModal)}>
-          <Icon name="chevron-left" size={RFValue(50)} />
+          <Icon name="chevron-left" size={RFValue(40)} />
         </BackButton>
         <HeaderText>Exercícios</HeaderText>
       </Header>
       <Main>
-        <ExerciseCategoryList exerciseCategory={exerciseCategory} />
+        <ExerciseCategoryList
+          exerciseCategory={exerciseCategory}
+          handleShowExerciseSelectModal={handleShowExerciseSelectModal}
+        />
       </Main>
     </Container>
   );

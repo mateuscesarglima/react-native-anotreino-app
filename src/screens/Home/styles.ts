@@ -1,9 +1,9 @@
-import { getStatusBarHeight } from "react-native-iphone-x-helper";
-import styled from "styled-components/native";
 import { Feather } from "@expo/vector-icons";
-import { RFPercentage } from "react-native-responsive-fontsize";
+import { IFicha } from "interfaces";
 import { FlatList, FlatListProps } from "react-native";
-import { ITreino } from "interfaces";
+import { getStatusBarHeight } from "react-native-iphone-x-helper";
+import { RFPercentage } from "react-native-responsive-fontsize";
+import styled from "styled-components/native";
 
 interface IconProps {
   hasData?: boolean;
@@ -38,7 +38,7 @@ export const WorkoutListContainer = styled.View`
 `;
 
 export const WorkoutList = styled(
-  FlatList as new (props: FlatListProps<ITreino>) => FlatList<ITreino>
+  FlatList as new (props: FlatListProps<IFicha>) => FlatList<IFicha>
 )``;
 
 export const AddWorkoutContainer = styled.View`

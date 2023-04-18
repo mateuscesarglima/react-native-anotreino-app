@@ -1,33 +1,28 @@
-import { IExercise, IExerciseCategory, ITreino } from "../interfaces/index";
 import uuid from "react-native-uuid";
+import { IExerciseCategory, IExerciseType, IFicha } from "../interfaces/index";
 
-export const data: ITreino[] = [
+export const ficha: IFicha[] = [
   {
     id: uuid.v4().toString(),
-    title: "Costas",
+    title: "Ficha A",
+    exercicios: [
+      {
+        id: uuid.v4().toString(),
+        name: "Tríceps Polia Barra V",
+        description:
+          "O Tríceps Pulley Corda é um exercício para tríceps que pode ser feito em uma academia com a ajuda de uma corda e um cabo. Ele ajuda a fortalecer os músculos do tríceps e melhorar a definição dos braços.",
+      },
+    ],
   },
   {
     id: uuid.v4().toString(),
-    title: "Pernas",
+    title: "Ficha B",
+    exercicios: [],
   },
   {
     id: uuid.v4().toString(),
-    title: "Peito",
-  },
-];
-
-export const exercisesData: IExercise[] = [
-  {
-    id: uuid.v4().toString(),
-    TreinoId: data[0].id,
-    name: "Supino Reto",
-    description: "lorem isdadasdasdasdasd",
-  },
-  {
-    id: uuid.v4().toString(),
-    TreinoId: data[1].id,
-    name: "Halteres",
-    description: "lorem isdadasdasdasdasd",
+    title: "Ficha C",
+    exercicios: [],
   },
 ];
 
@@ -66,78 +61,84 @@ export const exerciseCategory: IExerciseCategory[] = [
   },
 ];
 
-export const exerciseCategoryData = [
-  {
-    peitoral: [
-      {
-        exercicio_id: uuid.v4().toString(),
-        exercicio_nome: "Supino reto",
-        exercicio_descricao: "",
-      },
-      {
-        exercicio_id: uuid.v4().toString(),
-        exercicio_nome: "Supino Inclinado com Halter",
-        exercicio_descricao: "",
-      },
-      {
-        exercicio_id: uuid.v4().toString(),
-        exercicio_nome: "Supino Reto com Halter",
-        exercicio_descricao: "",
-      },
-      {
-        exercicio_id: uuid.v4().toString(),
-        exercicio_nome: "Crucifixo Polia",
-        exercicio_descricao: "",
-      },
-    ],
-    costas: [
-      {
-        exercicio_id: "Puxada Polia Barra Frente",
-        exercicio_nome: "",
-        exercicio_descricao: "",
-      },
-    ],
-    biceps: [
-      {
-        exercicio_id: "",
-        exercicio_nome: "",
-        exercicio_descricao: "",
-      },
-    ],
-    ombros: [
-      {
-        exercicio_id: "",
-        exercicio_nome: "",
-        exercicio_descricao: "",
-      },
-    ],
-    abdômem: [
-      {
-        exercicio_id: "",
-        exercicio_nome: "",
-        exercicio_descricao: "",
-      },
-    ],
-    triceps: [
-      {
-        exercicio_id: "",
-        exercicio_nome: "",
-        exercicio_descricao: "",
-      },
-    ],
-    pernas: [
-      {
-        exercicio_id: "",
-        exercicio_nome: "",
-        exercicio_descricao: "",
-      },
-    ],
-    antebracos: [
-      {
-        exercicio_id: "",
-        exercicio_nome: "",
-        exercicio_descricao: "",
-      },
-    ],
-  },
-];
+export type IExerciseCategoryData = typeof exerciseCategoryData;
+
+export const exerciseCategoryData: IExerciseType = {
+  peito: [
+    {
+      id: uuid.v4().toString(),
+      name: "Supino reto",
+      description: "Lorem ipsum dolor, sit amet consectetur",
+    },
+    {
+      id: uuid.v4().toString(),
+      name: "Supino Inclinado c/ Halter",
+      description: "Lorem ipsum dolor, sit amet consectetur",
+    },
+    {
+      id: uuid.v4().toString(),
+      name: "Supino Reto c/ Halter",
+      description: "Lorem ipsum dolor, sit amet consectetur",
+    },
+    {
+      id: uuid.v4().toString(),
+      name: "Crucifixo Polia",
+      description: "Lorem ipsum dolor, sit amet consectetur",
+    },
+  ],
+  costas: [
+    {
+      id: uuid.v4().toString(),
+      name: "Puxada Polia",
+      description: "Lorem ipsum dolor, sit amet consectetur",
+    },
+  ],
+  biceps: [
+    {
+      id: uuid.v4().toString(),
+      name: "",
+      description: "Lorem ipsum dolor, sit amet consectetur",
+    },
+  ],
+  ombros: [
+    {
+      id: uuid.v4().toString(),
+      name: "",
+      description: "Lorem ipsum dolor, sit amet consectetur",
+    },
+  ],
+  abdomem: [
+    {
+      id: uuid.v4().toString(),
+      name: "",
+      description: "Lorem ipsum dolor, sit amet consectetur",
+    },
+  ],
+  triceps: [
+    {
+      id: uuid.v4().toString(),
+      name: "Tríceps Polia Barra V",
+      description:
+        "O Tríceps Pulley Corda é um exercício para tríceps que pode ser feito em uma academia com a ajuda de uma corda e um cabo. Ele ajuda a fortalecer os músculos do tríceps e melhorar a definição dos braços.",
+    },
+    {
+      id: uuid.v4().toString(),
+      name: "Tríceps Polia Francês Corda",
+      description:
+        "O Tríceps Francês com Halteres é um exercício eficaz para desenvolver os músculos do tríceps. Ele é feito com halteres e ajuda a fortalecer e definir a parte de trás dos braços.",
+    },
+    {
+      id: uuid.v4().toString(),
+      name: "Tríceps Pulley Corda",
+      description:
+        "O Tríceps Pulley Corda é um exercício para tríceps que pode ser feito em uma academia com a ajuda de uma corda e um cabo. Ele ajuda a fortalecer os músculos do tríceps e melhorar a definição dos braços.",
+    },
+  ],
+  pernas: [
+    {
+      id: uuid.v4().toString(),
+      name: "",
+      description: "Lorem ipsum dolor, sit amet consectetur",
+    },
+  ],
+};
