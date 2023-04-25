@@ -2,19 +2,16 @@ import { ButtonAddWorkout } from "@Components/ui/atom/AddWorkoutButton";
 import { ExerciseFichaItem } from "@Components/ui/atom/ExerciseFichaItem";
 import { AddNewExerciseModal } from "@Components/ui/organism/AddNewExerciseModal";
 import { ExerciseSelectModal } from "@Components/ui/organism/ExerciseSelectModal";
+import { useFicha } from "@Context/Ficha";
 import {
   NavigationProp,
   ParamListBase,
   useNavigation,
 } from "@react-navigation/native";
-import { IExercise, IExerciseType, IFicha } from "interfaces";
+import { IExercise, IExerciseType } from "interfaces";
 import { CaretLeft } from "phosphor-react-native";
 import React, { useEffect, useState } from "react";
-import {
-  exerciseCategory,
-  exerciseCategoryData,
-  ficha,
-} from "../../utils/mockedData";
+import { exerciseCategory, exerciseCategoryData } from "../../utils/mockedData";
 import {
   AddExerciseButton,
   AddExerciseContainer,
@@ -28,8 +25,6 @@ import {
   Main,
   Text,
 } from "./styles";
-import { useFicha } from "@Context/Ficha";
-import { RefreshControl } from "react-native";
 
 interface ExercisesProps {
   route: any;

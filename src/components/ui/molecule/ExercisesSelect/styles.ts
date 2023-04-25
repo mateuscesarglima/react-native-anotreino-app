@@ -32,4 +32,5 @@ export const Icon = styled(Feather)`
 `;
 export const Main = styled.View`
   padding: 20px;
+  height: 100%;
 `;

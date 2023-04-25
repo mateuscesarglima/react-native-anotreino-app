@@ -9,6 +9,7 @@ export const Container = styled.View`
   margin-top: 20px;
   overflow: hidden;
   height: 100px;
+  flex: 1;
 `;
 export const ImgBox = styled.View`
   justify-content: center;
@@ -37,6 +38,7 @@ export const Description = styled.Text`
 export const AddButton = styled.TouchableOpacity`
   background-color: #495057;
   justify-content: center;
+  align-items: center;
   width: 70px;
 `;
 export const ButtonText = styled.Text`

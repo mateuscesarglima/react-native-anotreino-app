@@ -39,7 +39,11 @@ export const WorkoutListContainer = styled.View`
 
 export const WorkoutList = styled(
   FlatList as new (props: FlatListProps<IFicha>) => FlatList<IFicha>
-)``;
+).attrs({
+  contentContainerStyle: {
+    gap: 20,
+  },
+})``;
 
 export const AddWorkoutContainer = styled.View`
   align-items: center;

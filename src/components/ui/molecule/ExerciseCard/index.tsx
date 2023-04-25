@@ -10,6 +10,7 @@ import {
   Img,
 } from "./styles";
 import { IExercise } from "interfaces";
+import { Plus } from "phosphor-react-native";
 
 interface IExerciseCardProps extends IExercise {
   handleAddNewExercise: (newExercise: IExercise) => void;
@@ -31,6 +32,7 @@ export const ExerciseCard = ({
         <Description>{description.slice(0, 50)}...</Description>
       </Content>
       <AddButton
+        activeOpacity={0.8}
         onPress={() => {
           handleAddNewExercise({
             id: id,
@@ -39,7 +41,7 @@ export const ExerciseCard = ({
           });
         }}
       >
-        <ButtonText>ADD</ButtonText>
+        <Plus color="#FFF" weight="bold" />
       </AddButton>
     </Container>
   );

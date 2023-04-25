@@ -1,8 +1,8 @@
 import { ExerciseSelect } from "@Components/ui/molecule/ExercisesSelect";
+import { IExercise } from "interfaces";
 import React from "react";
 import { Modal } from "react-native";
 import { Container, ModalView } from "./styles";
-import { IExercise } from "interfaces";
 
 export interface IExerciseSelectModal {
   showModal: boolean;
