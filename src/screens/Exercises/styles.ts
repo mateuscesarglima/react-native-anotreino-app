@@ -1,6 +1,11 @@
 import styled from "styled-components/native";
 import { Feather } from "@expo/vector-icons";
-import { getStatusBarHeight } from "react-native-iphone-x-helper";
+import {
+  getBottomSpace,
+  getStatusBarHeight,
+} from "react-native-iphone-x-helper";
+import { FlatList, FlatListProps } from "react-native";
+import { IExercise } from "interfaces";
 
 export const Container = styled.View``;
 export const Header = styled.View`
@@ -8,6 +13,9 @@ export const Header = styled.View`
   padding-bottom: 20px;
   background-color: ${({ theme }) => theme.colors.primary};
   position: relative;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const BackButton = styled.TouchableOpacity`
@@ -20,12 +28,11 @@ export const HeaderText = styled.Text`
   font-size: 30px;
   font-weight: bold;
   color: #fff;
-  align-content: center;
   align-self: center;
 `;
 
 export const Main = styled.View`
-  margin-top: 60px;
+  margin-top: 30px;
 `;
 export const Text = styled.Text`
   font-size: 30px;
@@ -42,6 +49,19 @@ export const ButtonContainer = styled.View`
   margin-top: 30px;
 `;
 
-export const ExerciseListContainer = styled.View`
-  align-items: center;
+export const ExerciseListContainer = styled(
+  FlatList as new (props: FlatListProps<IExercise>) => FlatList<IExercise>
+).attrs({
+  showsHorizontalScrollIndicator: false,
+  contentContainerStyle: {
+    paddingLeft: 30,
+    gap: 20,
+    paddingBottom: getBottomSpace() + 250,
+  },
+})``;
+
+export const AddExerciseButton = styled.TouchableOpacity`
+  position: absolute;
+  right: 20px;
+  top: 60px;
 `;

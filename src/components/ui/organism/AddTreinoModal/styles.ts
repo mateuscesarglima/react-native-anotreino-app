@@ -13,7 +13,6 @@ export const ModalView = styled.View`
   border-radius: 20px;
   align-items: center;
   justify-content: center;
-  elevation: 5;
   flex: 1;
   width: 100%;
   margin-top: -100px;
