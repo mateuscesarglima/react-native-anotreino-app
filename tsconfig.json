@@ -10,7 +10,8 @@
       "@Global/*": ["./global/*"],
       "@Context/*": ["./context/*"],
       "@Assets/*": ["./assets/*"],
-      "@Config/*": ["./config/*"]
+      "@Config/*": ["./config/*"],
+      "@Constants/*": ["./constants/*"]
     }
   },
   "extends": "expo/tsconfig.base"
