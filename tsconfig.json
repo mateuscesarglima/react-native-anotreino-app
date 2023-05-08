@@ -11,7 +11,9 @@
       "@Context/*": ["./context/*"],
       "@Assets/*": ["./assets/*"],
       "@Config/*": ["./config/*"],
-      "@Constants/*": ["./constants/*"]
+      "@Constants/*": ["./constants/*"],
+      "@Services/*": ["./services/*"],
+      "@Interfaces/*": ["./interfaces/*"]
     }
   },
   "extends": "expo/tsconfig.base"

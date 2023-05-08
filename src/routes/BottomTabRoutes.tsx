@@ -1,18 +1,19 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Exercises } from "@Screens/Exercises";
-import { Hit } from "@Screens/Hit";
-import { Home } from "@Screens/Home";
-import { Profile } from "@Screens/Profile";
 import { Barbell, PersonSimpleRun, UserCircle } from "phosphor-react-native";
 
 import React from "react";
 import { Platform } from "react-native";
+import {
+  HitNavigation,
+  HomeNavigation,
+  ProfileNavigation,
+} from "./StackRoutes";
 
-const { Navigator, Screen } = createBottomTabNavigator();
+const Tab = createBottomTabNavigator();
 
-export const AuthRoutes = () => {
+export const BottomTabRoutes = () => {
   return (
-    <Navigator
+    <Tab.Navigator
       screenOptions={{
         headerShown: false,
         tabBarLabelPosition: "beside-icon",
@@ -22,40 +23,33 @@ export const AuthRoutes = () => {
         },
       }}
     >
-      <Screen
+      <Tab.Screen
         name="Home"
-        component={Home}
+        component={HomeNavigation}
         options={{
           tabBarIcon: ({ size, color }) => (
             <Barbell size={size} color={color} />
           ),
         }}
       />
-      <Screen
+      <Tab.Screen
         name="Hit"
-        component={Hit}
+        component={HitNavigation}
         options={{
           tabBarIcon: ({ size, color }) => (
             <PersonSimpleRun size={size} color={color} />
           ),
         }}
       />
-      <Screen
+      <Tab.Screen
         name="Profile"
-        component={Profile}
+        component={ProfileNavigation}
         options={{
           tabBarIcon: ({ size, color }) => (
             <UserCircle size={size} color={color} />
           ),
         }}
       />
-      <Screen
-        name="Exercises"
-        component={Exercises}
-        options={{
-          tabBarButton: () => null,
-        }}
-      />
-    </Navigator>
+    </Tab.Navigator>
   );
 };

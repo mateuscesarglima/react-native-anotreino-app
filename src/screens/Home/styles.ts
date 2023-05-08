@@ -1,5 +1,5 @@
 import { Feather } from "@expo/vector-icons";
-import { IFicha } from "interfaces";
+import { IFicha, ISheet } from "interfaces";
 import { FlatList, FlatListProps } from "react-native";
 import { getStatusBarHeight } from "react-native-iphone-x-helper";
 import { RFPercentage } from "react-native-responsive-fontsize";
@@ -38,7 +38,7 @@ export const WorkoutListContainer = styled.View`
 `;
 
 export const WorkoutList = styled(
-  FlatList as new (props: FlatListProps<IFicha>) => FlatList<IFicha>
+  FlatList as new (props: FlatListProps<ISheet>) => FlatList<ISheet>
 ).attrs({
   contentContainerStyle: {
     gap: 20,
@@ -53,5 +53,11 @@ export const AddWorkoutContainer = styled.View`
 export const AddWorkoutButton = styled.TouchableOpacity``;
 
 export const Icon = styled(Feather)<IconProps>`
-  color: ${({ hasData }) => (hasData ? "#FFF" : null)};
+  color: ${({ hasData }) => (hasData ? "#FFF" : "black")};
+`;
+
+export const LoadContainer = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
 `;

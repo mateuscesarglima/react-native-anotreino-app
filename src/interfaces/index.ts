@@ -31,3 +31,16 @@ export interface IExercise {
   name: string;
   description: string;
 }
+
+export interface ISheet {
+  id: string;
+  name: string;
+  exercises: IExercise[];
+}
+
+export interface IUser {
+  id: string;
+  email: string;
+  password: string;
+  sheets: ISheet;
+}
