@@ -33,7 +33,7 @@ export const ExerciseFichaItem = ({
             <Title>{name}</Title>
             <Icon name="edit" size={20} />
           </Header>
-          <Description>{description.slice(0, 60)} ...</Description>
+          <Description>description</Description>
         </Main>
       </MainBox>
       <Footer>

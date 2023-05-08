@@ -16,6 +16,8 @@ module.exports = function (api) {
             "@Assets": "./src/assets",
             "@Config": "./src/config",
             "@Constants": "./src/constants",
+            "@Services": "./src/services",
+            "@Interfaces": "./src/interfaces",
           },
           extensions: [".js", ".jsx", ".ts", ".tsx"],
         },

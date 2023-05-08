@@ -6,6 +6,7 @@ import {
 } from "react-native-iphone-x-helper";
 import { FlatList, FlatListProps } from "react-native";
 import { IExercise } from "interfaces";
+import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 
 export const Container = styled.View``;
 export const Header = styled.View`
@@ -64,4 +65,22 @@ export const AddExerciseButton = styled.TouchableOpacity`
   position: absolute;
   right: 20px;
   top: 60px;
+`;
+
+export const StartExerciseButton = styled.TouchableOpacity`
+  position: absolute;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  top: ${RFPercentage(68)}px;
+  background-color: #37b24d;
+  height: 100px;
+  gap: 10px;
+`;
+export const StartText = styled.Text`
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  align-items: center;
+  justify-content: center;
 `;
