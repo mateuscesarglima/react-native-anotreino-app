@@ -40,14 +40,14 @@ export const Exercises = () => {
   // const { car } = route.params as Params;
   const route = useRoute();
   const { exercises, sheetName } = route.params as Params;
-  const { sheets, handleAddNewExercise } = useSheet();
   const { goBack, navigate }: NavigationProp<ParamListBase> = useNavigation();
-  const [newExercise, setNewExercise] = useState<string>("");
   const [showExerciseSelectModal, setShowExerciseSelectModal] = useState(false);
   const [exerciseName, setExerciseName] = useState<string>("");
 
   const handleOnPress = () => {
-    navigate(routeCodes.SELECT_EXERCISE);
+    navigate(routeCodes.SELECT_EXERCISE, {
+      sheetName,
+    });
   };
 
   const handleShowExerciseSelectModal = (exerciseName: string) => {

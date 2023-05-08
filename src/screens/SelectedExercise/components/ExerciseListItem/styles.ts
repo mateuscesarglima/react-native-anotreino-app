@@ -17,8 +17,13 @@ export const Container = styled.View`
 
 export const Content = styled.View``;
 
-export const Img = styled.Text`
-  padding-left: 10px;
+export const Img = styled.Image`
+  margin-left: 10px;
+  width: 70px;
+  height: 70px;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
 `;
 
 export const ItemName = styled.Text`

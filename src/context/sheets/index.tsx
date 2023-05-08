@@ -23,7 +23,10 @@ interface IFichaProviderProps {
 
 interface IFichaContextProps {
   sheets: ISheet[];
-  handleAddNewExercise: any;
+  handleAddNewExercise: (
+    newExercise: IExercise,
+    sheetName: string
+  ) => Promise<any>;
   handleAddNewSheet: any;
   handleRemoveFicha: any;
   // handleAddNewExercise: (newExercicio: IExercise, fichaId: string) => void;
@@ -38,14 +41,29 @@ export const FichaProvider = ({ children }: IFichaProviderProps) => {
   const [isLoading, setIsLoading] = useState(true);
   const { user } = useAuth();
 
-  const handleAddNewExercise = (newExercicio: IExercise, fichaId: string) => {};
-
   const handleAddNewSheet = async (newFicha: ISheet) => {
     try {
       let payload = {
         sheets: sheets,
       };
       payload.sheets.push(newFicha);
+      await api.patch(`/users/${user.id}`, payload);
+    } catch (err) {
+      Alert.alert(err as string);
+    }
+  };
+
+  const handleAddNewExercise = async (
+    newExercise: IExercise,
+    sheetName: string
+  ) => {
+    try {
+      const data = sheets.map((sheet) =>
+        sheet.name === sheetName ? sheet.exercises.push(newExercise) : sheet
+      );
+      const payload = {
+        sheets: data,
+      };
       await api.patch(`/users/${user.id}`, payload);
     } catch (err) {
       Alert.alert(err as string);

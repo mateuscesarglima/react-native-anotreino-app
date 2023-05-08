@@ -20,18 +20,22 @@ import {
   Title,
 } from "./styles";
 
-interface Params {}
+interface Params {
+  sheetName: string;
+}
 
 export const SelectCategory = () => {
   const route = useRoute();
   const { goBack, navigate }: NavigationProp<ParamListBase> = useNavigation();
-  const {} = route as Params;
+  const { sheetName } = route.params as Params;
 
   const handleOnSelectExercise = (exercise: string) => {
     navigate(routeCodes.SELECTED_EXERCISE, {
       exercise: exercise,
+      sheetName,
     });
   };
+
   return (
     <Container>
       <Header>

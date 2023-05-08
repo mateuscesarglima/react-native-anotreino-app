@@ -11,14 +11,16 @@ import React, { useEffect, useState } from "react";
 import { exercisesSelectedData } from "../../utils/mockedData";
 import { Container, Content, Header, Icon, Title } from "./styles";
 import { ExerciseListItem } from "./components/ExerciseListItem";
+import { useSheet } from "@Context/sheets";
 
 interface Params {
   exercise: string;
+  sheetName: string;
 }
 
 export const SelectedExercise = () => {
   const route = useRoute();
-  const { exercise } = route.params as Params;
+  const { exercise, sheetName } = route.params as Params;
   const { goBack, navigate }: NavigationProp<ParamListBase> = useNavigation();
   const [exercises, setExercises] = useState<IExercise[]>([]);
 
@@ -66,7 +68,9 @@ export const SelectedExercise = () => {
         <ExercisesList
           data={exercises}
           keyExtractor={(item) => item.id}
-          renderItem={({ item }) => <ExerciseListItem exercise={item} />}
+          renderItem={({ item }) => (
+            <ExerciseListItem exercise={item} sheetName={sheetName} />
+          )}
         />
       </Content>
     </Container>

@@ -24,6 +24,11 @@
               "description": "Lorem ipsum dolor, sit amet consectetur"
             }
           ]
+        },
+        {
+          "id": "173ebedd-65ae-450f-8150-f80d40edd335",
+          "name": "Treino C",
+          "exercises": []
         }
       ]
     },
