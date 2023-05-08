@@ -1,0 +1,61 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "email": "Admin@email.com",
+      "password": "testando123",
+      "sheets": [
+        {
+          "id": "1",
+          "name": "Treino A",
+          "exercises": [
+            {
+              "name": "Supino reto",
+              "description": "Lorem ipsum dolor, sit amet consectetur"
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "name": "Treino B",
+          "exercises": [
+            {
+              "name": "Supino reto",
+              "description": "Lorem ipsum dolor, sit amet consectetur"
+            }
+          ]
+        },
+        {
+          "id": "173ebedd-65ae-450f-8150-f80d40edd335",
+          "name": "Treino C",
+          "exercises": []
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "email": "Admin@asdasdemail.com",
+      "password": "testandasdao123",
+      "sheets": [
+        {
+          "id": "2",
+          "name": "Testando",
+          "exercises": [
+            {
+              "name": "Supino reto",
+              "description": "Lorem ipsum dolor, sit amet consectetur"
+            },
+            {
+              "name": "AI BOLSOanro",
+              "description": "Lorem ipsum dolor, sit amet consectetur"
+            },
+            {
+              "name": "Lulalau",
+              "description": "Lorem ipsum dolor, sit amet consectetur"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

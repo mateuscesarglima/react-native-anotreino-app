@@ -1,7 +1,7 @@
-import {
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-} from "firebase/auth";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { api } from "@Services/api/api";
+import { AxiosResponse } from "axios";
+import { IUser } from "interfaces";
 import React, {
   createContext,
   ReactNode,
@@ -10,8 +10,6 @@ import React, {
   useState,
 } from "react";
 import { Alert } from "react-native";
-import { auth } from "../../config/firebase";
-import { FirebaseError } from "@firebase/util";
 
 interface IAuthProviderProps {
   children: ReactNode;
@@ -28,6 +26,9 @@ interface IAuthContextProps {
   isLoading: boolean;
   isAuthenticated: boolean;
   register: ({ email, password }: ILoginProps) => Promise<void>;
+  user: IUser;
+  loadData: () => void;
+  userKey: string;
 }
 
 const AuthContext = createContext({} as IAuthContextProps);
@@ -35,58 +36,93 @@ const AuthContext = createContext({} as IAuthContextProps);
 export const AuthProvider = ({ children }: IAuthProviderProps) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [user, setUser] = useState<IUser>({} as IUser);
 
-  useEffect(() => {
-    auth.onAuthStateChanged((user) => setIsAuthenticated(!!user));
-  }, []);
+  const userKey = process.env.USER_KEY as string;
+  const sheetsKey = process.env.SHEETS_KEY as string;
+
+  const loadData = async () => {
+    const response = await AsyncStorage.getItem(userKey);
+    if (response) {
+      setUser(JSON.parse(response));
+      setIsAuthenticated(true);
+    }
+  };
+
+  const saveOnAsyncStorage = async (response: AxiosResponse) => {
+    try {
+      const { data } = response;
+      let user = {
+        id: data[0].id,
+        email: data[0].email,
+      };
+      let sheets = data[0].sheets;
+
+      await AsyncStorage.setItem(userKey, JSON.stringify(user));
+      await AsyncStorage.setItem(sheetsKey, JSON.stringify(sheets));
+      setIsAuthenticated(true);
+    } catch (err) {
+      Alert.alert("Não foi possível salvar os dados no storage", err as string);
+    }
+  };
 
   const signIn = async ({ email, password }: ILoginProps) => {
-    setIsLoading(true);
-    await signInWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        setIsLoading(false);
-      })
-      .catch((err: FirebaseError) => {
-        setIsLoading(false);
-        if (
-          err.code === "auth/invalid-email" ||
-          err.code === "auth/wrong-password" ||
-          err.code === "auth/user-not-found"
-        ) {
-          Alert.alert("Email ou senha inválidos.");
-        }
-      });
+    try {
+      const response = await api.get(
+        `/users/?email=${email}&password=${password}`
+      );
+
+      if (response) {
+        saveOnAsyncStorage(response);
+      }
+    } catch (err) {
+      Alert.alert(err as string);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const signOut = async () => {
-    await auth
-      .signOut()
-      .then(() => {
-        Alert.alert("Logout realizado com sucesso.");
-      })
-      .catch((err) => console.log(err));
+    try {
+      await AsyncStorage.clear();
+      setIsAuthenticated(false);
+    } catch (err) {
+      Alert.alert(err as string);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const register = async ({ email, password }: ILoginProps) => {
-    setIsLoading(true);
-    await createUserWithEmailAndPassword(auth, email, password)
-      .then((response) => {
-        setIsLoading(false);
-      })
-      .catch((err: FirebaseError) => {
-        setIsLoading(false);
-        if (err.code === "auth/weak-password") {
-          Alert.alert("A senha deve ter pelo menos 6 caracteres.");
-        }
-        if (err.code === "auth/email-already-in-use") {
-          Alert.alert("Email já está sendo utilizado.");
-        }
+    try {
+      await api.post("/user", {
+        email,
+        password,
       });
+      Alert.alert("Conta registrada", "Clique em OK para prosseguir");
+    } catch (err) {
+      Alert.alert(err as string);
+    } finally {
+      setIsLoading(false);
+    }
   };
+
+  useEffect(() => {
+    loadData();
+  }, []);
 
   return (
     <AuthContext.Provider
-      value={{ signIn, signOut, isAuthenticated, isLoading, register }}
+      value={{
+        signIn,
+        signOut,
+        isAuthenticated,
+        isLoading,
+        register,
+        user,
+        loadData,
+        userKey,
+      }}
     >
       {children}
     </AuthContext.Provider>
@@ -94,7 +130,24 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
 };
 
 export const useAuth = () => {
-  const { signIn, isAuthenticated, signOut, isLoading, register } =
-    useContext(AuthContext);
-  return { signIn, isAuthenticated, signOut, isLoading, register };
+  const {
+    signIn,
+    isAuthenticated,
+    signOut,
+    isLoading,
+    register,
+    user,
+    loadData,
+    userKey,
+  } = useContext(AuthContext);
+  return {
+    signIn,
+    isAuthenticated,
+    signOut,
+    isLoading,
+    register,
+    user,
+    loadData,
+    userKey,
+  };
 };

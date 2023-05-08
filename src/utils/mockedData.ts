@@ -1,30 +1,69 @@
-import uuid from "react-native-uuid";
-import { IExerciseCategory, IExerciseType, IFicha } from "../interfaces/index";
+// import uuid from "react-native-uuid";
 
-export const ficha: IFicha[] = [
-  {
-    id: uuid.v4().toString(),
-    title: "Ficha A",
-    exercicios: [
-      {
-        id: uuid.v4().toString(),
-        name: "Tríceps Polia Barra V",
-        description:
-          "O Tríceps Pulley Corda é um exercício para tríceps que pode ser feito em uma academia com a ajuda de uma corda e um cabo. Ele ajuda a fortalecer os músculos do tríceps e melhorar a definição dos braços.",
-      },
-    ],
-  },
-  {
-    id: uuid.v4().toString(),
-    title: "Ficha B",
-    exercicios: [],
-  },
-  {
-    id: uuid.v4().toString(),
-    title: "Ficha C",
-    exercicios: [],
-  },
-];
+import { IExerciseCategory } from "@Interfaces/index";
+import uuid from "react-native-uuid";
+import { IExerciseType } from "../interfaces/index";
+
+// export const ficha: IFicha[] = [
+//   {
+//     id: uuid.v4().toString(),
+//     title: "Ficha A",
+//     exercicios: [
+//       {
+//         id: uuid.v4().toString(),
+//         name: "Tríceps Polia Barra V",
+//         description:
+//           "O Tríceps Pulley Corda é um exercício para tríceps que pode ser feito em uma academia com a ajuda de uma corda e um cabo. Ele ajuda a fortalecer os músculos do tríceps e melhorar a definição dos braços.",
+//       },
+//       {
+//         id: uuid.v4().toString(),
+//         name: "Tríceps Polia Barra V",
+//         description:
+//           "O Tríceps Pulley Corda é um exercício para tríceps que pode ser feito em uma academia com a ajuda de uma corda e um cabo. Ele ajuda a fortalecer os músculos do tríceps e melhorar a definição dos braços.",
+//       },
+//       {
+//         id: uuid.v4().toString(),
+//         name: "Tríceps Polia Barra V",
+//         description:
+//           "O Tríceps Pulley Corda é um exercício para tríceps que pode ser feito em uma academia com a ajuda de uma corda e um cabo. Ele ajuda a fortalecer os músculos do tríceps e melhorar a definição dos braços.",
+//       },
+//       {
+//         id: uuid.v4().toString(),
+//         name: "Tríceps Polia Barra V",
+//         description:
+//           "O Tríceps Pulley Corda é um exercício para tríceps que pode ser feito em uma academia com a ajuda de uma corda e um cabo. Ele ajuda a fortalecer os músculos do tríceps e melhorar a definição dos braços.",
+//       },
+//       {
+//         id: uuid.v4().toString(),
+//         name: "Tríceps Polia Barra V",
+//         description:
+//           "O Tríceps Pulley Corda é um exercício para tríceps que pode ser feito em uma academia com a ajuda de uma corda e um cabo. Ele ajuda a fortalecer os músculos do tríceps e melhorar a definição dos braços.",
+//       },
+//       {
+//         id: uuid.v4().toString(),
+//         name: "Tríceps Polia Barra V",
+//         description:
+//           "O Tríceps Pulley Corda é um exercício para tríceps que pode ser feito em uma academia com a ajuda de uma corda e um cabo. Ele ajuda a fortalecer os músculos do tríceps e melhorar a definição dos braços.",
+//       },
+//       {
+//         id: uuid.v4().toString(),
+//         name: "Tríceps Polia Barra V",
+//         description:
+//           "O Tríceps Pulley Corda é um exercício para tríceps que pode ser feito em uma academia com a ajuda de uma corda e um cabo. Ele ajuda a fortalecer os músculos do tríceps e melhorar a definição dos braços.",
+//       },
+//     ],
+//   },
+//   {
+//     id: uuid.v4().toString(),
+//     title: "Ficha B",
+//     exercicios: [],
+//   },
+//   {
+//     id: uuid.v4().toString(),
+//     title: "Ficha C",
+//     exercicios: [],
+//   },
+// ];
 
 export const exerciseCategory: IExerciseCategory[] = [
   {
@@ -61,9 +100,9 @@ export const exerciseCategory: IExerciseCategory[] = [
   },
 ];
 
-export type IExerciseCategoryData = typeof exerciseCategoryData;
+// export type IExerciseCategoryData = typeof exerciseCategoryData;
 
-export const exerciseCategoryData: IExerciseType = {
+export const exercisesSelectedData: IExerciseType = {
   peito: [
     {
       id: uuid.v4().toString(),

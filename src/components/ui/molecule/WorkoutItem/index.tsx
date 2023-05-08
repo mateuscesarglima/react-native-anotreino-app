@@ -1,28 +1,26 @@
 import React from "react";
 import { WorkoutItemContainer, ItemName, Container } from "./styles";
 import { Trash } from "phosphor-react-native";
-import { IFicha } from "interfaces";
+import { IFicha, ISheet } from "interfaces";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 interface WorkoutItemProps {
-  ficha: IFicha;
-  handleOnSelectWorkout: (ficha: IFicha) => void;
-  handleRemoveFicha: (fichaId: string) => void;
+  sheet: ISheet;
+  handleOnSelectWorkout: (ficha: ISheet) => void;
   handleShowModalDialog: (fichaId: string) => void;
 }
 
 export const WorkoutItem = ({
   handleOnSelectWorkout,
-  ficha,
-  handleRemoveFicha,
+  sheet,
   handleShowModalDialog,
 }: WorkoutItemProps) => {
   return (
     <Container>
-      <WorkoutItemContainer onPress={() => handleOnSelectWorkout(ficha)}>
-        <ItemName>{ficha.title}</ItemName>
+      <WorkoutItemContainer onPress={() => handleOnSelectWorkout(sheet)}>
+        <ItemName>{sheet.name}</ItemName>
       </WorkoutItemContainer>
-      <TouchableOpacity onPress={() => handleShowModalDialog(ficha.id)}>
+      <TouchableOpacity onPress={() => handleShowModalDialog(sheet.name)}>
         <Trash />
       </TouchableOpacity>
     </Container>
