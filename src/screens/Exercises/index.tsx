@@ -3,16 +3,16 @@ import { ExerciseFichaItem } from "@Components/ui/atom/ExerciseFichaItem";
 import {
   NavigationProp,
   ParamListBase,
-  useFocusEffect,
   useNavigation,
   useRoute,
 } from "@react-navigation/native";
 import { IExercise, ISheet } from "interfaces";
 import { CaretLeft } from "phosphor-react-native";
-import React, { useCallback, useEffect, useState } from "react";
-import { RefreshControl, View } from "react-native";
+import React, { useState } from "react";
+import { RefreshControl } from "react-native";
 
 import { routeCodes } from "@Constants/routes";
+import { useSheet } from "@Context/sheets";
 import {
   AddExerciseButton,
   AddExerciseContainer,
@@ -24,12 +24,10 @@ import {
   Header,
   HeaderText,
   Icon,
-  Main,
   StartExerciseButton,
   StartExerciseButtonContainer,
   Text,
 } from "./styles";
-import { useSheet } from "@Context/sheets";
 
 interface Params {
   sheet: ISheet;
@@ -103,7 +101,11 @@ export const Exercises = () => {
       <>
         {exercises.length > 0 ? (
           <StartExerciseButtonContainer>
-            <StartExerciseButton>
+            <StartExerciseButton
+              onPress={() => {
+                navigate(routeCodes.WORKOUT);
+              }}
+            >
               <ButtonText> Começar treino</ButtonText>
             </StartExerciseButton>
           </StartExerciseButtonContainer>

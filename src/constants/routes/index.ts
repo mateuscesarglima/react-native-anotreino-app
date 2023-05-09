@@ -5,4 +5,5 @@ export const routeCodes = {
   PROFILE: "Profile",
   SELECT_EXERCISE: "SelectCategory",
   SELECTED_EXERCISE: "SelectedExercise",
+  WORKOUT: "Workout",
 };

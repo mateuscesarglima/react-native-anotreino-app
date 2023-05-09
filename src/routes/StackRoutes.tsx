@@ -9,6 +9,7 @@ import { SelectedExercise } from "@Screens/SelectedExercise";
 import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
 import { BottomTabRoutes } from "./BottomTabRoutes";
+import { Workout } from "@Screens/Workout";
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -28,6 +29,7 @@ export const StackRoutes = () => {
       <Screen name="SelectCategory" component={SelectCategory} />
       <Screen name="Exercises" component={Exercises} />
       <Screen name="SelectedExercise" component={SelectedExercise} />
+      <Screen name="Workout" component={Workout} />
     </Navigator>
   );
 };
