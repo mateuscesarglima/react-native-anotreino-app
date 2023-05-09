@@ -1,15 +1,17 @@
-import styled from "styled-components/native";
 import { Feather } from "@expo/vector-icons";
+import { IExercise } from "interfaces";
+import { FlatList, FlatListProps } from "react-native";
+import { RectButton } from "react-native-gesture-handler";
 import {
   getBottomSpace,
   getStatusBarHeight,
 } from "react-native-iphone-x-helper";
-import { FlatList, FlatListProps } from "react-native";
-import { IExercise } from "interfaces";
-import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
-import { RectButton } from "react-native-gesture-handler";
+import { RFValue } from "react-native-responsive-fontsize";
+import styled from "styled-components/native";
 
-export const Container = styled.View``;
+export const Container = styled.View`
+  flex: 1;
+`;
 export const Header = styled.View`
   padding-top: ${getStatusBarHeight() + 40}px;
   padding-bottom: 20px;
@@ -58,7 +60,8 @@ export const ExerciseListContainer = styled(
   contentContainerStyle: {
     paddingLeft: 30,
     gap: 20,
-    paddingBottom: getBottomSpace() + 250,
+    marginTop: 20,
+    height: "100%",
   },
 })``;
 
@@ -68,27 +71,23 @@ export const AddExerciseButton = styled.TouchableOpacity`
   top: 60px;
 `;
 
-export const StartText = styled.Text`
-  color: #fff;
-  font-size: 20px;
-  font-weight: bold;
+export const StartExerciseButtonContainer = styled.View`
   align-items: center;
   justify-content: center;
+  width: 100%;
+  background-color: #495057;
+  padding-top: 30px;
 `;
 
 export const StartExerciseButton = styled(RectButton)`
-  position: absolute;
-  bottom: ${getBottomSpace() + 130}px;
-  right: 20px;
-  width: 80px;
-  height: 80px;
-  border-radius: 40px;
-  background-color: ${({ theme }) => theme.colors.tertiary};
-  align-items: center;
-  justify-content: center;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: ${({ theme }) => theme.colors.primary};
+  margin-bottom: 50px;
 `;
 
-export const ButtonText = styled(Feather)`
-  color: green;
-  align-self: center;
+export const ButtonText = styled.Text`
+  color: #fff;
+  font-weight: bold;
+  font-size: ${RFValue(20)}px;
 `;

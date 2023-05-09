@@ -10,7 +10,7 @@ import {
 import { IExercise, ISheet } from "interfaces";
 import { CaretLeft } from "phosphor-react-native";
 import React, { useCallback, useEffect, useState } from "react";
-import { RefreshControl } from "react-native";
+import { RefreshControl, View } from "react-native";
 
 import { routeCodes } from "@Constants/routes";
 import {
@@ -26,6 +26,7 @@ import {
   Icon,
   Main,
   StartExerciseButton,
+  StartExerciseButtonContainer,
   Text,
 } from "./styles";
 import { useSheet } from "@Context/sheets";
@@ -73,44 +74,41 @@ export const Exercises = () => {
           </AddExerciseButton>
         )}
       </Header>
-      <Main>
-        {currentSheet.exercises.length === 0 ? (
-          <AddExerciseContainer>
-            <Text>
-              Lista vazia {`\n`} Adicione os exercicios clicando no ícone abaixo
-            </Text>
-            <ButtonContainer>
-              <ButtonAddWorkout handleOnPress={handleOnPress} />
-            </ButtonContainer>
-          </AddExerciseContainer>
-        ) : (
-          <ExerciseListContainer
-            horizontal={false}
-            refreshControl={
-              <RefreshControl refreshing={updating} onRefresh={onUpdate} />
-            }
-            data={currentSheet.exercises}
-            keyExtractor={(item) => item.name}
-            renderItem={({ item }) => (
-              <ExerciseFichaItem
-                name={item.name}
-                img={""}
-                description={item.description}
-              />
-            )}
-          />
-        )}
-      </Main>
-      <StartExerciseButton
-        style={{
-          shadowOpacity: 0.75,
-          shadowRadius: 2,
-          shadowColor: "green",
-          shadowOffset: { height: 0, width: 0 },
-        }}
-      >
-        <ButtonText name="play-circle" size={70} />
-      </StartExerciseButton>
+      {currentSheet.exercises.length === 0 ? (
+        <AddExerciseContainer>
+          <Text>
+            Lista vazia {`\n`} Adicione os exercicios clicando no ícone abaixo
+          </Text>
+          <ButtonContainer>
+            <ButtonAddWorkout handleOnPress={handleOnPress} />
+          </ButtonContainer>
+        </AddExerciseContainer>
+      ) : (
+        <ExerciseListContainer
+          horizontal={false}
+          refreshControl={
+            <RefreshControl refreshing={updating} onRefresh={onUpdate} />
+          }
+          data={currentSheet.exercises}
+          keyExtractor={(item) => item.name}
+          renderItem={({ item }) => (
+            <ExerciseFichaItem
+              name={item.name}
+              img={""}
+              description={item.description}
+            />
+          )}
+        />
+      )}
+      <>
+        {exercises.length > 0 ? (
+          <StartExerciseButtonContainer>
+            <StartExerciseButton>
+              <ButtonText> Começar treino</ButtonText>
+            </StartExerciseButton>
+          </StartExerciseButtonContainer>
+        ) : null}
+      </>
     </Container>
   );
 };

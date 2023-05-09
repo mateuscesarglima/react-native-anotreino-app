@@ -24,7 +24,7 @@ export const AuthRoutes = () => {
 export const StackRoutes = () => {
   return (
     <Navigator screenOptions={{ headerShown: false }}>
-      <Screen name="Home" component={BottomTabRoutes} />
+      <Screen name="TabRoutes" component={BottomTabRoutes} />
       <Screen name="SelectCategory" component={SelectCategory} />
       <Screen name="Exercises" component={Exercises} />
       <Screen name="SelectedExercise" component={SelectedExercise} />
