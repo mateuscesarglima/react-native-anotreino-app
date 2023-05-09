@@ -51,3 +51,9 @@ export const AddButton = styled(RectButton)<ButtonProps>`
 `;
 
 export const Icon = styled(Feather)``;
+
+export const LoadContainer = styled.View`
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+`;

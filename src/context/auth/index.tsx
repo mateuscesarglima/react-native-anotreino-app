@@ -73,7 +73,7 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
 
   const signOut = async () => {
     try {
-      await AsyncStorage.clear();
+      await AsyncStorage.removeItem(userKey);
       setIsAuthenticated(false);
     } catch (err) {
       Alert.alert(err as string);

@@ -25,7 +25,7 @@ import {
   useFocusEffect,
   useNavigation,
 } from "@react-navigation/native";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { ActivityIndicator } from "react-native";
 import { Provider } from "react-native-paper";
 import { RFValue } from "react-native-responsive-fontsize";
@@ -36,7 +36,7 @@ export const Home = () => {
 
   const { isLoading, loadData: loadUserData } = useAuth();
   const { sheets, handleAddNewSheet, handleRemoveFicha, loadData } = useSheet();
-
+  const { user } = useAuth();
   const [newTreino, setNewTreino] = useState<string>("");
   const [showModalDialog, setShowModalDialog] = useState<boolean>(false);
   const [idFichaSelecionada, setIdFichaSelecionada] = useState<string>("");
@@ -53,11 +53,9 @@ export const Home = () => {
     setIdFichaSelecionada(fichaId || "");
   };
 
-  useFocusEffect(
-    useCallback(() => {
-      loadData();
-    }, [])
-  );
+  useEffect(() => {
+    loadData();
+  }, [user]);
 
   return (
     <Wrapper>

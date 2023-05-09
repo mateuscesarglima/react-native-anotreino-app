@@ -7,6 +7,7 @@ import {
 import { FlatList, FlatListProps } from "react-native";
 import { IExercise } from "interfaces";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
+import { RectButton } from "react-native-gesture-handler";
 
 export const Container = styled.View``;
 export const Header = styled.View`
@@ -67,20 +68,27 @@ export const AddExerciseButton = styled.TouchableOpacity`
   top: 60px;
 `;
 
-export const StartExerciseButton = styled.TouchableOpacity`
-  position: absolute;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  top: ${RFPercentage(68)}px;
-  background-color: #37b24d;
-  height: 100px;
-  gap: 10px;
-`;
 export const StartText = styled.Text`
   color: #fff;
   font-size: 20px;
   font-weight: bold;
   align-items: center;
   justify-content: center;
+`;
+
+export const StartExerciseButton = styled(RectButton)`
+  position: absolute;
+  bottom: ${getBottomSpace() + 130}px;
+  right: 20px;
+  width: 80px;
+  height: 80px;
+  border-radius: 40px;
+  background-color: ${({ theme }) => theme.colors.tertiary};
+  align-items: center;
+  justify-content: center;
+`;
+
+export const ButtonText = styled(Feather)`
+  color: green;
+  align-self: center;
 `;

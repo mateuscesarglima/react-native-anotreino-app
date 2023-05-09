@@ -18,12 +18,14 @@ import {
   AddExerciseContainer,
   BackButton,
   ButtonContainer,
+  ButtonText,
   Container,
   ExerciseListContainer,
   Header,
   HeaderText,
   Icon,
   Main,
+  StartExerciseButton,
   Text,
 } from "./styles";
 import { useSheet } from "@Context/sheets";
@@ -99,6 +101,16 @@ export const Exercises = () => {
           />
         )}
       </Main>
+      <StartExerciseButton
+        style={{
+          shadowOpacity: 0.75,
+          shadowRadius: 2,
+          shadowColor: "green",
+          shadowOffset: { height: 0, width: 0 },
+        }}
+      >
+        <ButtonText name="play-circle" size={70} />
+      </StartExerciseButton>
     </Container>
   );
 };

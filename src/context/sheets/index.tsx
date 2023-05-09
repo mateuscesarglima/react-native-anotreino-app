@@ -87,6 +87,7 @@ export const FichaProvider = ({ children }: IFichaProviderProps) => {
   };
 
   const handleRemoveFicha = async (sheetId: string) => {
+    setIsLoading(true);
     try {
       const payload = {
         sheets: sheets,
@@ -101,6 +102,8 @@ export const FichaProvider = ({ children }: IFichaProviderProps) => {
       setSheets(response.data.sheets);
     } catch (err) {
       Alert.alert(err as string);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -109,22 +112,34 @@ export const FichaProvider = ({ children }: IFichaProviderProps) => {
     sheetObj: ISheet
   ) => {
     try {
+      setIsLoading(true);
       const payload = {
         sheets: sheets,
       };
-      const sheetIndex = sheets.findIndex((sheet) => sheet.id === sheetObj.id);
-      const newExercise = sheets[sheetIndex].exercises.map(
-        (exercise) => exercise.id === exerciseObj.id
+      const sheetIndex = sheets.findIndex(
+        (sheet) => sheet.name === sheetObj.name
       );
       const exerciseIndex = sheets[sheetIndex].exercises.findIndex(
-        (exercise) => exercise.id === exerciseObj.id
+        (exercise) => exercise.name === exerciseObj.name
       );
-      payload.sheets[sheetIndex].exercises.splice(exerciseIndex, 1);
+      console.log(
+        payload.sheets[sheetIndex].exercises.splice(exerciseIndex, 1)
+      );
+      if (exerciseIndex) {
+        payload.sheets[sheetIndex].exercises.splice(exerciseIndex, 1);
+      }
 
-      // const response = await api.patch(`/users/${user.id}`, payload);
-      // setSheets(response.data.sheets);
+      const response = await api.patch(`/users/${user.id}`, payload);
+      setSheets(response.data.sheets);
+      Toast.show({
+        type: "error",
+        text1: "Aviso",
+        text2: "Exercicio removido com sucesso!",
+      });
     } catch (err) {
       Alert.alert(err as string);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -138,6 +153,10 @@ export const FichaProvider = ({ children }: IFichaProviderProps) => {
 
     setIsLoading(false);
   };
+
+  useEffect(() => {
+    loadData();
+  }, []);
 
   return (
     <FichaContext.Provider

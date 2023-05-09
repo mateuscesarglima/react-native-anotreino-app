@@ -1,6 +1,5 @@
 import { BackButton } from "@Components/ui/molecule/AddNewExercise/styles";
 import { ExercisesList } from "@Components/ui/molecule/ExercisesSelect/styles";
-import { useSheet } from "@Context/sheets";
 import { IExercise, ISheet } from "@Interfaces/index";
 import {
   NavigationProp,
@@ -68,6 +67,7 @@ export const SelectedExercise = () => {
       <Content>
         <ExercisesList
           data={exercises}
+          refreshing={false}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
             <ExerciseListItem exercise={item} sheet={sheet} />
