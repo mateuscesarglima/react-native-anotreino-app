@@ -8,6 +8,8 @@ import { SelectCategory } from "@Screens/SelectCategory";
 import { SelectedExercise } from "@Screens/SelectedExercise";
 import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
+import { BottomTabRoutes } from "./BottomTabRoutes";
+
 const { Navigator, Screen } = createStackNavigator();
 
 export const AuthRoutes = () => {
@@ -19,29 +21,13 @@ export const AuthRoutes = () => {
   );
 };
 
-export const HomeNavigation = () => {
+export const StackRoutes = () => {
   return (
     <Navigator screenOptions={{ headerShown: false }}>
-      <Screen name="HomeNav" component={Home} />
-      <Screen name="Exercises" component={Exercises} />
+      <Screen name="Home" component={BottomTabRoutes} />
       <Screen name="SelectCategory" component={SelectCategory} />
+      <Screen name="Exercises" component={Exercises} />
       <Screen name="SelectedExercise" component={SelectedExercise} />
-    </Navigator>
-  );
-};
-
-export const HitNavigation = () => {
-  return (
-    <Navigator screenOptions={{ headerShown: false }}>
-      <Screen name="HitNav" component={Hit} />
-    </Navigator>
-  );
-};
-
-export const ProfileNavigation = () => {
-  return (
-    <Navigator screenOptions={{ headerShown: false }}>
-      <Screen name="ProfileNav" component={Profile} />
     </Navigator>
   );
 };
