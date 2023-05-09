@@ -1,6 +1,6 @@
 import { BackButton } from "@Components/ui/molecule/AddNewExercise/styles";
 import { ExercisesList } from "@Components/ui/molecule/ExercisesSelect/styles";
-import { IExercise } from "@Interfaces/index";
+import { IExercise, ISheet } from "@Interfaces/index";
 import {
   NavigationProp,
   ParamListBase,
@@ -9,20 +9,20 @@ import {
 } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import { exercisesSelectedData } from "../../utils/mockedData";
-import { Container, Content, Header, Icon, Title } from "./styles";
 import { ExerciseListItem } from "./components/ExerciseListItem";
-import { useSheet } from "@Context/sheets";
+import { Container, Content, Header, Icon, Title } from "./styles";
 
 interface Params {
   exercise: string;
-  sheetName: string;
+  sheet: ISheet;
 }
 
 export const SelectedExercise = () => {
   const route = useRoute();
-  const { exercise, sheetName } = route.params as Params;
-  const { goBack, navigate }: NavigationProp<ParamListBase> = useNavigation();
+  const { exercise, sheet } = route.params as Params;
+  const { goBack, isFocused }: NavigationProp<ParamListBase> = useNavigation();
   const [exercises, setExercises] = useState<IExercise[]>([]);
+  const [focus, setFocus] = useState(isFocused());
 
   const getExercises = () => {
     switch (exercise) {
@@ -54,7 +54,7 @@ export const SelectedExercise = () => {
 
   useEffect(() => {
     getExercises();
-  }, []);
+  }, [focus]);
 
   return (
     <Container>
@@ -67,9 +67,10 @@ export const SelectedExercise = () => {
       <Content>
         <ExercisesList
           data={exercises}
+          refreshing={false}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
-            <ExerciseListItem exercise={item} sheetName={sheetName} />
+            <ExerciseListItem exercise={item} sheet={sheet} />
           )}
         />
       </Content>
