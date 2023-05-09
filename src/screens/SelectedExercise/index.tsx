@@ -21,10 +21,9 @@ interface Params {
 export const SelectedExercise = () => {
   const route = useRoute();
   const { exercise, sheet } = route.params as Params;
-  const { goBack }: NavigationProp<ParamListBase> = useNavigation();
+  const { goBack, isFocused }: NavigationProp<ParamListBase> = useNavigation();
   const [exercises, setExercises] = useState<IExercise[]>([]);
-  const { handleAddNewExercise, sheets } = useSheet();
-  const [hasExercise, setHasExercise] = useState(false);
+  const [focus, setFocus] = useState(isFocused());
 
   const getExercises = () => {
     switch (exercise) {
@@ -56,7 +55,7 @@ export const SelectedExercise = () => {
 
   useEffect(() => {
     getExercises();
-  }, []);
+  }, [focus]);
 
   return (
     <Container>

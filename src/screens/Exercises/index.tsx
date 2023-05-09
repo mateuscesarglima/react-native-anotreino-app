@@ -1,8 +1,5 @@
 import { ButtonAddWorkout } from "@Components/ui/atom/AddWorkoutButton";
 import { ExerciseFichaItem } from "@Components/ui/atom/ExerciseFichaItem";
-import { AddNewExerciseModal } from "@Components/ui/organism/AddNewExerciseModal";
-import { ExerciseSelectModal } from "@Components/ui/organism/ExerciseSelectModal";
-import { useSheet } from "@Context/sheets";
 import {
   NavigationProp,
   ParamListBase,
@@ -12,8 +9,10 @@ import {
 } from "@react-navigation/native";
 import { IExercise, ISheet } from "interfaces";
 import { CaretLeft } from "phosphor-react-native";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
+import { RefreshControl } from "react-native";
 
+import { routeCodes } from "@Constants/routes";
 import {
   AddExerciseButton,
   AddExerciseContainer,
@@ -27,8 +26,7 @@ import {
   Main,
   Text,
 } from "./styles";
-import { exerciseCategory } from "../../utils/mockedData";
-import { routeCodes } from "@Constants/routes";
+import { useSheet } from "@Context/sheets";
 
 interface Params {
   sheet: ISheet;
@@ -38,13 +36,26 @@ interface Params {
 export const Exercises = () => {
   const route = useRoute();
   const { exercises, sheet } = route.params as Params;
-  const { goBack, navigate }: NavigationProp<ParamListBase> = useNavigation();
-  const { loadData } = useSheet();
+  const { goBack, navigate, isFocused }: NavigationProp<ParamListBase> =
+    useNavigation();
+  const { sheets } = useSheet();
+  const [currentSheet, setCurrentSheet] = useState<ISheet>(sheet);
+  const [focus, setIsFocus] = useState(isFocused());
+  const [updating, setUpdating] = useState(false);
 
   const handleOnPress = () => {
     navigate(routeCodes.SELECT_EXERCISE, {
       sheet,
     });
+  };
+
+  const onUpdate = () => {
+    setUpdating(true);
+    setTimeout(() => {
+      const response = sheets.find((obj) => obj.name === sheet.name);
+      setCurrentSheet(response as ISheet);
+      setUpdating(false);
+    }, 1000);
   };
 
   return (
@@ -53,15 +64,15 @@ export const Exercises = () => {
         <BackButton onPress={goBack}>
           <CaretLeft size={40} color="#FFF" />
         </BackButton>
-        <HeaderText>{sheet.name}</HeaderText>
-        {exercises.length === 0 ? null : (
+        <HeaderText>{currentSheet.name}</HeaderText>
+        {currentSheet.exercises.length === 0 ? null : (
           <AddExerciseButton onPress={handleOnPress}>
             <Icon name="plus-circle" size={50} color={"#FFF"} />
           </AddExerciseButton>
         )}
       </Header>
       <Main>
-        {exercises.length === 0 ? (
+        {currentSheet.exercises.length === 0 ? (
           <AddExerciseContainer>
             <Text>
               Lista vazia {`\n`} Adicione os exercicios clicando no ícone abaixo
@@ -73,7 +84,10 @@ export const Exercises = () => {
         ) : (
           <ExerciseListContainer
             horizontal={false}
-            data={exercises}
+            refreshControl={
+              <RefreshControl refreshing={updating} onRefresh={onUpdate} />
+            }
+            data={currentSheet.exercises}
             keyExtractor={(item) => item.name}
             renderItem={({ item }) => (
               <ExerciseFichaItem

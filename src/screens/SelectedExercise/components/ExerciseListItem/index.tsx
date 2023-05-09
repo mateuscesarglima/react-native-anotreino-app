@@ -11,7 +11,7 @@ import {
   ItemDescription,
   ItemName,
 } from "./styles";
-
+import { ActivityIndicator } from "react-native";
 interface ExerciseListItemProps {
   exercise: IExercise;
   sheet: ISheet;
@@ -22,18 +22,23 @@ export const ExerciseListItem = ({
   sheet,
 }: ExerciseListItemProps) => {
   const { description, name, id } = exercise;
-  const { handleAddNewExercise, sheets } = useSheet();
+  const { handleAddNewExercise, sheets, handleRemoveExercise } = useSheet();
   const [hasExercise, setHasExercise] = useState(false);
   const [exercises, setExercises] = useState<IExercise[]>();
+  const { isLoading } = useSheet();
 
-  useEffect(() => {
+  const handleVeryfiIfExistExercise = () => {
     const sheetTmp = sheets.find((s) => s.name === sheet.name);
     const exerciseTmp = sheetTmp?.exercises.find((e) => e.name === name);
-    setExercises(sheetTmp?.exercises);
+    let resp = false;
     if (exerciseTmp) {
-      setHasExercise(true);
+      resp = true;
     }
-    console.log("CHAMOU");
+    return resp;
+  };
+
+  useEffect(() => {
+    handleVeryfiIfExistExercise();
   }, [exercise]);
 
   return (
@@ -49,16 +54,20 @@ export const ExerciseListItem = ({
       </Content>
       <AddButton
         activeOpacity={0.7}
-        hasExercise={hasExercise}
+        hasExercise={handleVeryfiIfExistExercise()}
         onPress={() => {
           handleAddNewExercise(exercise, sheet);
         }}
       >
-        <Icon
-          name={hasExercise ? "check" : "plus-circle"}
-          color="#FFF"
-          size={40}
-        />
+        {isLoading ? (
+          <ActivityIndicator size={"large"} color={"blue"} />
+        ) : (
+          <Icon
+            name={handleVeryfiIfExistExercise() ? "check" : "plus-circle"}
+            color="#FFF"
+            size={40}
+          />
+        )}
       </AddButton>
     </Container>
   );

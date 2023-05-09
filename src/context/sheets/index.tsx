@@ -32,6 +32,10 @@ interface IFichaContextProps {
   handleRemoveFicha: any;
   loadData: () => Promise<void>;
   isLoading: boolean;
+  handleRemoveExercise: (
+    exerciseObj: IExercise,
+    sheetObj: ISheet
+  ) => Promise<void>;
 }
 
 const FichaContext = createContext({} as IFichaContextProps);
@@ -48,7 +52,8 @@ export const FichaProvider = ({ children }: IFichaProviderProps) => {
         sheets: sheets,
       };
       payload.sheets.push(newFicha);
-      await api.patch(`/users/${user.id}`, payload);
+      const response = await api.patch(`/users/${user.id}`, payload);
+      setSheets(response.data.sheets);
     } catch (err) {
       Alert.alert(err as string);
     }
@@ -58,6 +63,7 @@ export const FichaProvider = ({ children }: IFichaProviderProps) => {
     newExercise: IExercise,
     sheetTmp: ISheet
   ) => {
+    setIsLoading(true);
     try {
       const payload = {
         sheets: sheets,
@@ -65,9 +71,18 @@ export const FichaProvider = ({ children }: IFichaProviderProps) => {
       payload.sheets.map((sheet) =>
         sheet.id === sheetTmp.id ? sheet.exercises.push(newExercise) : sheet
       );
-      await api.patch(`/users/${user.id}`, payload);
+
+      const response = await api.patch(`/users/${user.id}`, payload);
+      setSheets(response.data.sheets);
+      Toast.show({
+        type: "success",
+        text1: "Aviso",
+        text2: "Exercicio adicionado com sucesso",
+      });
     } catch (err) {
       Alert.alert(err as string);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -82,7 +97,32 @@ export const FichaProvider = ({ children }: IFichaProviderProps) => {
       if (sheetIndexToBeRemoved) {
         payload.sheets.splice(sheetIndexToBeRemoved, 1);
       }
-      await api.patch(`/users/${user.id}`, payload);
+      const response = await api.patch(`/users/${user.id}`, payload);
+      setSheets(response.data.sheets);
+    } catch (err) {
+      Alert.alert(err as string);
+    }
+  };
+
+  const handleRemoveExercise = async (
+    exerciseObj: IExercise,
+    sheetObj: ISheet
+  ) => {
+    try {
+      const payload = {
+        sheets: sheets,
+      };
+      const sheetIndex = sheets.findIndex((sheet) => sheet.id === sheetObj.id);
+      const newExercise = sheets[sheetIndex].exercises.map(
+        (exercise) => exercise.id === exerciseObj.id
+      );
+      const exerciseIndex = sheets[sheetIndex].exercises.findIndex(
+        (exercise) => exercise.id === exerciseObj.id
+      );
+      payload.sheets[sheetIndex].exercises.splice(exerciseIndex, 1);
+
+      // const response = await api.patch(`/users/${user.id}`, payload);
+      // setSheets(response.data.sheets);
     } catch (err) {
       Alert.alert(err as string);
     }
@@ -92,10 +132,10 @@ export const FichaProvider = ({ children }: IFichaProviderProps) => {
     setIsLoading(true);
     if (user.id) {
       const response = await api.get(`/users/${user.id}`);
-      console.log(response.data);
+
       setSheets(response.data.sheets);
     }
-    console.log("LOAD DATA");
+
     setIsLoading(false);
   };
 
@@ -108,6 +148,7 @@ export const FichaProvider = ({ children }: IFichaProviderProps) => {
         handleRemoveFicha,
         loadData,
         isLoading,
+        handleRemoveExercise,
       }}
     >
       {children}
@@ -123,6 +164,7 @@ export const useSheet = () => {
     handleRemoveFicha,
     loadData,
     isLoading,
+    handleRemoveExercise,
   } = useContext(FichaContext);
   return {
     sheets,
@@ -131,5 +173,6 @@ export const useSheet = () => {
     handleRemoveFicha,
     loadData,
     isLoading,
+    handleRemoveExercise,
   };
 };

@@ -25,11 +25,10 @@ import {
   useFocusEffect,
   useNavigation,
 } from "@react-navigation/native";
-import React, { useCallback, useEffect, useState } from "react";
-import { ActivityIndicator, View } from "react-native";
+import React, { useCallback, useState } from "react";
+import { ActivityIndicator } from "react-native";
 import { Provider } from "react-native-paper";
 import { RFValue } from "react-native-responsive-fontsize";
-import { Toast } from "react-native-toast-message/lib/src/Toast";
 
 export const Home = () => {
   const { navigate }: NavigationProp<ParamListBase> = useNavigation();
