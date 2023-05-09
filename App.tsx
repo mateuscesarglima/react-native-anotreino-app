@@ -8,6 +8,7 @@ import React from "react";
 import { Keyboard, TouchableWithoutFeedback } from "react-native";
 
 import { ThemeProvider } from "styled-components";
+import Toast from "react-native-toast-message";
 
 export default function App(): JSX.Element {
   return (
@@ -18,9 +19,11 @@ export default function App(): JSX.Element {
           <FichaProvider>
             <Routes />
             <StatusBar style="light" />
+            <Toast />
           </FichaProvider>
         </AuthProvider>
       </ThemeProvider>
+
       {/* </NavigationContainer> */}
     </TouchableWithoutFeedback>
   );

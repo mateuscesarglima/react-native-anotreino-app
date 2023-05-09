@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { useSheet } from "@Context/sheets";
-import { IExercise } from "@Interfaces/index";
+import { IExercise, ISheet } from "@Interfaces/index";
 import {
   AddButton,
   Container,
@@ -14,15 +14,28 @@ import {
 
 interface ExerciseListItemProps {
   exercise: IExercise;
-  sheetName: string;
+  sheet: ISheet;
 }
 
 export const ExerciseListItem = ({
   exercise,
-  sheetName,
+  sheet,
 }: ExerciseListItemProps) => {
   const { description, name, id } = exercise;
-  const { handleAddNewExercise } = useSheet();
+  const { handleAddNewExercise, sheets } = useSheet();
+  const [hasExercise, setHasExercise] = useState(false);
+  const [exercises, setExercises] = useState<IExercise[]>();
+
+  useEffect(() => {
+    const sheetTmp = sheets.find((s) => s.name === sheet.name);
+    const exerciseTmp = sheetTmp?.exercises.find((e) => e.name === name);
+    setExercises(sheetTmp?.exercises);
+    if (exerciseTmp) {
+      setHasExercise(true);
+    }
+    console.log("CHAMOU");
+  }, [exercise]);
+
   return (
     <Container>
       <Img
@@ -36,11 +49,16 @@ export const ExerciseListItem = ({
       </Content>
       <AddButton
         activeOpacity={0.7}
+        hasExercise={hasExercise}
         onPress={() => {
-          handleAddNewExercise(exercise, sheetName);
+          handleAddNewExercise(exercise, sheet);
         }}
       >
-        <Icon name="plus-circle" color="#FFF" size={40} />
+        <Icon
+          name={hasExercise ? "check" : "plus-circle"}
+          color="#FFF"
+          size={40}
+        />
       </AddButton>
     </Container>
   );

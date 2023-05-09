@@ -3,6 +3,10 @@ import styled from "styled-components/native";
 import { Feather } from "@expo/vector-icons";
 import { RFValue } from "react-native-responsive-fontsize";
 
+interface ButtonProps {
+  hasExercise: boolean;
+}
+
 export const Container = styled.View`
   flex: 1;
   flex-direction: row;
@@ -37,12 +41,13 @@ export const ItemDescription = styled.Text`
   flex-wrap: wrap;
 `;
 
-export const AddButton = styled(RectButton)`
+export const AddButton = styled(RectButton)<ButtonProps>`
   height: 100%;
   justify-content: center;
   align-items: center;
   width: 60px;
-  background-color: ${({ theme }) => theme.colors.primary};
+  background-color: ${({ theme, hasExercise }) =>
+    hasExercise ? "green" : theme.colors.primary};
 `;
 
 export const Icon = styled(Feather)``;

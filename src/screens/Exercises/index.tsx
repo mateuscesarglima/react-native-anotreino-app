@@ -6,12 +6,13 @@ import { useSheet } from "@Context/sheets";
 import {
   NavigationProp,
   ParamListBase,
+  useFocusEffect,
   useNavigation,
   useRoute,
 } from "@react-navigation/native";
-import { IExercise } from "interfaces";
+import { IExercise, ISheet } from "interfaces";
 import { CaretLeft } from "phosphor-react-native";
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 
 import {
   AddExerciseButton,
@@ -30,30 +31,20 @@ import { exerciseCategory } from "../../utils/mockedData";
 import { routeCodes } from "@Constants/routes";
 
 interface Params {
-  sheetName: string;
+  sheet: ISheet;
   exercises: IExercise[];
 }
 
 export const Exercises = () => {
-  // const [exercises, setExercises] = useState<IExercise[]>(exercisesData);
-  // const route = useRoute();
-  // const { car } = route.params as Params;
   const route = useRoute();
-  const { exercises, sheetName } = route.params as Params;
+  const { exercises, sheet } = route.params as Params;
   const { goBack, navigate }: NavigationProp<ParamListBase> = useNavigation();
-  const [showExerciseSelectModal, setShowExerciseSelectModal] = useState(false);
-  const [exerciseName, setExerciseName] = useState<string>("");
+  const { loadData } = useSheet();
 
   const handleOnPress = () => {
     navigate(routeCodes.SELECT_EXERCISE, {
-      sheetName,
+      sheet,
     });
-  };
-
-  const handleShowExerciseSelectModal = (exerciseName: string) => {
-    handleOnPress();
-    setExerciseName(exerciseName);
-    setShowExerciseSelectModal(!showExerciseSelectModal);
   };
 
   return (
@@ -62,7 +53,7 @@ export const Exercises = () => {
         <BackButton onPress={goBack}>
           <CaretLeft size={40} color="#FFF" />
         </BackButton>
-        <HeaderText>{sheetName}</HeaderText>
+        <HeaderText>{sheet.name}</HeaderText>
         {exercises.length === 0 ? null : (
           <AddExerciseButton onPress={handleOnPress}>
             <Icon name="plus-circle" size={50} color={"#FFF"} />

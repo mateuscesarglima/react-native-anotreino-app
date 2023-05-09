@@ -11,6 +11,7 @@ import React, {
   useState,
 } from "react";
 import { Alert } from "react-native";
+import { Toast } from "react-native-toast-message/lib/src/Toast";
 import { Settings } from "react-native/types";
 
 interface StoragedSheet {
@@ -25,20 +26,20 @@ interface IFichaContextProps {
   sheets: ISheet[];
   handleAddNewExercise: (
     newExercise: IExercise,
-    sheetName: string
+    sheetTmp: ISheet
   ) => Promise<any>;
   handleAddNewSheet: any;
   handleRemoveFicha: any;
-  // handleAddNewExercise: (newExercicio: IExercise, fichaId: string) => void;
-  // handleAddNewFicha: (newFicha: ISheet) => void;
-  // handleRemoveFicha: (fichaId: string) => void;
+  loadData: () => Promise<void>;
+  isLoading: boolean;
 }
 
 const FichaContext = createContext({} as IFichaContextProps);
 
 export const FichaProvider = ({ children }: IFichaProviderProps) => {
   const [sheets, setSheets] = useState<ISheet[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const [exercises, setExercises] = useState<IExercise[]>([]);
   const { user } = useAuth();
 
   const handleAddNewSheet = async (newFicha: ISheet) => {
@@ -55,15 +56,15 @@ export const FichaProvider = ({ children }: IFichaProviderProps) => {
 
   const handleAddNewExercise = async (
     newExercise: IExercise,
-    sheetName: string
+    sheetTmp: ISheet
   ) => {
     try {
-      const data = sheets.map((sheet) =>
-        sheet.name === sheetName ? sheet.exercises.push(newExercise) : sheet
-      );
       const payload = {
-        sheets: data,
+        sheets: sheets,
       };
+      payload.sheets.map((sheet) =>
+        sheet.id === sheetTmp.id ? sheet.exercises.push(newExercise) : sheet
+      );
       await api.patch(`/users/${user.id}`, payload);
     } catch (err) {
       Alert.alert(err as string);
@@ -87,17 +88,16 @@ export const FichaProvider = ({ children }: IFichaProviderProps) => {
     }
   };
 
-  const sheetsKey = process.env.SHEETS_KEY as string;
-
   const loadData = async () => {
-    const response = await AsyncStorage.getItem(sheetsKey);
-    const data: ISheet[] = response ? JSON.parse(response) : [];
-    setSheets(data);
+    setIsLoading(true);
+    if (user.id) {
+      const response = await api.get(`/users/${user.id}`);
+      console.log(response.data);
+      setSheets(response.data.sheets);
+    }
+    console.log("LOAD DATA");
+    setIsLoading(false);
   };
-
-  useEffect(() => {
-    loadData();
-  }, []);
 
   return (
     <FichaContext.Provider
@@ -106,6 +106,8 @@ export const FichaProvider = ({ children }: IFichaProviderProps) => {
         handleAddNewExercise,
         handleAddNewSheet,
         handleRemoveFicha,
+        loadData,
+        isLoading,
       }}
     >
       {children}
@@ -114,7 +116,20 @@ export const FichaProvider = ({ children }: IFichaProviderProps) => {
 };
 
 export const useSheet = () => {
-  const { sheets, handleAddNewExercise, handleAddNewSheet, handleRemoveFicha } =
-    useContext(FichaContext);
-  return { sheets, handleAddNewExercise, handleAddNewSheet, handleRemoveFicha };
+  const {
+    sheets,
+    handleAddNewExercise,
+    handleAddNewSheet,
+    handleRemoveFicha,
+    loadData,
+    isLoading,
+  } = useContext(FichaContext);
+  return {
+    sheets,
+    handleAddNewExercise,
+    handleAddNewSheet,
+    handleRemoveFicha,
+    loadData,
+    isLoading,
+  };
 };

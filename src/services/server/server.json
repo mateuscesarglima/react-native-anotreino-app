@@ -10,25 +10,54 @@
           "name": "Treino A",
           "exercises": [
             {
-              "name": "Supino reto",
+              "id": "1d087b36-fff8-48b0-b02c-2093e628d7e4",
+              "name": "Supino Inclinado c/ Halter",
+              "description": "Lorem ipsum dolor, sit amet consectetur"
+            },
+            {
+              "id": "afef804b-1646-4a56-89a2-fcb55497cd2c",
+              "name": "Supino Reto c/ Halter",
               "description": "Lorem ipsum dolor, sit amet consectetur"
             }
           ]
         },
         {
-          "id": "2",
+          "id": "711cee12-89cb-47e8-99a5-b7bb0435e820",
           "name": "Treino B",
           "exercises": [
             {
-              "name": "Supino reto",
+              "id": "4f39431f-ddd5-4f16-822c-d2f287402187",
+              "name": "Supino Inclinado c/ Halter",
               "description": "Lorem ipsum dolor, sit amet consectetur"
             }
           ]
         },
         {
-          "id": "173ebedd-65ae-450f-8150-f80d40edd335",
-          "name": "Treino C",
-          "exercises": []
+          "id": "45167632-8a5b-44fb-ad1c-23be7147d6e0",
+          "name": "Testando",
+          "exercises": [
+            {
+              "id": "6a25e52f-bfff-4e66-9340-4b7d0ccc04a5",
+              "name": "Supino Reto c/ Halter",
+              "description": "Lorem ipsum dolor, sit amet consectetur"
+            }
+          ]
+        },
+        {
+          "id": "1d745f95-30e9-4014-baf3-26e80ea17068",
+          "name": "Teste",
+          "exercises": [
+            {
+              "id": "1c87c2a2-7cce-449d-be02-8492f5466d9e",
+              "name": "Supino reto",
+              "description": "Lorem ipsum dolor, sit amet consectetur"
+            },
+            {
+              "id": "6bc26d34-70bb-44a5-990b-5684e8c9a8b4",
+              "name": "Supino Inclinado c/ Halter",
+              "description": "Lorem ipsum dolor, sit amet consectetur"
+            }
+          ]
         }
       ]
     },
@@ -43,14 +72,6 @@
           "exercises": [
             {
               "name": "Supino reto",
-              "description": "Lorem ipsum dolor, sit amet consectetur"
-            },
-            {
-              "name": "AI BOLSOanro",
-              "description": "Lorem ipsum dolor, sit amet consectetur"
-            },
-            {
-              "name": "Lulalau",
               "description": "Lorem ipsum dolor, sit amet consectetur"
             }
           ]

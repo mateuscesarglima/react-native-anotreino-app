@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { BackButton } from "@Components/ui/molecule/AddNewExercise/styles";
 import { routeCodes } from "@Constants/routes";
@@ -19,20 +19,23 @@ import {
   Icon,
   Title,
 } from "./styles";
+import { ISheet } from "@Interfaces/index";
+import { useSheet } from "@Context/sheets";
 
 interface Params {
-  sheetName: string;
+  sheet: ISheet;
 }
 
 export const SelectCategory = () => {
   const route = useRoute();
   const { goBack, navigate }: NavigationProp<ParamListBase> = useNavigation();
-  const { sheetName } = route.params as Params;
+  const { sheet } = route.params as Params;
+  const { loadData } = useSheet();
 
   const handleOnSelectExercise = (exercise: string) => {
     navigate(routeCodes.SELECTED_EXERCISE, {
       exercise: exercise,
-      sheetName,
+      sheet,
     });
   };
 

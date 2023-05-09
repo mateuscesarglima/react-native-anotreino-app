@@ -9,6 +9,10 @@ interface IconProps {
   hasData?: boolean;
 }
 
+export const Wrapper = styled.View`
+  flex: 1;
+`;
+
 export const Container = styled.View``;
 
 export const Header = styled.View`
