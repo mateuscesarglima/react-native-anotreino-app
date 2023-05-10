@@ -10,14 +10,22 @@ import {
   Icon,
   Main,
   Title,
+  WorkoutList,
+  WorkoutListWrapper,
 } from "./styles";
 import { ExerciseCard } from "./components/ExerciseCard";
+import {
+  NavigationProp,
+  ParamListBase,
+  useNavigation,
+} from "@react-navigation/native";
 
 export const Workout = () => {
+  const { goBack }: NavigationProp<ParamListBase> = useNavigation();
   return (
     <Container>
       <Header>
-        <BackButton>
+        <BackButton onPress={goBack}>
           <Icon name="chevron-left" size={30} />
         </BackButton>
         <Content>
@@ -27,7 +35,15 @@ export const Workout = () => {
         <Icon name="edit" size={30} />
       </Header>
       <Main>
-        <ExerciseCard />
+        <WorkoutList
+          data={[1, 2, 3]}
+          keyExtractor={(key) => key}
+          renderItem={({ item }) => (
+            <WorkoutListWrapper>
+              <ExerciseCard />
+            </WorkoutListWrapper>
+          )}
+        />
       </Main>
       <Footer></Footer>
     </Container>

@@ -20,6 +20,7 @@
     "babel-plugin-inline-dotenv": "^1.7.0",
     "expo": "~48.0.4",
     "expo-asset": "~8.9.0",
+    "expo-screen-orientation": "~5.1.1",
     "expo-splash-screen": "~0.18.1",
     "expo-status-bar": "~1.4.4",
     "json-server": "^0.17.3",
@@ -37,6 +38,8 @@
     "react-native-toast-message": "^2.1.6",
     "react-native-uuid": "^2.0.1",
     "react-native-vector-icons": "^9.2.0",
+    "react-native-webview": "11.26.0",
+    "react-native-youtube-iframe": "^2.2.2",
     "styled-components": "^5.3.6",
     "yup": "^1.0.2"
   },

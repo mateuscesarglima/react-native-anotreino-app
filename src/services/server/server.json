@@ -15,26 +15,6 @@
               "description": "Lorem ipsum dolor, sit amet consectetur"
             },
             {
-              "id": "213eff92-a8f4-4c36-a15c-59feec44cf9f",
-              "name": "Supino reto",
-              "description": "Lorem ipsum dolor, sit amet consectetur"
-            },
-            {
-              "id": "eb7d7e29-5ffa-460e-9212-fad44a5dc63e",
-              "name": "Supino Inclinado c/ Halter",
-              "description": "Lorem ipsum dolor, sit amet consectetur"
-            },
-            {
-              "id": "ee1d0785-f567-4ea2-9965-165fc85debaa",
-              "name": "Supino Reto c/ Halter",
-              "description": "Lorem ipsum dolor, sit amet consectetur"
-            },
-            {
-              "id": "b9478476-fcb8-47ce-adae-614647458ebb",
-              "name": "Crucifixo Polia",
-              "description": "Lorem ipsum dolor, sit amet consectetur"
-            },
-            {
               "id": "88fc2a82-c3a0-476a-966b-1d1daf020066",
               "name": "Tríceps Polia Francês Corda",
               "description": "O Tríceps Francês com Halteres é um exercício eficaz para desenvolver os músculos do tríceps. Ele é feito com halteres e ajuda a fortalecer e definir a parte de trás dos braços."
@@ -48,6 +28,26 @@
               "id": "4af858e1-89e9-4fc5-b528-670c8d3191e0",
               "name": "Tríceps Pulley Corda",
               "description": "O Tríceps Pulley Corda é um exercício para tríceps que pode ser feito em uma academia com a ajuda de uma corda e um cabo. Ele ajuda a fortalecer os músculos do tríceps e melhorar a definição dos braços."
+            },
+            {
+              "id": "903085ba-69ac-46ea-b108-259657e751f0",
+              "name": "Supino reto",
+              "description": "Lorem ipsum dolor, sit amet consectetur"
+            },
+            {
+              "id": "7bba674c-2079-4134-bd27-1e5d2ce35ff8",
+              "name": "Supino Inclinado c/ Halter",
+              "description": "Lorem ipsum dolor, sit amet consectetur"
+            },
+            {
+              "id": "dd8607ad-4922-47e9-a241-003cfe3daf74",
+              "name": "Supino Reto c/ Halter",
+              "description": "Lorem ipsum dolor, sit amet consectetur"
+            },
+            {
+              "id": "a23faa4c-a7a2-4081-8028-206cda8641f0",
+              "name": "Crucifixo Polia",
+              "description": "Lorem ipsum dolor, sit amet consectetur"
             }
           ]
         },
@@ -60,17 +60,6 @@
           "id": "93410f07-130a-4863-ace1-0988f7d35a0d",
           "name": "Ficha C",
           "exercises": []
-        },
-        {
-          "id": "28e43724-55b0-435d-89dd-d794a8f46a03",
-          "name": "Testando",
-          "exercises": [
-            {
-              "id": "0573919f-8e29-4461-a66a-bc074744b99a",
-              "name": "Supino Reto c/ Halter",
-              "description": "Lorem ipsum dolor, sit amet consectetur"
-            }
-          ]
         }
       ]
     },
