@@ -145,13 +145,17 @@ export const FichaProvider = ({ children }: IFichaProviderProps) => {
 
   const loadData = async () => {
     setIsLoading(true);
-    if (user.id) {
-      const response = await api.get(`/users/${user.id}`);
-
-      setSheets(response.data.sheets);
+    try {
+      if (user.id) {
+        const response = await api.get(`/users/${user.id}`);
+        setSheets(response.data.sheets);
+      }
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
     }
-
-    setIsLoading(false);
   };
 
   useEffect(() => {

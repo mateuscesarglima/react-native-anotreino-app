@@ -35,7 +35,13 @@ export const Home = () => {
   const [showModal, setShowModal] = useState(false);
 
   const { isLoading, loadData: loadUserData } = useAuth();
-  const { sheets, handleAddNewSheet, handleRemoveFicha, loadData } = useSheet();
+  const {
+    sheets,
+    handleAddNewSheet,
+    handleRemoveFicha,
+    loadData,
+    isLoading: isLoadingSheet,
+  } = useSheet();
   const { user } = useAuth();
   const [newTreino, setNewTreino] = useState<string>("");
   const [showModalDialog, setShowModalDialog] = useState<boolean>(false);
@@ -60,9 +66,9 @@ export const Home = () => {
   return (
     <Wrapper>
       <Provider>
-        {isLoading ? (
+        {isLoadingSheet ? (
           <LoadContainer>
-            <ActivityIndicator color={"red"} size={"large"} />
+            <ActivityIndicator size={"large"} />
           </LoadContainer>
         ) : (
           <>

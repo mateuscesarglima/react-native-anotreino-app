@@ -41,6 +41,7 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
   const userKey = process.env.USER_KEY as string;
 
   const saveOnAsyncStorage = async (response: AxiosResponse) => {
+    setIsLoading(true);
     try {
       const { data } = response;
       let user = {
@@ -51,11 +52,12 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
       setIsAuthenticated(true);
     } catch (err) {
       Alert.alert("Não foi possível salvar os dados no storage", err as string);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const signIn = async ({ email, password }: ILoginProps) => {
-    setIsLoading(true);
     try {
       const response = await api.get(
         `/users/?email=${email}&password=${password}`
@@ -66,8 +68,6 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
       }
     } catch (err) {
       Alert.alert(err as string);
-    } finally {
-      setIsLoading(false);
     }
   };
 
@@ -97,10 +97,17 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
   };
 
   const loadData = async () => {
-    const response = await AsyncStorage.getItem(userKey);
-    if (response) {
-      setUser(JSON.parse(response));
-      setIsAuthenticated(true);
+    setIsLoading(true);
+    try {
+      const response = await AsyncStorage.getItem(userKey);
+      if (response) {
+        setUser(JSON.parse(response));
+        setIsAuthenticated(true);
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
