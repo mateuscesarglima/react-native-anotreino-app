@@ -27,7 +27,7 @@ interface IAuthContextProps {
   isAuthenticated: boolean;
   register: ({ email, password }: ILoginProps) => Promise<void>;
   user: IUser;
-  loadData: () => void;
+  loadData: () => Promise<any>;
   userKey: string;
 }
 
@@ -39,30 +39,21 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
   const [user, setUser] = useState<IUser>({} as IUser);
 
   const userKey = process.env.USER_KEY as string;
-  const sheetsKey = process.env.SHEETS_KEY as string;
-
-  const loadData = async () => {
-    const response = await AsyncStorage.getItem(userKey);
-    if (response) {
-      setUser(JSON.parse(response));
-      setIsAuthenticated(true);
-    }
-  };
 
   const saveOnAsyncStorage = async (response: AxiosResponse) => {
+    setIsLoading(true);
     try {
       const { data } = response;
       let user = {
         id: data[0].id,
         email: data[0].email,
       };
-      let sheets = data[0].sheets;
-
       await AsyncStorage.setItem(userKey, JSON.stringify(user));
-      await AsyncStorage.setItem(sheetsKey, JSON.stringify(sheets));
       setIsAuthenticated(true);
     } catch (err) {
       Alert.alert("Não foi possível salvar os dados no storage", err as string);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -77,14 +68,12 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
       }
     } catch (err) {
       Alert.alert(err as string);
-    } finally {
-      setIsLoading(false);
     }
   };
 
   const signOut = async () => {
     try {
-      await AsyncStorage.clear();
+      await AsyncStorage.removeItem(userKey);
       setIsAuthenticated(false);
     } catch (err) {
       Alert.alert(err as string);
@@ -102,6 +91,21 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
       Alert.alert("Conta registrada", "Clique em OK para prosseguir");
     } catch (err) {
       Alert.alert(err as string);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const loadData = async () => {
+    setIsLoading(true);
+    try {
+      const response = await AsyncStorage.getItem(userKey);
+      if (response) {
+        setUser(JSON.parse(response));
+        setIsAuthenticated(true);
+      }
+    } catch (error) {
+      console.log(error);
     } finally {
       setIsLoading(false);
     }

@@ -3,6 +3,11 @@
     "name": "anotreino",
     "slug": "anotreino",
     "version": "1.0.1",
-    "assetBundlePatterns": ["**/*"]
+    "assetBundlePatterns": ["**/*"],
+    "icon": "./assets/icon.png"
+  },
+  "splash": {
+    "image": "./assets/splashLogo.png",
+    "backgroundColor": "#000"
   }
 }

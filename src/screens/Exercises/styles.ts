@@ -1,14 +1,17 @@
-import styled from "styled-components/native";
 import { Feather } from "@expo/vector-icons";
+import { IExercise } from "interfaces";
+import { FlatList, FlatListProps } from "react-native";
+import { RectButton } from "react-native-gesture-handler";
 import {
   getBottomSpace,
   getStatusBarHeight,
 } from "react-native-iphone-x-helper";
-import { FlatList, FlatListProps } from "react-native";
-import { IExercise } from "interfaces";
-import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
+import { RFValue } from "react-native-responsive-fontsize";
+import styled from "styled-components/native";
 
-export const Container = styled.View``;
+export const Container = styled.View`
+  flex: 1;
+`;
 export const Header = styled.View`
   padding-top: ${getStatusBarHeight() + 40}px;
   padding-bottom: 20px;
@@ -57,7 +60,8 @@ export const ExerciseListContainer = styled(
   contentContainerStyle: {
     paddingLeft: 30,
     gap: 20,
-    paddingBottom: getBottomSpace() + 250,
+    marginTop: 20,
+    paddingBottom: getBottomSpace(),
   },
 })``;
 
@@ -67,20 +71,23 @@ export const AddExerciseButton = styled.TouchableOpacity`
   top: 60px;
 `;
 
-export const StartExerciseButton = styled.TouchableOpacity`
-  position: absolute;
+export const StartExerciseButtonContainer = styled.View`
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  justify-content: center;
-  align-items: center;
-  top: ${RFPercentage(68)}px;
-  background-color: #37b24d;
-  height: 100px;
-  gap: 10px;
+  background-color: #495057;
+  padding-top: 30px;
 `;
-export const StartText = styled.Text`
+
+export const StartExerciseButton = styled(RectButton)`
+  padding: 10px;
+  border-radius: 8px;
+  background-color: ${({ theme }) => theme.colors.primary};
+  margin-bottom: 50px;
+`;
+
+export const ButtonText = styled.Text`
   color: #fff;
-  font-size: 20px;
   font-weight: bold;
-  align-items: center;
-  justify-content: center;
+  font-size: ${RFValue(20)}px;
 `;

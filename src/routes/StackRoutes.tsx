@@ -1,13 +1,13 @@
 import { Exercises } from "@Screens/Exercises";
-import { Hit } from "@Screens/Hit";
-import { Home } from "@Screens/Home";
 import { Login } from "@Screens/Login";
-import { Profile } from "@Screens/Profile";
 import { Register } from "@Screens/Register";
 import { SelectCategory } from "@Screens/SelectCategory";
 import { SelectedExercise } from "@Screens/SelectedExercise";
+import { Workout } from "@Screens/Workout";
 import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
+import { BottomTabRoutes } from "./BottomTabRoutes";
+
 const { Navigator, Screen } = createStackNavigator();
 
 export const AuthRoutes = () => {
@@ -19,29 +19,14 @@ export const AuthRoutes = () => {
   );
 };
 
-export const HomeNavigation = () => {
+export const StackRoutes = () => {
   return (
-    <Navigator screenOptions={{ headerShown: false }}>
-      <Screen name="HomeNav" component={Home} />
-      <Screen name="Exercises" component={Exercises} />
+    <Navigator screenOptions={{ headerShown: false }} initialRouteName="Home">
+      <Screen name="TabRoutes" component={BottomTabRoutes} />
       <Screen name="SelectCategory" component={SelectCategory} />
+      <Screen name="Exercises" component={Exercises} />
       <Screen name="SelectedExercise" component={SelectedExercise} />
-    </Navigator>
-  );
-};
-
-export const HitNavigation = () => {
-  return (
-    <Navigator screenOptions={{ headerShown: false }}>
-      <Screen name="HitNav" component={Hit} />
-    </Navigator>
-  );
-};
-
-export const ProfileNavigation = () => {
-  return (
-    <Navigator screenOptions={{ headerShown: false }}>
-      <Screen name="ProfileNav" component={Profile} />
+      <Screen name="Workout" component={Workout} />
     </Navigator>
   );
 };
