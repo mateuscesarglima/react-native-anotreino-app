@@ -14,14 +14,10 @@ import * as SplashScreen from "expo-splash-screen";
 import Toast from "react-native-toast-message";
 import { ThemeProvider } from "styled-components";
 import Entypo from "@expo/vector-icons/Entypo";
-
 import * as Font from "expo-font";
 
+SplashScreen.preventAutoHideAsync();
 export default function App(): JSX.Element {
-  const [fontsLoaded] = useFonts({
-    Lato_400Regular,
-    Lato_700Bold,
-  });
   const [appIsReady, setAppIsReady] = useState(false);
 
   useEffect(() => {
@@ -41,15 +37,21 @@ export default function App(): JSX.Element {
         setAppIsReady(true);
       }
     };
+    prepare();
   }, []);
 
   const onLayoutRootView = useCallback(async () => {
-    if (fontsLoaded) {
+    if (appIsReady) {
+      // This tells the splash screen to hide immediately! If we call this after
+      // `setAppIsReady`, then we may see a blank screen while the app is
+      // loading its initial state and rendering its first pixels. So instead,
+      // we hide the splash screen once we know the root view has already
+      // performed layout.
       await SplashScreen.hideAsync();
     }
-  }, [fontsLoaded]);
+  }, [appIsReady]);
 
-  if (!fontsLoaded) {
+  if (!appIsReady) {
     return null as any;
   }
 
