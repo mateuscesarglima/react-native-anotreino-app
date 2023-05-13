@@ -30,23 +30,13 @@
               "description": "O Tríceps Pulley Corda é um exercício para tríceps que pode ser feito em uma academia com a ajuda de uma corda e um cabo. Ele ajuda a fortalecer os músculos do tríceps e melhorar a definição dos braços."
             },
             {
-              "id": "903085ba-69ac-46ea-b108-259657e751f0",
+              "id": "d49a722c-6ae6-4233-a14f-ad27fac6a489",
               "name": "Supino reto",
               "description": "Lorem ipsum dolor, sit amet consectetur"
             },
             {
-              "id": "7bba674c-2079-4134-bd27-1e5d2ce35ff8",
-              "name": "Supino Inclinado c/ Halter",
-              "description": "Lorem ipsum dolor, sit amet consectetur"
-            },
-            {
-              "id": "dd8607ad-4922-47e9-a241-003cfe3daf74",
+              "id": "7043d76c-5c62-45fb-8d8c-6be4864e0f90",
               "name": "Supino Reto c/ Halter",
-              "description": "Lorem ipsum dolor, sit amet consectetur"
-            },
-            {
-              "id": "a23faa4c-a7a2-4081-8028-206cda8641f0",
-              "name": "Crucifixo Polia",
               "description": "Lorem ipsum dolor, sit amet consectetur"
             }
           ]
