@@ -16,7 +16,7 @@ export const Header = styled.View`
   flex-direction: row;
   align-items: center;
   padding: 0px 20px;
-  margin-top: ${getStatusBarHeight()};
+  margin-top: ${getStatusBarHeight()}px;
   border-top-left-radius: 8px;
 `;
 export const BackButton = styled(RectButton)`
