@@ -30,6 +30,7 @@ export interface IExercise {
   id: string;
   name: string;
   description: string;
+  videoId?: string;
 }
 
 export interface ISheet {

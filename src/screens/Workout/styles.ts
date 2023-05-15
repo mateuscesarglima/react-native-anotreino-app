@@ -4,6 +4,7 @@ import { Feather } from "@expo/vector-icons";
 import { RFValue } from "react-native-responsive-fontsize";
 import { getStatusBarHeight } from "react-native-iphone-x-helper";
 import { Dimensions, FlatList, FlatListProps } from "react-native";
+import { IExercise } from "@Interfaces/index";
 
 export const Container = styled.View`
   flex: 1;
@@ -48,7 +49,7 @@ export const WorkoutListWrapper = styled.View`
   width: ${Dimensions.get("window").width - 50}px;
 `;
 export const WorkoutList = styled(
-  FlatList as new (props: FlatListProps<any>) => FlatList<any>
+  FlatList as new (props: FlatListProps<IExercise>) => FlatList<IExercise>
 ).attrs({
   showsHorizontalScrollIndicator: false,
   horizontal: true,
