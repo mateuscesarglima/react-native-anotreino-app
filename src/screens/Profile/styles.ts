@@ -1,7 +1,7 @@
 import { ButtonPrimary } from "@Components/ui/atom/Button";
 import styled from "styled-components/native";
-import { Ionicons } from '@expo/vector-icons';
-
+import { Ionicons } from "@expo/vector-icons";
+import { TextInputMask } from "react-native-masked-text";
 
 export const Container = styled.View`
   flex: 1;
@@ -13,7 +13,6 @@ export const Icon = styled(Ionicons)`
   color: #fff;
   align-self: flex-end;
   font-size: 38px;
-
 `;
 
 export const Exit = styled.Text`
@@ -52,7 +51,6 @@ export const NomeAluno = styled.Text`
   margin-left: 20px;
 `;
 
-
 export const PesoAlturaContainer = styled.View`
   flex-direction: row;
   justify-content: center;
@@ -66,7 +64,6 @@ export const PesoAlturaColumn = styled.View`
   margin-bottom: 10px;
   margin-right: 20px;
   margin-top: 10px;
-
 `;
 
 export const PesoAlturaLabel = styled.Text`
@@ -74,14 +71,34 @@ export const PesoAlturaLabel = styled.Text`
   font-weight: bold;
 `;
 
-export const InputPesoAltura = styled.TextInput`
+export const InputPeso = styled(TextInputMask).attrs({
+  type: "custom",
+  options: {
+    mask: "99.90",
+  },
+})`
   width: 115px;
   height: 100px;
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 5px;
   font-size: 40px;
-  text-align: center;  
+  text-align: center;
+`;
+
+export const InputAltura = styled(TextInputMask).attrs({
+  type: "custom",
+  options: {
+    mask: "9.90",
+  },
+})`
+  width: 115px;
+  height: 100px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 40px;
+  text-align: center;
 `;
 
 export const AlterarButton = styled(ButtonPrimary)`
@@ -99,9 +116,6 @@ export const AnamneseContainer = styled.View`
   justify-content: center;
   align-items: center;
 `;
-
-
-
 
 export const Title = styled.Text`
   font-size: 50px;

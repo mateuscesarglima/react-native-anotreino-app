@@ -1,9 +1,24 @@
-import { ButtonPrimary } from "@Components/ui/atom/Button";
 import { useAuth } from "@Context/auth";
 import React from "react";
-import { Container, Title, Field, Label, Input, Topo, PesoAlturaContainer, PesoAlturaLabel, IMCLabel, PesoAlturaColumn, InputPesoAltura, Exit, ExitContainer, AnamneseContainer, Icon, TitleTopo, NomeAluno } from "./styles";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import { ScrollView } from "react-native";
+import {
+  AnamneseContainer,
+  Container,
+  ExitContainer,
+  Field,
+  IMCLabel,
+  Icon,
+  Input,
+  InputAltura,
+  InputPeso,
+  Label,
+  NomeAluno,
+  PesoAlturaColumn,
+  PesoAlturaContainer,
+  PesoAlturaLabel,
+  TitleTopo,
+  Topo,
+} from "./styles";
 
 export const Profile = () => {
   const { signOut } = useAuth();
@@ -21,7 +36,6 @@ export const Profile = () => {
   const [rightThigh, setRightThigh] = React.useState("");
   const [leftCalf, setLeftCalf] = React.useState("");
   const [rightCalf, setRightCalf] = React.useState("");
-
 
   const calcularIMC = () => {
     const pesoFloat = parseFloat(weight);
@@ -45,17 +59,17 @@ export const Profile = () => {
 
   return (
     <Container>
-        <Topo>
-          <ExitContainer onPress={signOut}>
-            <Icon name="exit-outline" size={24} color="white" />
-          </ExitContainer>
-          <TitleTopo>Profile</TitleTopo>
-          <NomeAluno>email@email.com</NomeAluno>
-        </Topo>
+      <Topo>
+        <ExitContainer onPress={signOut}>
+          <Icon name="exit-outline" size={24} color="white" />
+        </ExitContainer>
+        <TitleTopo>Profile</TitleTopo>
+        <NomeAluno>email@email.com</NomeAluno>
+      </Topo>
       <ScrollView>
         <PesoAlturaContainer>
           <PesoAlturaColumn>
-            <InputPesoAltura
+            <InputPeso
               value={weight}
               onChangeText={(text) => setWeight(text)}
               keyboardType="numeric"
@@ -63,7 +77,7 @@ export const Profile = () => {
             <PesoAlturaLabel>Peso</PesoAlturaLabel>
           </PesoAlturaColumn>
           <PesoAlturaColumn>
-            <InputPesoAltura
+            <InputAltura
               value={height}
               onChangeText={(text) => setHeight(text)}
               keyboardType="numeric"
