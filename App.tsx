@@ -42,8 +42,6 @@ export default function App() {
     prepare();
   }, []);
 
-  console.log(appIsReady);
-
   const onLayoutRootView = useCallback(async () => {
     if (appIsReady) {
       // This tells the splash screen to hide immediately! If we call this after

@@ -33,6 +33,7 @@ export const Img = styled.Image`
 export const ItemName = styled.Text`
   font-size: ${RFValue(15)}px;
   margin-bottom: 10px;
+  width: 200px;
 `;
 
 export const ItemDescription = styled.Text`

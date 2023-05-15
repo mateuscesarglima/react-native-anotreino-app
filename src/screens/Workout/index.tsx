@@ -18,10 +18,19 @@ import {
   NavigationProp,
   ParamListBase,
   useNavigation,
+  useRoute,
 } from "@react-navigation/native";
+import { ISheet } from "@Interfaces/index";
+
+interface Params {
+  sheet: ISheet;
+}
 
 export const Workout = () => {
   const { goBack }: NavigationProp<ParamListBase> = useNavigation();
+  const route = useRoute();
+  const { sheet } = route.params as Params;
+
   return (
     <Container>
       <Header>
@@ -29,18 +38,18 @@ export const Workout = () => {
           <Icon name="chevron-left" size={30} />
         </BackButton>
         <Content>
-          <Title>TREINO B</Title>
-          <DoneExercises>5 de 8</DoneExercises>
+          <Title>{sheet.name}</Title>
+          <DoneExercises>0 de {sheet.exercises.length}</DoneExercises>
         </Content>
         <Icon name="edit" size={30} />
       </Header>
       <Main>
         <WorkoutList
-          data={[1, 2, 3]}
-          keyExtractor={(key) => key}
+          data={sheet.exercises}
+          keyExtractor={(key) => key.id}
           renderItem={({ item }) => (
             <WorkoutListWrapper>
-              <ExerciseCard />
+              <ExerciseCard name={item.name} videoId={item.videoId} />
             </WorkoutListWrapper>
           )}
         />

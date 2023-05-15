@@ -33,8 +33,15 @@ import {
 } from "./styles";
 import YoutubeIframe from "react-native-youtube-iframe";
 import { ActivityIndicator } from "react-native-paper";
+import { IExercise } from "@Interfaces/index";
 const YOUTUBE_FRAME = 180;
-export const ExerciseCard = () => {
+
+interface ExerciseCardProps {
+  name: string;
+  videoId?: string;
+}
+
+export const ExerciseCard = ({ name, videoId }: ExerciseCardProps) => {
   const [videoReady, setVideoReady] = useState(false);
 
   return (
@@ -53,7 +60,7 @@ export const ExerciseCard = () => {
             </View>
           ) : null}
           <YoutubeIframe
-            videoId="sqOw2Y6uDWQ"
+            videoId={videoId}
             height={YOUTUBE_FRAME}
             onReady={() => setVideoReady(true)}
             webViewStyle={{
@@ -65,7 +72,7 @@ export const ExerciseCard = () => {
         </Header>
         <Body>
           <ExerciseNameWrapper>
-            <ExerciseName>Cadeira Extensora</ExerciseName>
+            <ExerciseName>{name}</ExerciseName>
           </ExerciseNameWrapper>
           <SerieAndRepetitionWrapper>
             <Serie>

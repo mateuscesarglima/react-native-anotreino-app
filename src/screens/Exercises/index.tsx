@@ -103,10 +103,12 @@ export const Exercises = () => {
           <StartExerciseButtonContainer>
             <StartExerciseButton
               onPress={() => {
-                navigate(routeCodes.WORKOUT);
+                navigate(routeCodes.WORKOUT, {
+                  sheet: currentSheet,
+                });
               }}
             >
-              <ButtonText> Começar treino</ButtonText>
+              <ButtonText>Começar treino</ButtonText>
             </StartExerciseButton>
           </StartExerciseButtonContainer>
         ) : null}
