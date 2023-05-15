@@ -10,44 +10,28 @@
           "name": "Ficha A",
           "exercises": [
             {
-              "id": "5d8cd12c-e21b-42fb-a9df-c1ce255f7d70",
-              "name": "Puxada Polia",
-              "description": "Lorem ipsum dolor, sit amet consectetur"
-            },
-            {
-              "id": "213eff92-a8f4-4c36-a15c-59feec44cf9f",
-              "name": "Supino reto",
-              "description": "Lorem ipsum dolor, sit amet consectetur"
-            },
-            {
-              "id": "eb7d7e29-5ffa-460e-9212-fad44a5dc63e",
+              "id": "3419f4df-5edb-4d9c-9ae5-7643f6d3972d",
               "name": "Supino Inclinado c/ Halter",
-              "description": "Lorem ipsum dolor, sit amet consectetur"
+              "description": "Lorem ipsum dolor, sit amet consectetur",
+              "videoId": "F4Q1g2z8MWM"
             },
             {
-              "id": "ee1d0785-f567-4ea2-9965-165fc85debaa",
+              "id": "44c8b5a6-4f2f-403e-bafb-95a6f4bf945b",
               "name": "Supino Reto c/ Halter",
-              "description": "Lorem ipsum dolor, sit amet consectetur"
+              "description": "Lorem ipsum dolor, sit amet consectetur",
+              "videoId": "SWVO95XzxKg"
             },
             {
-              "id": "b9478476-fcb8-47ce-adae-614647458ebb",
+              "id": "8eb45a0d-d19e-4723-9ff4-978af14b16b2",
               "name": "Crucifixo Polia",
-              "description": "Lorem ipsum dolor, sit amet consectetur"
+              "description": "Lorem ipsum dolor, sit amet consectetur",
+              "videoId": "mNWyWEJNCDM"
             },
             {
-              "id": "88fc2a82-c3a0-476a-966b-1d1daf020066",
-              "name": "Tríceps Polia Francês Corda",
-              "description": "O Tríceps Francês com Halteres é um exercício eficaz para desenvolver os músculos do tríceps. Ele é feito com halteres e ajuda a fortalecer e definir a parte de trás dos braços."
-            },
-            {
-              "id": "dd525ca8-ebb4-40be-adbf-8a068c08867e",
-              "name": "Tríceps Polia Barra V",
-              "description": "O Tríceps Pulley Corda é um exercício para tríceps que pode ser feito em uma academia com a ajuda de uma corda e um cabo. Ele ajuda a fortalecer os músculos do tríceps e melhorar a definição dos braços."
-            },
-            {
-              "id": "4af858e1-89e9-4fc5-b528-670c8d3191e0",
-              "name": "Tríceps Pulley Corda",
-              "description": "O Tríceps Pulley Corda é um exercício para tríceps que pode ser feito em uma academia com a ajuda de uma corda e um cabo. Ele ajuda a fortalecer os músculos do tríceps e melhorar a definição dos braços."
+              "id": "b5b47837-3fa8-491f-b612-ddb9010002c6",
+              "name": "Supino reto",
+              "description": "Lorem ipsum dolor, sit amet consectetur",
+              "videoId": "sqOw2Y6uDWQ"
             }
           ]
         },
@@ -60,17 +44,6 @@
           "id": "93410f07-130a-4863-ace1-0988f7d35a0d",
           "name": "Ficha C",
           "exercises": []
-        },
-        {
-          "id": "28e43724-55b0-435d-89dd-d794a8f46a03",
-          "name": "Testando",
-          "exercises": [
-            {
-              "id": "0573919f-8e29-4461-a66a-bc074744b99a",
-              "name": "Supino Reto c/ Halter",
-              "description": "Lorem ipsum dolor, sit amet consectetur"
-            }
-          ]
         }
       ]
     },

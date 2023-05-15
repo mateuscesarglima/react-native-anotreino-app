@@ -10,24 +10,49 @@ import {
   Icon,
   Main,
   Title,
+  WorkoutList,
+  WorkoutListWrapper,
 } from "./styles";
 import { ExerciseCard } from "./components/ExerciseCard";
+import {
+  NavigationProp,
+  ParamListBase,
+  useNavigation,
+  useRoute,
+} from "@react-navigation/native";
+import { ISheet } from "@Interfaces/index";
+
+interface Params {
+  sheet: ISheet;
+}
 
 export const Workout = () => {
+  const { goBack }: NavigationProp<ParamListBase> = useNavigation();
+  const route = useRoute();
+  const { sheet } = route.params as Params;
+
   return (
     <Container>
       <Header>
-        <BackButton>
+        <BackButton onPress={goBack}>
           <Icon name="chevron-left" size={30} />
         </BackButton>
         <Content>
-          <Title>TREINO B</Title>
-          <DoneExercises>5 de 8</DoneExercises>
+          <Title>{sheet.name}</Title>
+          <DoneExercises>0 de {sheet.exercises.length}</DoneExercises>
         </Content>
         <Icon name="edit" size={30} />
       </Header>
       <Main>
-        <ExerciseCard />
+        <WorkoutList
+          data={sheet.exercises}
+          keyExtractor={(key) => key.id}
+          renderItem={({ item }) => (
+            <WorkoutListWrapper>
+              <ExerciseCard name={item.name} videoId={item.videoId} />
+            </WorkoutListWrapper>
+          )}
+        />
       </Main>
       <Footer></Footer>
     </Container>

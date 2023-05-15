@@ -21,7 +21,9 @@ export const Title = styled.Text`
 `;
 export const ExercisesList = styled(
   FlatList as new (props: FlatListProps<IExercise>) => FlatList<IExercise>
-)``;
+).attrs({
+  showsVerticalScrollIndicator: false,
+})``;
 
 export const BackButton = styled.TouchableOpacity`
   position: absolute;
