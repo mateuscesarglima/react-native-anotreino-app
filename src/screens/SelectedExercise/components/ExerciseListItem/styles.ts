@@ -14,7 +14,7 @@ export const Container = styled.View`
   align-items: center;
   background-color: #ddd;
   margin-top: 20px;
-  height: 100px;
+  height: 130px;
   border-radius: 10px;
   overflow: hidden;
 `;
@@ -34,6 +34,7 @@ export const ItemName = styled.Text`
   font-size: ${RFValue(15)}px;
   margin-bottom: 10px;
   width: 200px;
+  font-weight: bold;
 `;
 
 export const ItemDescription = styled.Text`

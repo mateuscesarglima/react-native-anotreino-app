@@ -1,6 +1,7 @@
 import { RFValue } from "react-native-responsive-fontsize";
 import styled from "styled-components/native";
 import { Feather } from "@expo/vector-icons";
+import { RectButton } from "react-native-gesture-handler";
 
 export const Container = styled.View`
   background-color: #ddd;
@@ -26,6 +27,8 @@ export const Title = styled.Text`
 export const Icon = styled(Feather)``;
 export const Description = styled.Text`
   width: 250px;
+  align-items: center;
+  justify-content: center;
 `;
 export const Main = styled.View`
   gap: 5px;
@@ -38,3 +41,12 @@ export const Footer = styled.View`
 `;
 export const LeftSide = styled.Text``;
 export const RightSide = styled.Text``;
+
+export const SaibaMaisButton = styled.TouchableOpacity`
+  align-items: center;
+  justify-content: center;
+`;
+export const SaibaMaisText = styled.Text`
+  text-transform: uppercase;
+  color: ${({ theme }) => theme.colors.primary};
+`;

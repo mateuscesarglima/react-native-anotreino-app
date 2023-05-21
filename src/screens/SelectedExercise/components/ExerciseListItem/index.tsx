@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 import { useSheet } from "@Context/sheets";
 import { IExercise, ISheet } from "@Interfaces/index";
+import { LoadContainer } from "@Screens/Home/styles";
+import { ActivityIndicator, ScrollView } from "react-native";
 import {
   AddButton,
   Container,
@@ -11,8 +13,6 @@ import {
   ItemDescription,
   ItemName,
 } from "./styles";
-import { ActivityIndicator } from "react-native";
-import { LoadContainer } from "@Screens/Home/styles";
 interface ExerciseListItemProps {
   exercise: IExercise;
   sheet: ISheet;
@@ -24,7 +24,6 @@ export const ExerciseListItem = ({
 }: ExerciseListItemProps) => {
   const { description, name, id } = exercise;
   const { handleAddNewExercise, sheets, handleRemoveExercise } = useSheet();
-
   const { isLoading } = useSheet();
 
   const handleVeryfiIfExistExercise = () => {
@@ -55,7 +54,7 @@ export const ExerciseListItem = ({
     <Container>
       {isLoading ? (
         <LoadContainer>
-          <ActivityIndicator size={"large"} color={"blue"} />
+          <ActivityIndicator size={"large"} />
         </LoadContainer>
       ) : (
         <>
@@ -64,9 +63,11 @@ export const ExerciseListItem = ({
               uri: "https://img2.gratispng.com/20180713/thx/kisspng-pulldown-exercise-weight-training-latissimus-dorsi-neck-muscle-5b4922d8728b45.1547314915315197044692.jpg",
             }}
           />
-          <Content>
+          <Content style={{ padding: 10 }}>
             <ItemName>{name}</ItemName>
-            <ItemDescription>{description}</ItemDescription>
+            <ScrollView>
+              <ItemDescription>{description}</ItemDescription>
+            </ScrollView>
           </Content>
           <AddButton
             activeOpacity={0.7}
