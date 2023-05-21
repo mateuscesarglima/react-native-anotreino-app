@@ -10,47 +10,66 @@
           "name": "Ficha A",
           "exercises": [
             {
-              "id": "3419f4df-5edb-4d9c-9ae5-7643f6d3972d",
-              "name": "Supino Inclinado c/ Halter",
-              "description": "Lorem ipsum dolor, sit amet consectetur",
-              "videoId": "F4Q1g2z8MWM"
-            },
-            {
-              "id": "44c8b5a6-4f2f-403e-bafb-95a6f4bf945b",
-              "name": "Supino Reto c/ Halter",
-              "description": "Lorem ipsum dolor, sit amet consectetur",
-              "videoId": "SWVO95XzxKg"
-            },
-            {
-              "id": "8eb45a0d-d19e-4723-9ff4-978af14b16b2",
-              "name": "Crucifixo Polia",
-              "description": "Lorem ipsum dolor, sit amet consectetur",
-              "videoId": "mNWyWEJNCDM"
-            },
-            {
-              "id": "b5b47837-3fa8-491f-b612-ddb9010002c6",
-              "name": "Supino reto",
-              "description": "Lorem ipsum dolor, sit amet consectetur",
-              "videoId": "sqOw2Y6uDWQ"
-            },
-            {
-              "id": "eb053897-ad5f-4c59-a628-59a73964f84c",
-              "name": "Remada Sentada com Triângulo",
-              "description": "Lorem ipsum dolor, sit amet consectetur",
-              "videoId": "WxkMoxuMSho"
-            },
-            {
               "id": "717cfe88-7cb7-42bb-91d0-37a9f1fced79",
               "name": "Tríceps Polia Barra V",
               "description": "O Tríceps Pulley Corda é um exercício para tríceps que pode ser feito em uma academia com a ajuda de uma corda e um cabo. Ele ajuda a fortalecer os músculos do tríceps e melhorar a definição dos braços.",
               "videoId": "k4Rl9WksA5o"
+            },
+            {
+              "id": "535ef55f-7b9a-42e4-9099-549e87c78f4a",
+              "name": "Supino reto",
+              "description": "Um exercício de treinamento de força realizado deitado em um banco plano, onde o praticante empurra uma barra carregada em direção ao peito.",
+              "videoId": "sqOw2Y6uDWQ"
+            },
+            {
+              "id": "b85c2b21-ff8e-471f-b2f4-65514186d9c7",
+              "name": "Supino Inclinado c/ Halter",
+              "description": "Um exercício de treinamento de força realizado em um banco inclinado, onde o praticante segura halteres em cada mão e empurra-os para cima em direção ao peito.",
+              "videoId": "F4Q1g2z8MWM"
+            },
+            {
+              "id": "499a6acc-cc7f-41d1-97f2-372330d907ea",
+              "name": "Supino Reto c/ Halter",
+              "description": "Um exercício de treinamento de força realizado deitado em um banco plano, onde o praticante segura halteres em cada mão e os empurra em direção ao peito.",
+              "videoId": "SWVO95XzxKg"
+            },
+            {
+              "id": "28883325-82cb-4e5d-9be6-bfeda69467bb",
+              "name": "Crucifixo Polia",
+              "description": "Um exercício de treinamento de força realizado em uma máquina de polia, onde o praticante ajusta as alças de cada lado, estende os braços para os lados e, em seguida, os traz para a frente, cruzando-os na altura do peito.",
+              "videoId": "mNWyWEJNCDM"
             }
           ]
         },
         {
           "id": "9a2b6508-8248-4d16-bc9f-dc71cdecc3ca",
           "name": "Ficha B",
-          "exercises": []
+          "exercises": [
+            {
+              "id": "1ff56ec4-b015-4ba4-83e2-3982f3425a2a",
+              "name": "Supino reto",
+              "description": "Um exercício de treinamento de força realizado deitado em um banco plano, onde o praticante empurra uma barra carregada em direção ao peito.",
+              "videoId": "sqOw2Y6uDWQ"
+            },
+            {
+              "id": "8dee1a2c-5fcd-41ba-8b48-01ca3912dd7f",
+              "name": "Supino Inclinado c/ Halter",
+              "description": "Um exercício de treinamento de força realizado em um banco inclinado, onde o praticante segura halteres em cada mão e empurra-os para cima em direção ao peito.",
+              "videoId": "F4Q1g2z8MWM"
+            },
+            {
+              "id": "dcde66b4-8559-4781-acdd-3889de748bae",
+              "name": "Supino Reto c/ Halter",
+              "description": "Um exercício de treinamento de força realizado deitado em um banco plano, onde o praticante segura halteres em cada mão e os empurra em direção ao peito.",
+              "videoId": "SWVO95XzxKg"
+            },
+            {
+              "id": "3142564d-9e1f-4e80-b737-da4a476fe396",
+              "name": "Crucifixo Polia",
+              "description": "Um exercício de treinamento de força realizado em uma máquina de polia, onde o praticante ajusta as alças de cada lado, estende os braços para os lados e, em seguida, os traz para a frente, cruzando-os na altura do peito.",
+              "videoId": "mNWyWEJNCDM"
+            }
+          ]
         },
         {
           "id": "93410f07-130a-4863-ace1-0988f7d35a0d",
