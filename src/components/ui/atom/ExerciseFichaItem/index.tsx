@@ -13,9 +13,16 @@ import {
   Icon,
   SaibaMaisButton,
   SaibaMaisText,
+  WeightButton,
 } from "./styles";
 import { RectButton } from "react-native-gesture-handler";
 import { TouchableOpacity } from "react-native";
+import {
+  NavigationProp,
+  ParamListBase,
+  useNavigation,
+} from "@react-navigation/native";
+import { routeCodes } from "@Constants/routes";
 
 interface IExerciseFichaItem {
   img: any;
@@ -23,6 +30,7 @@ interface IExerciseFichaItem {
   description: string;
   onOpen: (videoId: string, name: string, description: string) => void;
   videoId: string;
+  weight: number;
 }
 
 export const ExerciseFichaItem = ({
@@ -31,7 +39,9 @@ export const ExerciseFichaItem = ({
   description,
   onOpen,
   videoId,
+  weight,
 }: IExerciseFichaItem) => {
+  const { navigate }: NavigationProp<ParamListBase> = useNavigation();
   return (
     <Container>
       <MainBox>
@@ -54,7 +64,9 @@ export const ExerciseFichaItem = ({
       </MainBox>
       <Footer>
         <LeftSide>3x10</LeftSide>
-        <RightSide>0.0kg</RightSide>
+        <WeightButton onPress={() => navigate(routeCodes.CHARGE)}>
+          <RightSide>{weight.toFixed(1)}kg</RightSide>
+        </WeightButton>
       </Footer>
     </Container>
   );

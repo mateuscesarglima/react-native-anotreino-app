@@ -50,3 +50,5 @@ export const SaibaMaisText = styled.Text`
   text-transform: uppercase;
   color: ${({ theme }) => theme.colors.primary};
 `;
+
+export const WeightButton = styled.TouchableOpacity``;

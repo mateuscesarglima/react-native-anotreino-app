@@ -64,7 +64,7 @@ export const Exercises = () => {
       setUpdating(false);
     }, 1000);
   };
-  console.log(exercises);
+
   const modalizeRef = useRef<Modalize>(null);
 
   const onOpen = (description: string, name: string, videoId: string) => {
@@ -119,6 +119,7 @@ export const Exercises = () => {
               description={item.description}
               videoId={item.videoId as string}
               onOpen={onOpen}
+              weight={item.weight as number}
             />
           )}
         />

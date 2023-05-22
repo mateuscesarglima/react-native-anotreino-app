@@ -31,6 +31,7 @@ export interface IExercise {
   name: string;
   description: string;
   videoId?: string;
+  weight?: number;
 }
 
 export interface ISheet {
