@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import { AddNewChargeModal } from "@Components/ui/molecule/AddNewChargeModal";
 import { BackButton } from "@Screens/Exercises/styles";
@@ -23,6 +23,9 @@ import {
   Title,
 } from "./styles";
 import { ICharge } from "@Interfaces/index";
+import { format } from "date-fns";
+import { useSheet } from "@Context/sheets";
+import { RefreshControl, ScrollView } from "react-native-gesture-handler";
 const screenWidth = Dimensions.get("window").width;
 
 interface Params {
@@ -36,12 +39,17 @@ export const Charge = () => {
   const route = useRoute();
   const { charge, id, sheetId } = route.params as Params;
   const { goBack }: NavigationProp<ParamListBase> = useNavigation();
+  const [updating, setUpdating] = useState(false);
+  const { loadData } = useSheet();
 
+  useEffect(() => {
+    loadData();
+  }, [charge]);
   const data = {
-    labels: ["15/01", "15/04", "15/07", "15/10"],
+    labels: charge.map((item) => item.date),
     datasets: [
       {
-        data: [40, 50, 70, 80],
+        data: charge.map((item) => item.weight),
         color: (opacity = 1) => `rgba(134, 65, 244, ${opacity})`, // optional
         strokeWidth: 2, // optional
       },
@@ -57,6 +65,18 @@ export const Charge = () => {
   const onClose = () => {
     modalizeRef.current?.close();
   };
+
+  const onUpdate = () => {
+    setUpdating(true);
+    setTimeout(() => {
+      loadData();
+      setUpdating(false);
+    }, 1000);
+  };
+
+  useEffect(() => {
+    onUpdate();
+  }, []);
 
   return (
     <AvoidView behavior={Platform.OS === "ios" ? "height" : "padding"}>
@@ -80,33 +100,43 @@ export const Charge = () => {
           </BackButton>
           <Title>Carga</Title>
         </Header>
-        <ChartContainer>
-          <LineChart
-            data={data}
-            width={screenWidth}
-            height={256}
-            verticalLabelRotation={30}
-            chartConfig={{
-              backgroundGradientFrom: "#f4f2f2",
-              backgroundGradientTo: "#f4f2f2",
-              color: (opacity = 1) => `#919090`,
-              labelColor: (opacity = 1) => theme.colors.primary,
-              propsForLabels: {
-                fontWeight: "bold",
-              },
-              style: {
-                borderRadius: 16,
-              },
-              propsForDots: {
-                r: "6",
-                strokeWidth: "2",
-              },
-            }}
-          />
-        </ChartContainer>
-        <AddNewChargeButton onPress={onOpen}>
-          <AddNewChargeButtonText>Inserir nova carga</AddNewChargeButtonText>
-        </AddNewChargeButton>
+        <ScrollView
+          contentContainerStyle={{
+            alignItems: "center",
+            flex: 1,
+          }}
+          refreshControl={
+            <RefreshControl refreshing={updating} onRefresh={onUpdate} />
+          }
+        >
+          <ChartContainer>
+            <LineChart
+              data={data}
+              width={screenWidth}
+              height={256}
+              verticalLabelRotation={1}
+              chartConfig={{
+                backgroundGradientFrom: "#f4f2f2",
+                backgroundGradientTo: "#f4f2f2",
+                color: (opacity = 1) => `#919090`,
+                labelColor: (opacity = 1) => theme.colors.primary,
+                propsForLabels: {
+                  fontWeight: "bold",
+                },
+                style: {
+                  borderRadius: 16,
+                },
+                propsForDots: {
+                  r: "6",
+                  strokeWidth: "2",
+                },
+              }}
+            />
+          </ChartContainer>
+          <AddNewChargeButton onPress={onOpen}>
+            <AddNewChargeButtonText>Inserir nova carga</AddNewChargeButtonText>
+          </AddNewChargeButton>
+        </ScrollView>
       </Container>
     </AvoidView>
   );

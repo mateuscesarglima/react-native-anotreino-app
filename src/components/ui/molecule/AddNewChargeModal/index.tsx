@@ -16,6 +16,7 @@ import {
   Title,
 } from "./styles";
 import { ICharge } from "@Interfaces/index";
+import { format } from "date-fns";
 
 interface AddNewChargeModalProps {
   charge: ICharge[];
@@ -33,7 +34,7 @@ export const AddNewChargeModal = ({
   sheetId,
 }: AddNewChargeModalProps) => {
   const [weight, setWeight] = useState(
-    charge[charge.length - 1].weight.toFixed(1)
+    charge[charge.length - 1]?.weight.toFixed(1)
   );
   const [maskValue, setMaskValue] = useState("9.9");
   const { handleUpdateCharge } = useSheet();
@@ -48,7 +49,7 @@ export const AddNewChargeModal = ({
 
   const handleOnConfirm = () => {
     const chargePayload: ICharge = {
-      date: new Date(),
+      date: format(new Date(), "dd/MM"),
       weight: parseFloat(weight),
     };
     handleUpdateCharge(exerciseId, sheetId, chargePayload);
@@ -71,7 +72,7 @@ export const AddNewChargeModal = ({
           <ChargeValue
             value={weight}
             onChangeText={(text) => setWeight(text)}
-            placeholder={charge[charge.length - 1].weight.toFixed(1)}
+            placeholder={charge[charge.length - 1]?.weight.toFixed(1)}
             placeholderTextColor={"#6f6f6f"}
             keyboardType="numeric"
           />

@@ -35,7 +35,7 @@ export interface IExercise {
 }
 
 export interface ICharge {
-  date: Date;
+  date: string;
   weight: number;
 }
 

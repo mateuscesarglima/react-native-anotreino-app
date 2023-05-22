@@ -10,22 +10,90 @@
           "name": "Ficha A",
           "exercises": [
             {
-              "id": "8d08c71e-d18d-40e9-8ea1-048240f8e7d0",
+              "id": "1038ee55-f0db-4c77-9e7d-97b61270c11d",
               "name": "Supino reto",
               "description": "Um exercício de treinamento de força realizado deitado em um banco plano, onde o praticante empurra uma barra carregada em direção ao peito.",
               "videoId": "sqOw2Y6uDWQ",
               "charge": [
                 {
-                  "date": "2023-05-22T19:39:53.305Z",
+                  "date": "22/05",
+                  "weight": 0
+                },
+                {
+                  "date": "22/05",
+                  "weight": 20
+                },
+                {
+                  "date": "22/05",
+                  "weight": 25
+                },
+                {
+                  "date": "22/05",
+                  "weight": 20
+                },
+                {
+                  "date": "22/05",
+                  "weight": 40
+                },
+                {
+                  "date": "22/05",
+                  "weight": 40
+                },
+                {
+                  "date": "22/05",
                   "weight": 50
+                }
+              ]
+            },
+            {
+              "id": "bd2f749d-2ebf-4e85-a5a6-8b082d46a01e",
+              "name": "Agachamento Smith",
+              "description": "Um exercício de agachamento realizado utilizando a máquina Smith, que possui uma barra fixa em um trilho. O praticante posiciona-se embaixo da barra, apoia-a nos ombros e realiza movimentos de flexão e extensão dos joelhos, trabalhando os músculos das pernas.",
+              "videoId": "mhu6HkDYvlw",
+              "charge": [
+                {
+                  "date": "22/05",
+                  "weight": 0
                 },
                 {
-                  "date": "2023-05-22T19:55:29.837Z",
-                  "weight": 60
+                  "date": "22/05",
+                  "weight": 10
                 },
                 {
-                  "date": "2023-05-22T19:57:32.801Z",
-                  "weight": 70
+                  "date": "22/05",
+                  "weight": 25
+                }
+              ]
+            },
+            {
+              "id": "f07bca65-5293-4004-97db-b4f2ce177d84",
+              "name": "Agachamento Afundo com Halteres",
+              "description": "Um exercício de agachamento realizado com halteres. O praticante dá um passo à frente e flexiona os joelhos, descendo o corpo em direção ao chão, e então retorna à posição inicial, trabalhando principalmente os músculos das pernas, como quadríceps, glúteos e isquiotibiais.",
+              "videoId": "6Zz_RG0EHFE",
+              "charge": [
+                {
+                  "date": "22/05",
+                  "weight": 0
+                },
+                {
+                  "date": "22/05",
+                  "weight": 35
+                }
+              ]
+            },
+            {
+              "id": "1f671324-db94-4c93-ad37-ab915875c600",
+              "name": "Crucifixo Polia",
+              "description": "Um exercício de treinamento de força realizado em uma máquina de polia, onde o praticante ajusta as alças de cada lado, estende os braços para os lados e, em seguida, os traz para a frente, cruzando-os na altura do peito.",
+              "videoId": "mNWyWEJNCDM",
+              "charge": [
+                {
+                  "date": "22/05",
+                  "weight": 0
+                },
+                {
+                  "date": "22/05",
+                  "weight": 50
                 }
               ]
             }

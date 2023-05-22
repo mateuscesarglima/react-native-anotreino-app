@@ -3,6 +3,7 @@
 import { IExerciseCategory } from "@Interfaces/index";
 import uuid from "react-native-uuid";
 import { IExerciseType } from "../interfaces/index";
+import { format } from "date-fns";
 
 // export const ficha: IFicha[] = [
 //   {
@@ -112,7 +113,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "sqOw2Y6uDWQ",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -125,7 +126,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "F4Q1g2z8MWM",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -138,7 +139,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "SWVO95XzxKg",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -151,7 +152,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "mNWyWEJNCDM",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -166,7 +167,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "qnHNjVcVKYo",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -179,7 +180,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "WxkMoxuMSho",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -192,7 +193,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "zaAGOp11wbc",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -204,7 +205,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "Y09q8JO0IwM",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -217,7 +218,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "tqP-u6B9G2E",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -230,7 +231,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "sAAge4YxIAc",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -243,7 +244,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "EUisRaNkCd4",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -258,7 +259,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "nQrobsCv8X4",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -271,7 +272,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "k31LK_VASok",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -284,7 +285,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "k31LK_VASok",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -297,7 +298,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "ghl0bfn-hA0",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -310,7 +311,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "2eeOSoAJdD4",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -323,7 +324,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "mUEDnCGrNP4",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -336,7 +337,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "5vPGH1uTtbs",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -349,7 +350,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "5kjoCPNdXzE",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -362,7 +363,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "_yNqCUTvUWc",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -375,7 +376,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "ZyisfW7q3qs",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -388,7 +389,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "Kh4G5N48EO8",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -401,7 +402,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "xDaBywsDams",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -416,7 +417,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "SNN6BftNts8",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -429,7 +430,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "3bF87yW4enQ",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -442,7 +443,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "o2LfBH1I8r8",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -455,7 +456,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "iQfHVeuVg",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -468,7 +469,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "YghvTx_GI2c",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -481,7 +482,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "YghvTx_GI2c",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -494,7 +495,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "YghvTx_GI2c",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -507,7 +508,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "qDAoUOmdbi4",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -520,7 +521,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "5xAn7PeLeiQ",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -533,7 +534,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "QZD6vq22qJg",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -546,7 +547,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "vW--lca6Knw",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -559,7 +560,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "vW--lca6Knw",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -574,7 +575,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "D0w-2g_-G-Q",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -587,7 +588,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "OcjLM6Weh-0",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -600,7 +601,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "jqnwfqpvo9U",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -613,7 +614,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "DMduCHE7qTw",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -626,7 +627,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "HI-rCGd4fqU",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -639,7 +640,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "fN1zziClTfE",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -652,7 +653,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "_g6RCj4cq4I",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -667,7 +668,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "k4Rl9WksA5o",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -680,7 +681,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "TB0HLYUXtos",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -693,7 +694,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "6EFb3xwsigQ",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -706,7 +707,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "Xn-fIQw08q4",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -719,7 +720,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "gbnLZto6b0s",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -732,7 +733,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "oqob5MHbzBc",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -745,7 +746,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "z9Wlc5-f8H4",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -754,13 +755,13 @@ export const exercisesSelectedData: IExerciseType = {
   pernas: [
     {
       id: uuid.v4().toString(),
-      name: "Agachamento Afundo com Halteres",
+      name: "Agachamento Afundo c/ Halteres",
       description:
         "Um exercício de agachamento realizado com halteres. O praticante dá um passo à frente e flexiona os joelhos, descendo o corpo em direção ao chão, e então retorna à posição inicial, trabalhando principalmente os músculos das pernas, como quadríceps, glúteos e isquiotibiais.",
       videoId: "6Zz_RG0EHFE",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -773,7 +774,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "mhu6HkDYvlw",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -786,7 +787,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "JZCTozb47rM",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -799,7 +800,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "wNKb_CsSdg4",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],
@@ -812,7 +813,7 @@ export const exercisesSelectedData: IExerciseType = {
       videoId: "lmK4wsg8GAM",
       charge: [
         {
-          date: new Date(),
+          date: format(new Date(), "dd/MM"),
           weight: 0,
         },
       ],

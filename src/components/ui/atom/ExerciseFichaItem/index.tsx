@@ -79,7 +79,9 @@ export const ExerciseFichaItem = ({
             })
           }
         >
-          <RightSide>{charge[charge.length - 1].weight.toFixed(1)}kg</RightSide>
+          <RightSide>
+            {charge[charge.length - 1]?.weight.toFixed(1)}kg
+          </RightSide>
         </WeightButton>
       </Footer>
     </Container>
