@@ -4,7 +4,7 @@ import { Register } from "@Screens/Register";
 import { SelectCategory } from "@Screens/SelectCategory";
 import { SelectedExercise } from "@Screens/SelectedExercise";
 import { Workout } from "@Screens/Workout";
-import { createStackNavigator } from "@react-navigation/stack";
+import { createStackNavigator, TransitionSpecs } from "@react-navigation/stack";
 import React from "react";
 import { BottomTabRoutes } from "./BottomTabRoutes";
 
@@ -20,8 +20,42 @@ export const AuthRoutes = () => {
 };
 
 export const StackRoutes = () => {
+  const transitionSpec = {
+    open: {
+      animation: "timing",
+      config: {
+        duration: 1,
+      },
+    },
+    close: {
+      animation: "timing",
+      config: {
+        duration: 1,
+      },
+    },
+  };
+
   return (
-    <Navigator screenOptions={{ headerShown: false }} initialRouteName="Home">
+    <Navigator
+      screenOptions={{
+        headerShown: false,
+        transitionSpec: {
+          open: {
+            animation: "timing",
+            config: {
+              duration: 150,
+            },
+          },
+          close: {
+            animation: "timing",
+            config: {
+              duration: 150,
+            },
+          },
+        },
+      }}
+      initialRouteName="Home"
+    >
       <Screen name="TabRoutes" component={BottomTabRoutes} />
       <Screen name="SelectCategory" component={SelectCategory} />
       <Screen name="Exercises" component={Exercises} />

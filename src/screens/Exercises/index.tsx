@@ -8,8 +8,8 @@ import {
 } from "@react-navigation/native";
 import { IExercise, ISheet } from "interfaces";
 import { CaretLeft } from "phosphor-react-native";
-import React, { useState } from "react";
-import { RefreshControl } from "react-native";
+import React, { useRef, useState } from "react";
+import { Pressable, RefreshControl } from "react-native";
 
 import { routeCodes } from "@Constants/routes";
 import { useSheet } from "@Context/sheets";
@@ -28,6 +28,9 @@ import {
   StartExerciseButtonContainer,
   Text,
 } from "./styles";
+import { Modalize } from "react-native-modalize";
+import { RectButton } from "react-native-gesture-handler";
+import { SaibaMaisModal } from "@Components/ui/molecule/SaibaMaisModal";
 
 interface Params {
   sheet: ISheet;
@@ -43,6 +46,9 @@ export const Exercises = () => {
   const [currentSheet, setCurrentSheet] = useState<ISheet>(sheet);
   const [focus, setIsFocus] = useState(isFocused());
   const [updating, setUpdating] = useState(false);
+  const [videoId, setVideoId] = useState("");
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
 
   const handleOnPress = () => {
     navigate(routeCodes.SELECT_EXERCISE, {
@@ -58,13 +64,30 @@ export const Exercises = () => {
       setUpdating(false);
     }, 1000);
   };
+  console.log(exercises);
+  const modalizeRef = useRef<Modalize>(null);
+
+  const onOpen = (description: string, name: string, videoId: string) => {
+    setVideoId(videoId);
+    setName(name);
+    setDescription(description);
+    modalizeRef.current?.open();
+  };
 
   return (
     <Container>
+      <Modalize ref={modalizeRef}>
+        <SaibaMaisModal
+          description={description}
+          name={name}
+          videoId={videoId}
+        />
+      </Modalize>
       <Header>
         <BackButton onPress={goBack}>
           <CaretLeft size={40} color="#FFF" />
         </BackButton>
+
         <HeaderText>{currentSheet.name}</HeaderText>
         {currentSheet.exercises.length === 0 ? null : (
           <AddExerciseButton onPress={handleOnPress}>
@@ -94,6 +117,8 @@ export const Exercises = () => {
               name={item.name}
               img={""}
               description={item.description}
+              videoId={item.videoId as string}
+              onOpen={onOpen}
             />
           )}
         />
