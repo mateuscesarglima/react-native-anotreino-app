@@ -35,12 +35,16 @@ export const Main = styled.View`
 `;
 export const Footer = styled.View`
   margin-top: 10px;
-  justify-content: center;
+  justify-content: space-around;
   flex-direction: row;
   gap: 150px;
 `;
-export const LeftSide = styled.Text``;
-export const RightSide = styled.Text``;
+export const LeftSide = styled.Text`
+  font-weight: bold;
+`;
+export const RightSide = styled.Text`
+  font-weight: bold;
+`;
 
 export const SaibaMaisButton = styled.TouchableOpacity`
   align-items: center;
@@ -50,3 +54,5 @@ export const SaibaMaisText = styled.Text`
   text-transform: uppercase;
   color: ${({ theme }) => theme.colors.primary};
 `;
+
+export const WeightButton = styled.TouchableOpacity``;

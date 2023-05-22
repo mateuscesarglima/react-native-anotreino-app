@@ -64,7 +64,7 @@ export const Exercises = () => {
       setUpdating(false);
     }, 1000);
   };
-  console.log(exercises);
+
   const modalizeRef = useRef<Modalize>(null);
 
   const onOpen = (description: string, name: string, videoId: string) => {
@@ -114,11 +114,14 @@ export const Exercises = () => {
           keyExtractor={(item) => item.name}
           renderItem={({ item }) => (
             <ExerciseFichaItem
+              id={item.id as string}
               name={item.name}
               img={""}
               description={item.description}
               videoId={item.videoId as string}
               onOpen={onOpen}
+              charge={item.charge}
+              sheetId={sheet.id as string}
             />
           )}
         />

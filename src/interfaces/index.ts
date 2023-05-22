@@ -31,6 +31,12 @@ export interface IExercise {
   name: string;
   description: string;
   videoId?: string;
+  charge: ICharge[];
+}
+
+export interface ICharge {
+  date: Date;
+  weight: number;
 }
 
 export interface ISheet {

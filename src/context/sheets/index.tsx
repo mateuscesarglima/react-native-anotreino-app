@@ -2,7 +2,7 @@ import { useAuth } from "@Context/auth";
 import { api } from "@Services/api/api";
 import { getSheetById } from "@Services/api/sheet";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { IExercise, ISheet, IUser } from "interfaces";
+import { ICharge, IExercise, ISheet, IUser } from "interfaces";
 import React, {
   ReactNode,
   createContext,
@@ -35,6 +35,11 @@ interface IFichaContextProps {
   handleRemoveExercise: (
     exerciseObj: IExercise,
     sheetObj: ISheet
+  ) => Promise<void>;
+  handleUpdateCharge: (
+    exerciseId: string,
+    sheetId: string,
+    newCharge: ICharge
   ) => Promise<void>;
 }
 
@@ -83,6 +88,38 @@ export const FichaProvider = ({ children }: IFichaProviderProps) => {
       Alert.alert(err as string);
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const handleUpdateCharge = async (
+    exerciseId: string,
+    sheetId: string,
+    newCharge: ICharge
+  ) => {
+    try {
+      let payload = {
+        sheets: sheets,
+      };
+      const sheetIndex = sheets.findIndex((sheet) => sheet.id === sheetId);
+
+      const exerciseIndex = sheets[sheetIndex].exercises.findIndex(
+        (exercise) => exercise.id === exerciseId
+      );
+
+      payload.sheets[sheetIndex].exercises[exerciseIndex].charge.push(
+        newCharge
+      );
+
+      const response = await api.patch(`/users/${user.id}`, payload);
+      setSheets(response.data.sheets);
+      Toast.show({
+        type: "success",
+        text1: "Aviso",
+        text2: "Carga atualizada com sucesso!",
+        visibilityTime: 1500,
+      });
+    } catch (err) {
+      Alert.alert(err as string);
     }
   };
 
@@ -172,6 +209,7 @@ export const FichaProvider = ({ children }: IFichaProviderProps) => {
         loadData,
         isLoading,
         handleRemoveExercise,
+        handleUpdateCharge,
       }}
     >
       {children}
@@ -188,6 +226,7 @@ export const useSheet = () => {
     loadData,
     isLoading,
     handleRemoveExercise,
+    handleUpdateCharge,
   } = useContext(FichaContext);
   return {
     sheets,
@@ -197,5 +236,6 @@ export const useSheet = () => {
     loadData,
     isLoading,
     handleRemoveExercise,
+    handleUpdateCharge,
   };
 };
