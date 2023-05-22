@@ -4,6 +4,10 @@ import { Feather } from "@expo/vector-icons";
 import { RFValue } from "react-native-responsive-fontsize";
 import { RectButton } from "react-native-gesture-handler";
 
+export const AvoidView = styled.KeyboardAvoidingView`
+  flex: 1;
+`;
+
 export const Container = styled.View`
   justify-content: center;
   align-items: center;

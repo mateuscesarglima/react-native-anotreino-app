@@ -16,13 +16,10 @@ import {
 } from "./styles";
 
 export const AddNewChargeModal = () => {
-  const [weight, setWeight] = useState(0);
+  const weighttmp = 40;
 
-  const onChangeValue = () => {
-    console.log("APERTOU");
-  };
+  const [weight, setWeight] = useState("");
 
-  console.log(weight);
   return (
     <Container>
       <Header>
@@ -33,24 +30,16 @@ export const AddNewChargeModal = () => {
           Registrando a carga podemos acompanhar sua evolução no exercício
         </ContentDescription>
         <ChangeChargeContainer>
-          <MoreButton
-            onPress={() => {
-              setWeight(weight >= 0 ? weight + 0.5 : 0.0);
-            }}
-          >
+          <MoreButton onPress={() => {}}>
             <Icon name="plus-circle" size={50} />
           </MoreButton>
           <ChargeValue
+            value={weight}
+            onChangeText={(text) => setWeight(text)}
             placeholder="0.0kg"
-            value={weight.toString()}
             keyboardType="numeric"
-            onChange={(value) => setWeight(parseInt(value.nativeEvent.text))}
           />
-          <LessButton
-            onPress={() => {
-              setWeight(weight < 0 ? 0.0 : weight - 0.5);
-            }}
-          >
+          <LessButton onPress={() => {}}>
             <Icon name="minus-circle" size={50} />
           </LessButton>
         </ChangeChargeContainer>

@@ -1,26 +1,28 @@
 import React, { useRef } from "react";
 
-import {
-  AddNewChargeButton,
-  AddNewChargeButtonText,
-  ChartContainer,
-  Container,
-  Header,
-  Icon,
-  Title,
-} from "./styles";
+import { AddNewChargeModal } from "@Components/ui/molecule/AddNewChargeModal";
 import { BackButton } from "@Screens/Exercises/styles";
 import {
   NavigationProp,
   ParamListBase,
   useNavigation,
 } from "@react-navigation/native";
+import { Dimensions, Platform, View } from "react-native";
 import { LineChart } from "react-native-chart-kit";
-import { Dimensions } from "react-native";
-import { transparent } from "react-native-paper/lib/typescript/src/styles/themes/v2/colors";
-import { useTheme } from "styled-components";
 import { Modalize } from "react-native-modalize";
-import { AddNewChargeModal } from "@Components/ui/molecule/AddNewChargeModal";
+import { useTheme } from "styled-components";
+import {
+  AddNewChargeButton,
+  AddNewChargeButtonText,
+  AvoidView,
+  ChartContainer,
+  Container,
+  Header,
+  Icon,
+  Title,
+} from "./styles";
+import { ScrollView } from "react-native-gesture-handler";
+import { getBottomSpace } from "react-native-iphone-x-helper";
 const screenWidth = Dimensions.get("window").width;
 
 interface Params {
@@ -48,10 +50,15 @@ export const Charge = () => {
   };
 
   return (
-    <>
-      <Modalize ref={modalizeRef} modalHeight={280}>
+    <AvoidView behavior={Platform.OS === "ios" ? "height" : "padding"}>
+      <Modalize
+        ref={modalizeRef}
+        adjustToContentHeight
+        scrollViewProps={{ keyboardShouldPersistTaps: "handled" }}
+      >
         <AddNewChargeModal />
       </Modalize>
+
       <Container>
         <Header>
           <BackButton onPress={goBack}>
@@ -87,6 +94,6 @@ export const Charge = () => {
           <AddNewChargeButtonText>Inserir nova carga</AddNewChargeButtonText>
         </AddNewChargeButton>
       </Container>
-    </>
+    </AvoidView>
   );
 };
