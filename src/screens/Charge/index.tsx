@@ -6,8 +6,9 @@ import {
   NavigationProp,
   ParamListBase,
   useNavigation,
+  useRoute,
 } from "@react-navigation/native";
-import { Dimensions, Platform, View } from "react-native";
+import { Dimensions, Platform } from "react-native";
 import { LineChart } from "react-native-chart-kit";
 import { Modalize } from "react-native-modalize";
 import { useTheme } from "styled-components";
@@ -21,17 +22,21 @@ import {
   Icon,
   Title,
 } from "./styles";
-import { ScrollView } from "react-native-gesture-handler";
-import { getBottomSpace } from "react-native-iphone-x-helper";
+import { ICharge } from "@Interfaces/index";
 const screenWidth = Dimensions.get("window").width;
 
 interface Params {
-  weight: number;
+  charge: ICharge[];
+  id: string;
+  sheetId: string;
 }
 
 export const Charge = () => {
   const theme = useTheme();
+  const route = useRoute();
+  const { charge, id, sheetId } = route.params as Params;
   const { goBack }: NavigationProp<ParamListBase> = useNavigation();
+
   const data = {
     labels: ["15/01", "15/04", "15/07", "15/10"],
     datasets: [
@@ -49,6 +54,10 @@ export const Charge = () => {
     modalizeRef.current?.open();
   };
 
+  const onClose = () => {
+    modalizeRef.current?.close();
+  };
+
   return (
     <AvoidView behavior={Platform.OS === "ios" ? "height" : "padding"}>
       <Modalize
@@ -56,7 +65,12 @@ export const Charge = () => {
         adjustToContentHeight
         scrollViewProps={{ keyboardShouldPersistTaps: "handled" }}
       >
-        <AddNewChargeModal />
+        <AddNewChargeModal
+          charge={charge}
+          onClose={onClose}
+          exerciseId={id}
+          sheetId={sheetId}
+        />
       </Modalize>
 
       <Container>

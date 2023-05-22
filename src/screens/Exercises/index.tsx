@@ -114,12 +114,14 @@ export const Exercises = () => {
           keyExtractor={(item) => item.name}
           renderItem={({ item }) => (
             <ExerciseFichaItem
+              id={item.id as string}
               name={item.name}
               img={""}
               description={item.description}
               videoId={item.videoId as string}
               onOpen={onOpen}
-              weight={item.weight as number}
+              charge={item.charge}
+              sheetId={sheet.id as string}
             />
           )}
         />

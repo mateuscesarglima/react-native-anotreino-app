@@ -23,25 +23,31 @@ import {
   useNavigation,
 } from "@react-navigation/native";
 import { routeCodes } from "@Constants/routes";
+import { ICharge } from "@Interfaces/index";
 
 interface IExerciseFichaItem {
+  id: string;
   img: any;
   name: string;
   description: string;
   onOpen: (videoId: string, name: string, description: string) => void;
   videoId: string;
-  weight: number;
+  sheetId: string;
+  charge: ICharge[];
 }
 
 export const ExerciseFichaItem = ({
+  id,
   img,
   name,
   description,
   onOpen,
   videoId,
-  weight,
+  sheetId,
+  charge,
 }: IExerciseFichaItem) => {
   const { navigate }: NavigationProp<ParamListBase> = useNavigation();
+
   return (
     <Container>
       <MainBox>
@@ -64,8 +70,16 @@ export const ExerciseFichaItem = ({
       </MainBox>
       <Footer>
         <LeftSide>3x10</LeftSide>
-        <WeightButton onPress={() => navigate(routeCodes.CHARGE)}>
-          <RightSide>{weight.toFixed(1)}kg</RightSide>
+        <WeightButton
+          onPress={() =>
+            navigate(routeCodes.CHARGE, {
+              charge: charge,
+              id: id,
+              sheetId: sheetId,
+            })
+          }
+        >
+          <RightSide>{charge[charge.length - 1].weight.toFixed(1)}kg</RightSide>
         </WeightButton>
       </Footer>
     </Container>

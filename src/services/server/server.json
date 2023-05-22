@@ -10,64 +10,31 @@
           "name": "Ficha A",
           "exercises": [
             {
-              "id": "c1641e11-f238-4a83-b0a6-6ea4014369ec",
+              "id": "8d08c71e-d18d-40e9-8ea1-048240f8e7d0",
               "name": "Supino reto",
               "description": "Um exercício de treinamento de força realizado deitado em um banco plano, onde o praticante empurra uma barra carregada em direção ao peito.",
               "videoId": "sqOw2Y6uDWQ",
-              "weight": 0
-            },
-            {
-              "id": "654a6049-a0c3-4244-900d-28b8cb8484d8",
-              "name": "Supino Inclinado c/ Halter",
-              "description": "Um exercício de treinamento de força realizado em um banco inclinado, onde o praticante segura halteres em cada mão e empurra-os para cima em direção ao peito.",
-              "videoId": "F4Q1g2z8MWM",
-              "weight": 0
-            },
-            {
-              "id": "b6b6e809-2fee-47df-82d4-fff251b48f27",
-              "name": "Supino Reto c/ Halter",
-              "description": "Um exercício de treinamento de força realizado deitado em um banco plano, onde o praticante segura halteres em cada mão e os empurra em direção ao peito.",
-              "videoId": "SWVO95XzxKg",
-              "weight": 0
-            },
-            {
-              "id": "6c065ada-9bcf-499b-a73f-d770a2fb0274",
-              "name": "Crucifixo Polia",
-              "description": "Um exercício de treinamento de força realizado em uma máquina de polia, onde o praticante ajusta as alças de cada lado, estende os braços para os lados e, em seguida, os traz para a frente, cruzando-os na altura do peito.",
-              "videoId": "mNWyWEJNCDM",
-              "weight": 0
+              "charge": [
+                {
+                  "date": "2023-05-22T19:39:53.305Z",
+                  "weight": 50
+                },
+                {
+                  "date": "2023-05-22T19:55:29.837Z",
+                  "weight": 60
+                },
+                {
+                  "date": "2023-05-22T19:57:32.801Z",
+                  "weight": 70
+                }
+              ]
             }
           ]
         },
         {
           "id": "9a2b6508-8248-4d16-bc9f-dc71cdecc3ca",
           "name": "Ficha B",
-          "exercises": [
-            {
-              "id": "1ff56ec4-b015-4ba4-83e2-3982f3425a2a",
-              "name": "Supino reto",
-              "description": "Um exercício de treinamento de força realizado deitado em um banco plano, onde o praticante empurra uma barra carregada em direção ao peito.",
-              "videoId": "sqOw2Y6uDWQ"
-            },
-            {
-              "id": "8dee1a2c-5fcd-41ba-8b48-01ca3912dd7f",
-              "name": "Supino Inclinado c/ Halter",
-              "description": "Um exercício de treinamento de força realizado em um banco inclinado, onde o praticante segura halteres em cada mão e empurra-os para cima em direção ao peito.",
-              "videoId": "F4Q1g2z8MWM"
-            },
-            {
-              "id": "dcde66b4-8559-4781-acdd-3889de748bae",
-              "name": "Supino Reto c/ Halter",
-              "description": "Um exercício de treinamento de força realizado deitado em um banco plano, onde o praticante segura halteres em cada mão e os empurra em direção ao peito.",
-              "videoId": "SWVO95XzxKg"
-            },
-            {
-              "id": "3142564d-9e1f-4e80-b737-da4a476fe396",
-              "name": "Crucifixo Polia",
-              "description": "Um exercício de treinamento de força realizado em uma máquina de polia, onde o praticante ajusta as alças de cada lado, estende os braços para os lados e, em seguida, os traz para a frente, cruzando-os na altura do peito.",
-              "videoId": "mNWyWEJNCDM"
-            }
-          ]
+          "exercises": []
         },
         {
           "id": "93410f07-130a-4863-ace1-0988f7d35a0d",

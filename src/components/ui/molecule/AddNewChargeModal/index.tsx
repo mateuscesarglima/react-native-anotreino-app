@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+import { useSheet } from "@Context/sheets";
 import {
   ChangeChargeContainer,
   ChargeValue,
@@ -14,11 +15,44 @@ import {
   MoreButton,
   Title,
 } from "./styles";
+import { ICharge } from "@Interfaces/index";
 
-export const AddNewChargeModal = () => {
-  const weighttmp = 40;
+interface AddNewChargeModalProps {
+  charge: ICharge[];
+  onClose: () => void;
+  exerciseId: string;
+  sheetId: string;
+}
 
-  const [weight, setWeight] = useState("");
+const MAX_LIMIT = 300;
+
+export const AddNewChargeModal = ({
+  charge,
+  onClose,
+  exerciseId,
+  sheetId,
+}: AddNewChargeModalProps) => {
+  const [weight, setWeight] = useState(
+    charge[charge.length - 1].weight.toFixed(1)
+  );
+  const [maskValue, setMaskValue] = useState("9.9");
+  const { handleUpdateCharge } = useSheet();
+
+  const incrementWeight = () => {
+    setWeight(Number(parseFloat(weight) + 5).toFixed(1));
+  };
+
+  const decrementWeight = () => {
+    setWeight(Number(parseFloat(weight) - 5).toFixed(1));
+  };
+
+  const handleOnConfirm = () => {
+    const chargePayload: ICharge = {
+      date: new Date(),
+      weight: parseFloat(weight),
+    };
+    handleUpdateCharge(exerciseId, sheetId, chargePayload);
+  };
 
   return (
     <Container>
@@ -30,20 +64,23 @@ export const AddNewChargeModal = () => {
           Registrando a carga podemos acompanhar sua evolução no exercício
         </ContentDescription>
         <ChangeChargeContainer>
-          <MoreButton onPress={() => {}}>
+          <MoreButton onPress={incrementWeight}>
             <Icon name="plus-circle" size={50} />
           </MoreButton>
+
           <ChargeValue
             value={weight}
             onChangeText={(text) => setWeight(text)}
-            placeholder="0.0kg"
+            placeholder={charge[charge.length - 1].weight.toFixed(1)}
+            placeholderTextColor={"#6f6f6f"}
             keyboardType="numeric"
           />
-          <LessButton onPress={() => {}}>
+
+          <LessButton onPress={decrementWeight}>
             <Icon name="minus-circle" size={50} />
           </LessButton>
         </ChangeChargeContainer>
-        <ConfirmButton>
+        <ConfirmButton onPress={() => handleOnConfirm()}>
           <ConfirmButtonText>Confirmar</ConfirmButtonText>
         </ConfirmButton>
       </Content>

@@ -1,10 +1,7 @@
-import { RectButton } from "react-native-gesture-handler";
-
-import styled from "styled-components/native";
 import { Feather } from "@expo/vector-icons";
-import { RFValue } from "react-native-responsive-fontsize";
 import { getBottomSpace } from "react-native-iphone-x-helper";
-import { TextInputMask } from "react-native-masked-text";
+import { RFValue } from "react-native-responsive-fontsize";
+import styled from "styled-components/native";
 
 export const Container = styled.View`
   padding-bottom: ${getBottomSpace()}px;
@@ -36,17 +33,7 @@ export const ChangeChargeContainer = styled.View`
 `;
 export const LessButton = styled.TouchableOpacity``;
 
-export const ChargeValue = styled(TextInputMask).attrs({
-  type: "custom",
-  options: {
-    mask: "999.99",
-  },
-  translation: {
-    "9": {
-      pattern: /[0-9]/,
-    },
-  },
-})`
+export const ChargeValue = styled.TextInput`
   background-color: #ddd;
   flex: 1;
   align-items: center;
