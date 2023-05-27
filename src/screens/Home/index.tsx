@@ -61,7 +61,7 @@ export const Home = () => {
 
   useEffect(() => {
     loadData();
-  }, [user]);
+  }, []);
 
   return (
     <Wrapper>

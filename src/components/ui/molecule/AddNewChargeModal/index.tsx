@@ -23,6 +23,7 @@ interface AddNewChargeModalProps {
   onClose: () => void;
   exerciseId: string;
   sheetId: string;
+  handleUpdateCounter: () => void;
 }
 
 const MAX_LIMIT = 300;
@@ -32,6 +33,7 @@ export const AddNewChargeModal = ({
   onClose,
   exerciseId,
   sheetId,
+  handleUpdateCounter,
 }: AddNewChargeModalProps) => {
   const [weight, setWeight] = useState(
     charge[charge.length - 1]?.weight.toFixed(1)
@@ -53,6 +55,7 @@ export const AddNewChargeModal = ({
       weight: parseFloat(weight),
     };
     handleUpdateCharge(exerciseId, sheetId, chargePayload);
+    handleUpdateCounter();
   };
 
   return (

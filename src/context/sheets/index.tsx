@@ -41,6 +41,7 @@ interface IFichaContextProps {
     sheetId: string,
     newCharge: ICharge
   ) => Promise<void>;
+  getCharge: (exerciseId: string, sheetId: string) => Promise<ICharge[]>;
 }
 
 const FichaContext = createContext({} as IFichaContextProps);
@@ -180,6 +181,21 @@ export const FichaProvider = ({ children }: IFichaProviderProps) => {
     }
   };
 
+  const getCharge = async (exerciseId: string, sheetId: string) => {
+    try {
+      const response = await api.get(`/users/${user.id}`);
+      const sheet = response.data.sheets.find(
+        (sheet: ISheet) => sheet.id === sheetId
+      );
+      const exercise = sheet.exercises.find(
+        (exercise: IExercise) => exercise.id === exerciseId
+      );
+      return exercise.charge;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const loadData = async () => {
     setIsLoading(true);
     try {
@@ -210,6 +226,7 @@ export const FichaProvider = ({ children }: IFichaProviderProps) => {
         isLoading,
         handleRemoveExercise,
         handleUpdateCharge,
+        getCharge,
       }}
     >
       {children}
@@ -227,6 +244,7 @@ export const useSheet = () => {
     isLoading,
     handleRemoveExercise,
     handleUpdateCharge,
+    getCharge,
   } = useContext(FichaContext);
   return {
     sheets,
@@ -237,5 +255,6 @@ export const useSheet = () => {
     isLoading,
     handleRemoveExercise,
     handleUpdateCharge,
+    getCharge,
   };
 };
