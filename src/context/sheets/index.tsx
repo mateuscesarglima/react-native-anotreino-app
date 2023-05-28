@@ -1,8 +1,6 @@
 import { useAuth } from "@Context/auth";
 import { api } from "@Services/api/api";
-import { getSheetById } from "@Services/api/sheet";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { ICharge, IExercise, ISheet, IUser } from "interfaces";
+import { ICharge, IExercise, ISheet } from "interfaces";
 import React, {
   ReactNode,
   createContext,
@@ -12,7 +10,6 @@ import React, {
 } from "react";
 import { Alert } from "react-native";
 import { Toast } from "react-native-toast-message/lib/src/Toast";
-import { Settings } from "react-native/types";
 
 interface StoragedSheet {
   id: string;

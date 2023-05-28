@@ -5,17 +5,17 @@
       "email": "Admin@email.com",
       "password": "testando123",
       "info": {
-        "peso": "80",
-        "altura": "1.80",
-        "braco_dir": "20",
-        "braco_esq": "20",
-        "cintura": "10",
-        "quadril": "10",
-        "coxa_dir": "10",
-        "coxa_esq": "20",
-        "panturrilha_dir": "10",
-        "panturrilha_esq": "10",
-        "abdomen": "10"
+        "peso": "0",
+        "altura": "0",
+        "braco_esq": "0",
+        "braco_dir": "0",
+        "abdomen": "0",
+        "quadril": "0",
+        "coxa_esq": "0",
+        "coxa_dir": "0",
+        "panturrilha_esq": "0",
+        "panturrilha_dir": "0",
+        "cintura": "0"
       },
       "sheets": [
         {
@@ -41,12 +41,24 @@
                   "weight": 10
                 },
                 {
-                  "date": "28/05",
-                  "weight": 30
+                  "date": "22/05",
+                  "weight": 50
                 },
                 {
-                  "date": "28/05",
-                  "weight": 40
+                  "date": "22/05",
+                  "weight": 60
+                },
+                {
+                  "date": "22/05",
+                  "weight": 60
+                },
+                {
+                  "date": "22/05",
+                  "weight": 70
+                },
+                {
+                  "date": "27/05",
+                  "weight": 70
                 }
               ]
             },
@@ -102,54 +114,6 @@
               "charge": [
                 {
                   "date": "27/05",
-                  "weight": 0
-                }
-              ]
-            },
-            {
-              "id": "3e7c5216-935c-438f-afe3-8e82d7b7f69b",
-              "name": "Supino Reto c/ Halter",
-              "description": "Um exercício de treinamento de força realizado deitado em um banco plano, onde o praticante segura halteres em cada mão e os empurra em direção ao peito.",
-              "videoId": "SWVO95XzxKg",
-              "charge": [
-                {
-                  "date": "28/05",
-                  "weight": 0
-                }
-              ]
-            },
-            {
-              "id": "7ed8e6df-725e-463d-ac42-7b062f1e4321",
-              "name": "Rosca Direta Barra W",
-              "description": "Um exercício de treinamento de força realizado segurando uma barra W com as palmas das mãos voltadas para cima, o praticante flexiona os cotovelos para levantar a barra em direção aos ombros, enfatizando os músculos dos braços (bíceps).",
-              "videoId": "nQrobsCv8X4",
-              "charge": [
-                {
-                  "date": "28/05",
-                  "weight": 0
-                }
-              ]
-            },
-            {
-              "id": "76a57de7-f33d-4006-b68d-82ccb95ab5b2",
-              "name": "Rosca com Halteres ",
-              "description": "Um exercício de treinamento de força realizado segurando halteres em cada mão com as palmas das mãos voltadas para cima, o praticante flexiona os cotovelos para levantar os halteres em direção aos ombros, trabalhando os músculos dos braços (bíceps).",
-              "videoId": "k31LK_VASok",
-              "charge": [
-                {
-                  "date": "28/05",
-                  "weight": 0
-                }
-              ]
-            },
-            {
-              "id": "6f419102-4845-4fd0-af1a-ac137ec2d222",
-              "name": "Rosca Concentrada",
-              "description": "Um exercício de treinamento de força realizado sentado, apoiando o braço em uma superfície, o praticante flexiona o cotovelo para levantar um haltere em direção ao ombro, concentrando a tensão nos músculos do bíceps.",
-              "videoId": "k31LK_VASok",
-              "charge": [
-                {
-                  "date": "28/05",
                   "weight": 0
                 }
               ]
