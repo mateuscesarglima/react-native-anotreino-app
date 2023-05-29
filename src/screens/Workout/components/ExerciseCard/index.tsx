@@ -34,16 +34,35 @@ import {
 import YoutubeIframe from "react-native-youtube-iframe";
 import { ActivityIndicator } from "react-native-paper";
 import { IExercise } from "@Interfaces/index";
+import {
+  NavigationProp,
+  ParamListBase,
+  useNavigation,
+} from "@react-navigation/native";
+import { routeCodes } from "@Constants/routes";
 const YOUTUBE_FRAME = 180;
 
 interface ExerciseCardProps {
-  name: string;
+  exercise: IExercise;
   videoId?: string;
+  sheetId: string;
 }
 
-export const ExerciseCard = ({ name, videoId }: ExerciseCardProps) => {
+export const ExerciseCard = ({
+  exercise,
+  videoId,
+  sheetId,
+}: ExerciseCardProps) => {
   const [videoReady, setVideoReady] = useState(false);
+  const { navigate }: NavigationProp<ParamListBase> = useNavigation();
 
+  const handleOnClickWeight = () => {
+    navigate(routeCodes.CHARGE, {
+      charge: exercise.charge,
+      id: exercise.id,
+      sheetId: sheetId,
+    });
+  };
   return (
     <Container>
       <Content>
@@ -72,7 +91,7 @@ export const ExerciseCard = ({ name, videoId }: ExerciseCardProps) => {
         </Header>
         <Body>
           <ExerciseNameWrapper>
-            <ExerciseName>{name}</ExerciseName>
+            <ExerciseName>{exercise.name}</ExerciseName>
           </ExerciseNameWrapper>
           <SerieAndRepetitionWrapper>
             <Serie>
@@ -101,13 +120,22 @@ export const ExerciseCard = ({ name, videoId }: ExerciseCardProps) => {
             </Rest>
           </View>
           <Footer>
-            <RightSideFooter>
+            <RightSideFooter
+              onPress={() => {
+                handleOnClickWeight();
+              }}
+            >
               <RightWrapper>
-                <WeightValue>40.0KG</WeightValue>
+                <WeightValue>
+                  {exercise.charge[exercise.charge.length - 1].weight.toFixed(
+                    1
+                  )}{" "}
+                  Kg
+                </WeightValue>
               </RightWrapper>
             </RightSideFooter>
             <Divisor />
-            <LeftSideFooter>
+            <LeftSideFooter onPress={() => navigate(routeCodes.NOTES)}>
               <LeftWrapper>
                 <AnotationWrapper>
                   <WeightValue>
