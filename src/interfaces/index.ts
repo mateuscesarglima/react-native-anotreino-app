@@ -32,6 +32,7 @@ export interface IExercise {
   description: string;
   videoId?: string;
   charge: ICharge[];
+  note?: string;
 }
 
 export interface ICharge {

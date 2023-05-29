@@ -135,7 +135,13 @@ export const ExerciseCard = ({
               </RightWrapper>
             </RightSideFooter>
             <Divisor />
-            <LeftSideFooter onPress={() => navigate(routeCodes.NOTES)}>
+            <LeftSideFooter
+              onPress={() =>
+                navigate(routeCodes.NOTES, {
+                  exerciseId: exercise.id,
+                })
+              }
+            >
               <LeftWrapper>
                 <AnotationWrapper>
                   <WeightValue>

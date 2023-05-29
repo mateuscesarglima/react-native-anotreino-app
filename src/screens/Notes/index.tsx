@@ -1,6 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { BackButton, Icon } from "@Screens/Exercises/styles";
+import {
+  NavigationProp,
+  ParamListBase,
+  useNavigation,
+  useRoute,
+} from "@react-navigation/native";
 import {
   Container,
   Content,
@@ -13,17 +19,28 @@ import {
   SaveNoteButtonText,
   Title,
 } from "./styles";
-import { View } from "react-native";
-import {
-  NavigationProp,
-  ParamListBase,
-  useNavigation,
-} from "@react-navigation/native";
+import { useSheet } from "@Context/sheets";
+
+interface Params {
+  exerciseId: string;
+}
 
 export const Notes = () => {
   const { goBack }: NavigationProp<ParamListBase> = useNavigation();
+  const [note, setNote] = useState<string | undefined>("");
+  const { getNote, updateNote } = useSheet();
+  const route = useRoute();
+  const { exerciseId } = route.params as Params;
 
-  const [note, setNote] = useState("");
+  useEffect(() => {
+    const handleGetNote = async () => {
+      const response = await getNote(exerciseId);
+      if (response) {
+        setNote(response);
+      }
+    };
+    handleGetNote();
+  }, []);
 
   return (
     <Container>
@@ -48,8 +65,13 @@ export const Notes = () => {
             numberOfLines={4}
           />
         </NoteInputWrapper>
-        <SaveNoteButton enabled={note.length > 0 ? true : false}>
-          <SaveNoteButtonText enabled={note.length > 0 ? true : false}>
+        <SaveNoteButton
+          enabled={note && note.length > 0 ? true : false}
+          onPress={() => {
+            updateNote(exerciseId, note as string);
+          }}
+        >
+          <SaveNoteButtonText enabled={note && note.length > 0 ? true : false}>
             Salvar
           </SaveNoteButtonText>
         </SaveNoteButton>

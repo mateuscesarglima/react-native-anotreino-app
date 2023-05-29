@@ -120,28 +120,12 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
       info: data,
     };
     setUser({ ...user, info: data });
-
     await api.patch(`/users/${user.id}`, payload);
-
-    // await api.get(`/user/${user.id}`);
-
-    // const payload = {
-    //   info: user.info,
-    // };
-    // payload.info = data;
-    // try {
-    //   const response = await api.patch(`/user/${user.id}`, payload);
-    //   console.log(response.data);
-    // } catch (err) {
-    //   console.log(err);
-    // }
   };
 
   useEffect(() => {
     loadData();
   }, []);
-
-  console.log("TESTANDO", user);
 
   return (
     <AuthContext.Provider

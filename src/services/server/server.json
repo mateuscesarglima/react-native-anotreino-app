@@ -27,6 +27,7 @@
               "name": "Supino reto",
               "description": "Um exercício de treinamento de força realizado deitado em um banco plano, onde o praticante empurra uma barra carregada em direção ao peito.",
               "videoId": "sqOw2Y6uDWQ",
+              "note": "Testando",
               "charge": [
                 {
                   "date": "22/05",
@@ -47,6 +48,10 @@
                 {
                   "date": "28/05",
                   "weight": 40
+                },
+                {
+                  "date": "29/05",
+                  "weight": 50
                 }
               ]
             },
@@ -63,8 +68,13 @@
                 {
                   "date": "27/05",
                   "weight": 20
+                },
+                {
+                  "date": "29/05",
+                  "weight": 30
                 }
-              ]
+              ],
+              "note": "AUUUUU\nTestando"
             },
             {
               "id": "f07bca65-5293-4004-97db-b4f2ce177d84",
@@ -173,6 +183,24 @@
           "id": "93410f07-130a-4863-ace1-0988f7d35a0d",
           "name": "Ficha C",
           "exercises": []
+        },
+        {
+          "id": "e2174b49-60a3-4fb0-b401-6ac1d5a5c09a",
+          "name": "Ficha teste",
+          "exercises": [
+            {
+              "id": "0c4bbd92-90de-492a-bdd1-eba7e6d7bfeb",
+              "name": "Supino Inclinado c/ Halter",
+              "description": "Um exercício de treinamento de força realizado em um banco inclinado, onde o praticante segura halteres em cada mão e empurra-os para cima em direção ao peito.",
+              "videoId": "F4Q1g2z8MWM",
+              "charge": [
+                {
+                  "date": "29/05",
+                  "weight": 0
+                }
+              ]
+            }
+          ]
         }
       ]
     },

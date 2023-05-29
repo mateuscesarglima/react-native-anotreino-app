@@ -39,6 +39,8 @@ interface IFichaContextProps {
     newCharge: ICharge
   ) => Promise<void>;
   getCharge: (exerciseId: string, sheetId: string) => Promise<ICharge[]>;
+  getNote: (exerciseId: string) => Promise<string | undefined>;
+  updateNote: (exerciseId: string, newNote: string) => Promise<void>;
 }
 
 const FichaContext = createContext({} as IFichaContextProps);
@@ -208,6 +210,40 @@ export const FichaProvider = ({ children }: IFichaProviderProps) => {
     }
   };
 
+  const getNote = async (exerciseId: string) => {
+    const response = await api.get(`/users/${user.id}`);
+    const sheets = response.data.sheets as ISheet[];
+    const sheet = sheets.find((sheet) =>
+      sheet.exercises.find((exercise) => exercise.id === exerciseId)
+    );
+    const exercise = sheet?.exercises.find(
+      (exercise) => exercise.id === exerciseId
+    );
+    return exercise?.note;
+  };
+
+  const updateNote = async (exerciseId: string, newNote: string) => {
+    const payload = {
+      sheets: sheets,
+    };
+    const sheetIndex = sheets.findIndex((sheet) =>
+      sheet.exercises.find((exercise) => exercise.id === exerciseId)
+    );
+    const exerciseIndex = sheets[sheetIndex].exercises.findIndex(
+      (exercise) => exercise.id === exerciseId
+    );
+
+    console.log(payload.sheets[sheetIndex].exercises[exerciseIndex].note);
+
+    payload.sheets[sheetIndex].exercises[exerciseIndex].note = newNote;
+
+    console.log(payload);
+
+    const response = await api.patch(`/users/${user.id}`, payload);
+
+    setSheets(response.data.sheets);
+  };
+
   useEffect(() => {
     loadData();
   }, []);
@@ -224,6 +260,8 @@ export const FichaProvider = ({ children }: IFichaProviderProps) => {
         handleRemoveExercise,
         handleUpdateCharge,
         getCharge,
+        getNote,
+        updateNote,
       }}
     >
       {children}
@@ -242,6 +280,8 @@ export const useSheet = () => {
     handleRemoveExercise,
     handleUpdateCharge,
     getCharge,
+    getNote,
+    updateNote,
   } = useContext(FichaContext);
   return {
     sheets,
@@ -253,5 +293,7 @@ export const useSheet = () => {
     handleRemoveExercise,
     handleUpdateCharge,
     getCharge,
+    getNote,
+    updateNote,
   };
 };
