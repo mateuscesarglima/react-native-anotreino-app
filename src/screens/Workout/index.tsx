@@ -49,7 +49,11 @@ export const Workout = () => {
           keyExtractor={(key) => key.id}
           renderItem={({ item }) => (
             <WorkoutListWrapper>
-              <ExerciseCard name={item.name} videoId={item.videoId} />
+              <ExerciseCard
+                exercise={item}
+                videoId={item.videoId}
+                sheetId={sheet.id}
+              />
             </WorkoutListWrapper>
           )}
         />

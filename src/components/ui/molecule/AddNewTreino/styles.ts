@@ -36,3 +36,5 @@ export const ApplyButton = styled.TouchableOpacity`
   padding: 10px;
   border-radius: 10px;
 `;
+
+export const ApplyButtonText = styled.Text``;

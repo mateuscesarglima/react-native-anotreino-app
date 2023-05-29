@@ -42,13 +42,16 @@ export const SerieAndRepetitionWrapper = styled.View`
   margin-top: 20px;
 `;
 
+export const ExerciseNameWrapper = styled.View`
+  background-color: #ddd;
+  height: 80px;
+  justify-content: center;
+  padding-left: 20px;
+`;
+
 export const ExerciseName = styled.Text`
   font-size: ${RFValue(15)}px;
   letter-spacing: 1.2px;
-`;
-export const ExerciseNameWrapper = styled.View`
-  background-color: #ddd;
-  padding: 40px 20px 20px 20px;
 `;
 
 export const SerieValue = styled.Text`
@@ -102,10 +105,10 @@ export const Footer = styled.View`
   flex-direction: row;
   justify-content: space-around;
   width: 100%;
-  margin-top: 40px;
   border-top-width: 1px;
   border-top-color: #ddd;
   height: 47px;
+  margin-top: 40px;
 `;
 export const RightWrapper = styled.View``;
 export const RightSideFooter = styled(RectButton)`

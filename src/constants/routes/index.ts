@@ -6,4 +6,6 @@ export const routeCodes = {
   SELECT_EXERCISE: "SelectCategory",
   SELECTED_EXERCISE: "SelectedExercise",
   WORKOUT: "Workout",
+  CHARGE: "Charge",
+  NOTES: "Notes",
 };

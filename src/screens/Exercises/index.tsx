@@ -9,10 +9,12 @@ import {
 import { IExercise, ISheet } from "interfaces";
 import { CaretLeft } from "phosphor-react-native";
 import React, { useRef, useState } from "react";
-import { Pressable, RefreshControl } from "react-native";
+import { RefreshControl } from "react-native";
 
+import { SaibaMaisModal } from "@Components/ui/molecule/SaibaMaisModal";
 import { routeCodes } from "@Constants/routes";
 import { useSheet } from "@Context/sheets";
+import { Modalize } from "react-native-modalize";
 import {
   AddExerciseButton,
   AddExerciseContainer,
@@ -28,9 +30,6 @@ import {
   StartExerciseButtonContainer,
   Text,
 } from "./styles";
-import { Modalize } from "react-native-modalize";
-import { RectButton } from "react-native-gesture-handler";
-import { SaibaMaisModal } from "@Components/ui/molecule/SaibaMaisModal";
 
 interface Params {
   sheet: ISheet;
@@ -64,7 +63,7 @@ export const Exercises = () => {
       setUpdating(false);
     }, 1000);
   };
-  console.log(exercises);
+
   const modalizeRef = useRef<Modalize>(null);
 
   const onOpen = (description: string, name: string, videoId: string) => {
@@ -114,11 +113,14 @@ export const Exercises = () => {
           keyExtractor={(item) => item.name}
           renderItem={({ item }) => (
             <ExerciseFichaItem
+              id={item.id as string}
               name={item.name}
               img={""}
               description={item.description}
               videoId={item.videoId as string}
               onOpen={onOpen}
+              charge={item.charge}
+              sheetId={sheet.id as string}
             />
           )}
         />

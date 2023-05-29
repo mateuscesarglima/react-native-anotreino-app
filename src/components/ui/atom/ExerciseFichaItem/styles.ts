@@ -19,12 +19,14 @@ export const Img = styled.Text``;
 export const Header = styled.View`
   flex-direction: row;
   justify-content: space-between;
+  width: 280px;
 `;
 export const Title = styled.Text`
   font-weight: bold;
   font-size: ${RFValue(15)}px;
 `;
 export const Icon = styled(Feather)``;
+
 export const Description = styled.Text`
   width: 250px;
   align-items: center;
@@ -35,12 +37,16 @@ export const Main = styled.View`
 `;
 export const Footer = styled.View`
   margin-top: 10px;
-  justify-content: center;
+  justify-content: space-around;
   flex-direction: row;
   gap: 150px;
 `;
-export const LeftSide = styled.Text``;
-export const RightSide = styled.Text``;
+export const LeftSide = styled.Text`
+  font-weight: bold;
+`;
+export const RightSide = styled.Text`
+  font-weight: bold;
+`;
 
 export const SaibaMaisButton = styled.TouchableOpacity`
   align-items: center;
@@ -50,3 +56,5 @@ export const SaibaMaisText = styled.Text`
   text-transform: uppercase;
   color: ${({ theme }) => theme.colors.primary};
 `;
+
+export const WeightButton = styled.TouchableOpacity``;

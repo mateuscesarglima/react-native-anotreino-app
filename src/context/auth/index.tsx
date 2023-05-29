@@ -1,7 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { api } from "@Services/api/api";
 import { AxiosResponse } from "axios";
-import { IUser } from "interfaces";
+import { IUser, MedidasCorporais } from "interfaces";
 import React, {
   createContext,
   ReactNode,
@@ -29,6 +29,7 @@ interface IAuthContextProps {
   user: IUser;
   loadData: () => Promise<any>;
   userKey: string;
+  updateUserInfo: (data: MedidasCorporais) => void;
 }
 
 const AuthContext = createContext({} as IAuthContextProps);
@@ -47,7 +48,9 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
       let user = {
         id: data[0].id,
         email: data[0].email,
+        info: data[0].info,
       };
+
       await AsyncStorage.setItem(userKey, JSON.stringify(user));
       setIsAuthenticated(true);
     } catch (err) {
@@ -63,6 +66,7 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
         `/users/?email=${email}&password=${password}`
       );
 
+      console.log(response);
       if (response) {
         saveOnAsyncStorage(response);
       }
@@ -111,6 +115,14 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
     }
   };
 
+  const updateUserInfo = async (data: MedidasCorporais) => {
+    const payload = {
+      info: data,
+    };
+    setUser({ ...user, info: data });
+    await api.patch(`/users/${user.id}`, payload);
+  };
+
   useEffect(() => {
     loadData();
   }, []);
@@ -126,6 +138,7 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
         user,
         loadData,
         userKey,
+        updateUserInfo,
       }}
     >
       {children}
@@ -143,6 +156,7 @@ export const useAuth = () => {
     user,
     loadData,
     userKey,
+    updateUserInfo,
   } = useContext(AuthContext);
   return {
     signIn,
@@ -153,5 +167,6 @@ export const useAuth = () => {
     user,
     loadData,
     userKey,
+    updateUserInfo,
   };
 };
