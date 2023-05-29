@@ -3,6 +3,7 @@ import React from "react";
 import { ScrollView } from "react-native";
 import {
   AnamneseContainer,
+  AnamneseContainerPai,
   Container,
   ExitContainer,
   Field,
@@ -17,7 +18,11 @@ import {
   PesoAlturaContainer,
   PesoAlturaLabel,
   TitleTopo,
-  Topo,
+  Header,
+  AnamneseContainerEsq,
+  AnamneseContainerDir,
+  PesoColumn,
+  AlturaColumn
 } from "./styles";
 
 export const Profile = () => {
@@ -59,116 +64,128 @@ export const Profile = () => {
 
   return (
     <Container>
-      <Topo>
+      <Header>
+        <TitleTopo>Perfil</TitleTopo>
         <ExitContainer onPress={signOut}>
           <Icon name="exit-outline" size={24} color="white" />
         </ExitContainer>
-        <TitleTopo>Profile</TitleTopo>
         <NomeAluno>email@email.com</NomeAluno>
-      </Topo>
+      </Header>
+
       <ScrollView>
         <PesoAlturaContainer>
-          <PesoAlturaColumn>
+          <PesoColumn>
             <InputPeso
               value={weight}
               onChangeText={(text) => setWeight(text)}
               keyboardType="numeric"
             />
             <PesoAlturaLabel>Peso</PesoAlturaLabel>
-          </PesoAlturaColumn>
-          <PesoAlturaColumn>
+          </PesoColumn>
+          <AlturaColumn>
             <InputAltura
               value={height}
               onChangeText={(text) => setHeight(text)}
               keyboardType="numeric"
             />
             <PesoAlturaLabel>Altura</PesoAlturaLabel>
-          </PesoAlturaColumn>
+          </AlturaColumn>
         </PesoAlturaContainer>
         <IMCLabel>{calcularIMC()}</IMCLabel>
-
-        <AnamneseContainer>
-          <Field>
-            <Label>Busto (cm)</Label>
-            <Input
-              value={bust}
-              onChangeText={(text) => setBust(text)}
-              keyboardType="numeric"
-            />
-          </Field>
-          <Field>
-            <Label>Braço Esq. (cm)</Label>
-            <Input
-              value={leftArm}
-              onChangeText={(text) => setLeftArm(text)}
-              keyboardType="numeric"
-            />
-          </Field>
-          <Field>
-            <Label>Braço Dir. (cm)</Label>
-            <Input
-              value={rightArm}
-              onChangeText={(text) => setRightArm(text)}
-              keyboardType="numeric"
-            />
-          </Field>
-          <Field>
-            <Label>Abdômen (cm)</Label>
-            <Input
-              value={abdomen}
-              onChangeText={(text) => setAbdomen(text)}
-              keyboardType="numeric"
-            />
-          </Field>
-          <Field>
-            <Label>Cintura (cm)</Label>
-            <Input
-              value={waist}
-              onChangeText={(text) => setWaist(text)}
-              keyboardType="numeric"
-            />
-          </Field>
-          <Field>
-            <Label>Quadril (cm)</Label>
-            <Input
-              value={hip}
-              onChangeText={(text) => setHip(text)}
-              keyboardType="numeric"
-            />
-          </Field>
-          <Field>
-            <Label>Culote (cm)</Label>
-            <Input
-              value={saddlebags}
-              onChangeText={(text) => setSaddlebags(text)}
-              keyboardType="numeric"
-            />
-          </Field>
-          <Field>
-            <Label>Coxa Esq. (cm)</Label>
-            <Input
-              value={leftThigh}
-              onChangeText={(text) => setLeftThigh(text)}
-              keyboardType="numeric"
-            />
-          </Field>
-          <Field>
-            <Label>Coxa Dir. (cm)</Label>
-            <Input
-              value={rightThigh}
-              onChangeText={(text) => setRightThigh(text)}
-              keyboardType="numeric"
-            />
-          </Field>
-          <Field>
-            <Label>Panturrilha Esq. (cm)</Label>
-            <Input
-              value={leftCalf}
-              onChangeText={(text) => setLeftCalf(text)}
-              keyboardType="numeric"
-            />
-          </Field>
-        </AnamneseContainer>
+        <AnamneseContainerPai>
+          <AnamneseContainerEsq>
+            <Field>
+              <Label>Busto (cm)</Label>
+              <Input
+                value={bust}
+                onChangeText={(text) => setBust(text)}
+                keyboardType="numeric"
+              />
+            </Field>
+            <Field>
+              <Label>Braço Esq. (cm)</Label>
+              <Input
+                value={leftArm}
+                onChangeText={(text) => setLeftArm(text)}
+                keyboardType="numeric"
+              />
+            </Field>
+            <Field>
+              <Label>Braço Dir. (cm)</Label>
+              <Input
+                value={rightArm}
+                onChangeText={(text) => setRightArm(text)}
+                keyboardType="numeric"
+              />
+            </Field>
+            <Field>
+              <Label>Abdômen (cm)</Label>
+              <Input
+                value={abdomen}
+                onChangeText={(text) => setAbdomen(text)}
+                keyboardType="numeric"
+              />
+            </Field>
+            <Field>
+              <Label>Cintura (cm)</Label>
+              <Input
+                value={waist}
+                onChangeText={(text) => setWaist(text)}
+                keyboardType="numeric"
+              />
+            </Field>
+            <Field>
+              <Label>Quadril (cm)</Label>
+              <Input
+                value={hip}
+                onChangeText={(text) => setHip(text)}
+                keyboardType="numeric"
+              />
+            </Field>
+          </AnamneseContainerEsq>
+          <AnamneseContainerDir>
+            <Field>
+              <Label>Culote (cm)</Label>
+              <Input
+                value={saddlebags}
+                onChangeText={(text) => setSaddlebags(text)}
+                keyboardType="numeric"
+              />
+            </Field>
+            <Field>
+              <Label>Coxa Esq. (cm)</Label>
+              <Input
+                value={leftThigh}
+                onChangeText={(text) => setLeftThigh(text)}
+                keyboardType="numeric"
+              />
+            </Field>
+            <Field>
+              <Label>Coxa Dir. (cm)</Label>
+              <Input
+                value={rightThigh}
+                onChangeText={(text) => setRightThigh(text)}
+                keyboardType="numeric"
+              />
+            </Field>
+            <Field>
+              <Label>Panturrilha Esq. (cm)</Label>
+              <Input
+                value={leftCalf}
+                onChangeText={(text) => setLeftCalf(text)}
+                keyboardType="numeric"
+              />
+            </Field>
+            <Field>
+              <Label>Panturrilha Dir. (cm)</Label>
+              <Input
+                value={rightCalf}
+                onChangeText={(text) => setRightCalf(text)}
+                keyboardType="numeric"
+              />
+            </Field>
+          </AnamneseContainerDir>
+        </AnamneseContainerPai>
       </ScrollView>
     </Container>
   );
