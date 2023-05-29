@@ -3,6 +3,8 @@ import styled from "styled-components/native";
 import { Ionicons } from "@expo/vector-icons";
 import { TextInputMask } from "react-native-masked-text";
 import { RFValue } from "react-native-responsive-fontsize";
+import { getStatusBarHeight } from "react-native-iphone-x-helper";
+
 
 export const Container = styled.View`
   flex: 1;
@@ -25,21 +27,21 @@ export const Exit = styled.Text`
 `;
 
 export const ExitContainer = styled.TouchableOpacity`
+  position: absolute;
   align-self: flex-end;
   margin-top: 30px;
   margin-right: 10px;
 `;
 
-export const Topo = styled.View`
-  justify-content: center;
-  align-items: flex-start;
+export const Header = styled.View`
+  padding-top: ${getStatusBarHeight() + 40}px;
+  padding-bottom: 20px;
   background-color: ${({ theme }) => theme.colors.primary};
   width: 100%;
-  height: 200px;
 `;
 
 export const TitleTopo = styled.Text`
-  font-size: 50px;
+  font-size: 25px;
   color: white;
   align-self: center;
 `;
@@ -58,13 +60,22 @@ export const PesoAlturaContainer = styled.View`
   align-items: center;
 `;
 
-export const PesoAlturaColumn = styled.View`
+export const PesoColumn = styled.View`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 10px;
-  margin-right: 20px;
-  margin-top: 10px;
+  padding-right: 10px;
+  margin-top: 20px;
+
+`;
+
+export const AlturaColumn = styled.View`
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-right: 10px;
+  margin-top: 20px;
+
 `;
 
 export const PesoAlturaLabel = styled.Text`
@@ -75,7 +86,7 @@ export const PesoAlturaLabel = styled.Text`
 export const InputPeso = styled(TextInputMask).attrs({
   type: "custom",
   options: {
-    mask: "99.90",
+    mask: "999.90",
   },
 })`
   width: 115px;
@@ -112,10 +123,22 @@ export const IMCLabel = styled.Text`
   align-self: center;
 `;
 
-export const AnamneseContainer = styled.View`
-  flex-direction: column;
+export const AnamneseContainerPai = styled.View`
+  flex-direction: row;
+  align-items: flex-start;
   justify-content: center;
-  align-items: center;
+  margin-top: 20px;
+  width: 100%;
+`;
+
+export const AnamneseContainerEsq = styled.View`
+  flex-direction: column;
+  padding-left: 15px;
+`;
+
+export const AnamneseContainerDir = styled.View`
+  flex-direction: column;
+  padding-left: 50px;
 `;
 
 export const Title = styled.Text`
@@ -127,12 +150,12 @@ export const Field = styled.View`
 `;
 
 export const Label = styled.Text`
-  font-size: 18px;
+  font-size: 16px;
   margin-bottom: 5px;
 `;
 
 export const Input = styled.TextInput`
-  width: 300px;
+  width: 120px;
   height: 40px;
   border: 1px solid #ccc;
   border-radius: 5px;
