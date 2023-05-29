@@ -10,13 +10,13 @@ import {
   Title,
 } from "./styles";
 import { ExerciseCard } from "@Components/ui/molecule/ExerciseCard";
-import { IExerciseCategoryData } from "utils/mockedData";
+import { exercisesSelectedData } from "utils/mockedData";
 import { IExercise } from "interfaces";
 
 interface IExerciseSelect {
   selectedExercise: string;
   handleShowExerciseSelectModal: (exerciseName: string) => void;
-  exercises: IExerciseCategoryData;
+  exercises: typeof exercisesSelectedData;
   exerciseName: string;
   handleAddNewExercise: (newExercise: IExercise, fichaId: string) => void;
   fichaId: string;
@@ -60,6 +60,7 @@ export const ExerciseSelect = ({
           keyExtractor={(exercise) => exercise.id}
           renderItem={({ item }) => (
             <ExerciseCard
+              charge={item.charge}
               id={item.id}
               description={item.description}
               name={item.name}
@@ -69,6 +70,7 @@ export const ExerciseSelect = ({
                     id: item.id,
                     description: item.description,
                     name: item.name,
+                    charge: item.charge,
                   },
                   fichaId
                 )

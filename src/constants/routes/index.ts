@@ -7,4 +7,5 @@ export const routeCodes = {
   SELECTED_EXERCISE: "SelectedExercise",
   WORKOUT: "Workout",
   CHARGE: "Charge",
+  NOTES: "Notes",
 };

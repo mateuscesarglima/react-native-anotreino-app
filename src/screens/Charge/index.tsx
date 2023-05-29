@@ -26,6 +26,7 @@ import { ICharge } from "@Interfaces/index";
 import { format } from "date-fns";
 import { useSheet } from "@Context/sheets";
 import { RefreshControl, ScrollView } from "react-native-gesture-handler";
+import { get } from "react-native/Libraries/TurboModule/TurboModuleRegistry";
 const screenWidth = Dimensions.get("window").width;
 
 interface Params {
@@ -40,16 +41,15 @@ export const Charge = () => {
   const { charge, id, sheetId } = route.params as Params;
   const { goBack }: NavigationProp<ParamListBase> = useNavigation();
   const [updating, setUpdating] = useState(false);
-  const { loadData } = useSheet();
+  const { loadData, sheets, getCharge } = useSheet();
+  const [chargeValues, setChargeValues] = useState<ICharge[]>(charge);
+  const [updateCounter, setUpdateCounter] = useState(0);
 
-  useEffect(() => {
-    loadData();
-  }, [charge]);
   const data = {
-    labels: charge.map((item) => item.date),
+    labels: chargeValues.map((item) => item.date),
     datasets: [
       {
-        data: charge.map((item) => item.weight),
+        data: chargeValues.map((item) => item.weight),
         color: (opacity = 1) => `rgba(134, 65, 244, ${opacity})`, // optional
         strokeWidth: 2, // optional
       },
@@ -70,13 +70,24 @@ export const Charge = () => {
     setUpdating(true);
     setTimeout(() => {
       loadData();
+      loadChargeData();
       setUpdating(false);
     }, 1000);
   };
 
+  const loadChargeData = async () => {
+    const chargeTmp = await getCharge(id, sheetId);
+    setChargeValues(chargeTmp);
+  };
+
+  const handleUpdateCounter = () => {
+    setUpdateCounter(updateCounter + 1);
+  };
+
   useEffect(() => {
-    onUpdate();
-  }, []);
+    loadChargeData();
+    loadData();
+  }, [updateCounter]);
 
   return (
     <AvoidView behavior={Platform.OS === "ios" ? "height" : "padding"}>
@@ -86,10 +97,11 @@ export const Charge = () => {
         scrollViewProps={{ keyboardShouldPersistTaps: "handled" }}
       >
         <AddNewChargeModal
-          charge={charge}
+          charge={chargeValues}
           onClose={onClose}
           exerciseId={id}
           sheetId={sheetId}
+          handleUpdateCounter={handleUpdateCounter}
         />
       </Modalize>
 

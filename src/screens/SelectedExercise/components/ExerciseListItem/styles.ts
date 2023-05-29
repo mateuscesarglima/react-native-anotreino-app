@@ -8,22 +8,23 @@ interface ButtonProps {
 }
 
 export const Container = styled.View`
-  flex: 1;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   background-color: #ddd;
   margin-top: 20px;
-  height: 130px;
+  height: 120px;
   border-radius: 10px;
   overflow: hidden;
 `;
 
-export const Content = styled.View``;
+export const Content = styled.View`
+  width: 200px;
+`;
 
 export const Img = styled.Image`
   margin-left: 10px;
-  width: 70px;
+  width: 40px;
   height: 70px;
   align-items: center;
   justify-content: center;
@@ -33,13 +34,12 @@ export const Img = styled.Image`
 export const ItemName = styled.Text`
   font-size: ${RFValue(15)}px;
   margin-bottom: 10px;
-  width: 200px;
   font-weight: bold;
 `;
 
 export const ItemDescription = styled.Text`
   font-size: ${RFValue(12)}px;
-  width: 200px;
+
   flex-wrap: wrap;
 `;
 

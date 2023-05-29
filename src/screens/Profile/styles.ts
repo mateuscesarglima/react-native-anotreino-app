@@ -2,6 +2,7 @@ import { ButtonPrimary } from "@Components/ui/atom/Button";
 import styled from "styled-components/native";
 import { Ionicons } from "@expo/vector-icons";
 import { TextInputMask } from "react-native-masked-text";
+import { RFValue } from "react-native-responsive-fontsize";
 import { getStatusBarHeight } from "react-native-iphone-x-helper";
 
 
@@ -160,4 +161,18 @@ export const Input = styled.TextInput`
   border-radius: 5px;
   padding: 5px;
   font-size: 16px;
+`;
+
+export const ApplyButton = styled.TouchableOpacity`
+  justify-content: center;
+  align-items: center;
+  background-color: ${({ theme }) => theme.colors.primary};
+  padding: 15px;
+  border-radius: 8px;
+`;
+
+export const ApplyButtonText = styled.Text`
+  color: #fff;
+  font-size: ${RFValue(15)}px;
+  font-weight: bold;
 `;

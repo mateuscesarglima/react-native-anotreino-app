@@ -32,6 +32,7 @@ export interface IExercise {
   description: string;
   videoId?: string;
   charge: ICharge[];
+  note?: string;
 }
 
 export interface ICharge {
@@ -45,9 +46,24 @@ export interface ISheet {
   exercises: IExercise[];
 }
 
+export interface MedidasCorporais {
+  peso: string;
+  altura: string;
+  braco_esq: string;
+  braco_dir: string;
+  abdomen: string;
+  quadril: string;
+  coxa_esq: string;
+  coxa_dir: string;
+  panturrilha_esq: string;
+  panturrilha_dir: string;
+  cintura: string;
+}
+
 export interface IUser {
   id: string;
   email: string;
   password: string;
   sheets: ISheet;
+  info: MedidasCorporais;
 }

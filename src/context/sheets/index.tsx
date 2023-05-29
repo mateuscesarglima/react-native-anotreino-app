@@ -1,8 +1,6 @@
 import { useAuth } from "@Context/auth";
 import { api } from "@Services/api/api";
-import { getSheetById } from "@Services/api/sheet";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { ICharge, IExercise, ISheet, IUser } from "interfaces";
+import { ICharge, IExercise, ISheet } from "interfaces";
 import React, {
   ReactNode,
   createContext,
@@ -12,7 +10,6 @@ import React, {
 } from "react";
 import { Alert } from "react-native";
 import { Toast } from "react-native-toast-message/lib/src/Toast";
-import { Settings } from "react-native/types";
 
 interface StoragedSheet {
   id: string;
@@ -41,6 +38,9 @@ interface IFichaContextProps {
     sheetId: string,
     newCharge: ICharge
   ) => Promise<void>;
+  getCharge: (exerciseId: string, sheetId: string) => Promise<ICharge[]>;
+  getNote: (exerciseId: string) => Promise<string | undefined>;
+  updateNote: (exerciseId: string, newNote: string) => Promise<void>;
 }
 
 const FichaContext = createContext({} as IFichaContextProps);
@@ -180,6 +180,21 @@ export const FichaProvider = ({ children }: IFichaProviderProps) => {
     }
   };
 
+  const getCharge = async (exerciseId: string, sheetId: string) => {
+    try {
+      const response = await api.get(`/users/${user.id}`);
+      const sheet = response.data.sheets.find(
+        (sheet: ISheet) => sheet.id === sheetId
+      );
+      const exercise = sheet.exercises.find(
+        (exercise: IExercise) => exercise.id === exerciseId
+      );
+      return exercise.charge;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const loadData = async () => {
     setIsLoading(true);
     try {
@@ -193,6 +208,40 @@ export const FichaProvider = ({ children }: IFichaProviderProps) => {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const getNote = async (exerciseId: string) => {
+    const response = await api.get(`/users/${user.id}`);
+    const sheets = response.data.sheets as ISheet[];
+    const sheet = sheets.find((sheet) =>
+      sheet.exercises.find((exercise) => exercise.id === exerciseId)
+    );
+    const exercise = sheet?.exercises.find(
+      (exercise) => exercise.id === exerciseId
+    );
+    return exercise?.note;
+  };
+
+  const updateNote = async (exerciseId: string, newNote: string) => {
+    const payload = {
+      sheets: sheets,
+    };
+    const sheetIndex = sheets.findIndex((sheet) =>
+      sheet.exercises.find((exercise) => exercise.id === exerciseId)
+    );
+    const exerciseIndex = sheets[sheetIndex].exercises.findIndex(
+      (exercise) => exercise.id === exerciseId
+    );
+
+    console.log(payload.sheets[sheetIndex].exercises[exerciseIndex].note);
+
+    payload.sheets[sheetIndex].exercises[exerciseIndex].note = newNote;
+
+    console.log(payload);
+
+    const response = await api.patch(`/users/${user.id}`, payload);
+
+    setSheets(response.data.sheets);
   };
 
   useEffect(() => {
@@ -210,6 +259,9 @@ export const FichaProvider = ({ children }: IFichaProviderProps) => {
         isLoading,
         handleRemoveExercise,
         handleUpdateCharge,
+        getCharge,
+        getNote,
+        updateNote,
       }}
     >
       {children}
@@ -227,6 +279,9 @@ export const useSheet = () => {
     isLoading,
     handleRemoveExercise,
     handleUpdateCharge,
+    getCharge,
+    getNote,
+    updateNote,
   } = useContext(FichaContext);
   return {
     sheets,
@@ -237,5 +292,8 @@ export const useSheet = () => {
     isLoading,
     handleRemoveExercise,
     handleUpdateCharge,
+    getCharge,
+    getNote,
+    updateNote,
   };
 };

@@ -1,8 +1,10 @@
 import { useAuth } from "@Context/auth";
-import React from "react";
+import React, { useEffect } from "react";
 import { ScrollView } from "react-native";
 import {
   AnamneseContainer,
+  ApplyButton,
+  ApplyButtonText,
   AnamneseContainerPai,
   Container,
   ExitContainer,
@@ -26,21 +28,37 @@ import {
 } from "./styles";
 
 export const Profile = () => {
-  const { signOut } = useAuth();
-  const [weight, setWeight] = React.useState("");
-  const [height, setHeight] = React.useState("");
+  const { signOut, user, updateUserInfo } = useAuth();
+  const { info } = user;
+  const {
+    abdomen,
+    altura,
+    peso,
+    braco_dir,
+    braco_esq,
+    cintura,
+    quadril,
+    coxa_dir,
+    coxa_esq,
+    panturrilha_dir,
+    panturrilha_esq,
+  } = info;
+
+  const [weight, setWeight] = React.useState(peso);
+  const [height, setHeight] = React.useState(altura);
 
   const [bust, setBust] = React.useState("");
-  const [leftArm, setLeftArm] = React.useState("");
-  const [rightArm, setRightArm] = React.useState("");
-  const [abdomen, setAbdomen] = React.useState("");
-  const [waist, setWaist] = React.useState("");
-  const [hip, setHip] = React.useState("");
+  const [leftArm, setLeftArm] = React.useState(braco_esq);
+
+  const [rightArm, setRightArm] = React.useState(braco_dir);
+  const [abs, setAbs] = React.useState(abdomen);
+  const [waist, setWaist] = React.useState(cintura);
+  const [hip, setHip] = React.useState(quadril);
   const [saddlebags, setSaddlebags] = React.useState("");
-  const [leftThigh, setLeftThigh] = React.useState("");
-  const [rightThigh, setRightThigh] = React.useState("");
-  const [leftCalf, setLeftCalf] = React.useState("");
-  const [rightCalf, setRightCalf] = React.useState("");
+  const [leftThigh, setLeftThigh] = React.useState(coxa_esq);
+  const [rightThigh, setRightThigh] = React.useState(coxa_dir);
+  const [leftCalf, setLeftCalf] = React.useState(panturrilha_esq);
+  const [rightCalf, setRightCalf] = React.useState(panturrilha_dir);
 
   const calcularIMC = () => {
     const pesoFloat = parseFloat(weight);
@@ -62,6 +80,23 @@ export const Profile = () => {
     return "";
   };
 
+  const handleOnUpdate = () => {
+    const payload = {
+      peso: weight,
+      altura: height,
+      braco_dir: rightArm,
+      braco_esq: leftArm,
+      cintura: waist,
+      quadril: hip,
+      coxa_dir: rightThigh,
+      coxa_esq: leftThigh,
+      panturrilha_dir: rightCalf,
+      panturrilha_esq: leftCalf,
+      abdomen: abs,
+    };
+    updateUserInfo(payload);
+  };
+
   return (
     <Container>
       <Header>
@@ -72,7 +107,10 @@ export const Profile = () => {
         <NomeAluno>email@email.com</NomeAluno>
       </Header>
 
-      <ScrollView>
+      <ScrollView
+        contentContainerStyle={{ paddingBottom: 20 }}
+        showsVerticalScrollIndicator={false}
+      >
         <PesoAlturaContainer>
           <PesoColumn>
             <InputPeso
@@ -121,8 +159,8 @@ export const Profile = () => {
             <Field>
               <Label>Abdômen (cm)</Label>
               <Input
-                value={abdomen}
-                onChangeText={(text) => setAbdomen(text)}
+                value={abs}
+                onChangeText={(text) => setAbs(text)}
                 keyboardType="numeric"
               />
             </Field>
@@ -186,6 +224,13 @@ export const Profile = () => {
             </Field>
           </AnamneseContainerDir>
         </AnamneseContainerPai>
+        <ApplyButton
+            onPress={() => {
+              handleOnUpdate();
+            }}
+        >
+          <ApplyButtonText>Atualizar</ApplyButtonText>
+        </ApplyButton>
       </ScrollView>
     </Container>
   );

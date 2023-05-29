@@ -19,12 +19,14 @@ export const Img = styled.Text``;
 export const Header = styled.View`
   flex-direction: row;
   justify-content: space-between;
+  width: 280px;
 `;
 export const Title = styled.Text`
   font-weight: bold;
   font-size: ${RFValue(15)}px;
 `;
 export const Icon = styled(Feather)``;
+
 export const Description = styled.Text`
   width: 250px;
   align-items: center;
