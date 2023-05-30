@@ -1,57 +1,42 @@
 import { ButtonPrimary } from "@Components/ui/atom/Button";
-import styled from "styled-components/native";
 import { Ionicons } from "@expo/vector-icons";
+import { getStatusBarHeight } from "react-native-iphone-x-helper";
 import { TextInputMask } from "react-native-masked-text";
 import { RFValue } from "react-native-responsive-fontsize";
-import { getStatusBarHeight } from "react-native-iphone-x-helper";
-
+import styled from "styled-components/native";
 
 export const Container = styled.View`
   flex: 1;
-  justify-content: flex-start;
-  align-items: center;
 `;
 
 export const Icon = styled(Ionicons)`
   color: #fff;
-  align-self: flex-end;
-  font-size: 38px;
-`;
-
-export const Exit = styled.Text`
-  font-size: 35px;
-  color: black;
-  align-self: flex-end;
-  margin-left: 350px;
-  margin-top: 10px;
-`;
-
-export const ExitContainer = styled.TouchableOpacity`
-  position: absolute;
-  align-self: flex-end;
-  margin-top: 30px;
-  margin-right: 10px;
 `;
 
 export const Header = styled.View`
-  padding-top: ${getStatusBarHeight() + 40}px;
+  align-items: center;
+
   padding-bottom: 20px;
-  background-color: ${({ theme }) => theme.colors.primary};
   width: 100%;
+  padding-top: ${getStatusBarHeight() + 20}px;
+  background-color: ${({ theme }) => theme.colors.primary};
+`;
+
+export const ExitContainer = styled.TouchableOpacity`
+  align-self: flex-end;
+  padding-right: 20px;
 `;
 
 export const TitleTopo = styled.Text`
   font-size: 25px;
   color: white;
-  align-self: center;
+  font-weight: bold;
 `;
 
 export const NomeAluno = styled.Text`
   font-size: 22px;
-  margin-bottom: 5px;
+
   color: white;
-  align-self: flex-start;
-  margin-left: 20px;
 `;
 
 export const PesoAlturaContainer = styled.View`
@@ -66,7 +51,6 @@ export const PesoColumn = styled.View`
   align-items: center;
   padding-right: 10px;
   margin-top: 20px;
-
 `;
 
 export const AlturaColumn = styled.View`
@@ -75,7 +59,6 @@ export const AlturaColumn = styled.View`
   align-items: center;
   padding-right: 10px;
   margin-top: 20px;
-
 `;
 
 export const PesoAlturaLabel = styled.Text`
@@ -169,6 +152,7 @@ export const ApplyButton = styled.TouchableOpacity`
   background-color: ${({ theme }) => theme.colors.primary};
   padding: 15px;
   border-radius: 8px;
+  width: 300px;
 `;
 
 export const ApplyButtonText = styled.Text`

@@ -1,14 +1,17 @@
 import { useAuth } from "@Context/auth";
-import React, { useEffect } from "react";
-import { ScrollView } from "react-native";
+import React from "react";
+import { ScrollView, View } from "react-native";
 import {
-  AnamneseContainer,
+  AlturaColumn,
+  AnamneseContainerDir,
+  AnamneseContainerEsq,
+  AnamneseContainerPai,
   ApplyButton,
   ApplyButtonText,
-  AnamneseContainerPai,
   Container,
   ExitContainer,
   Field,
+  Header,
   IMCLabel,
   Icon,
   Input,
@@ -16,15 +19,10 @@ import {
   InputPeso,
   Label,
   NomeAluno,
-  PesoAlturaColumn,
   PesoAlturaContainer,
   PesoAlturaLabel,
-  TitleTopo,
-  Header,
-  AnamneseContainerEsq,
-  AnamneseContainerDir,
   PesoColumn,
-  AlturaColumn
+  TitleTopo,
 } from "./styles";
 
 export const Profile = () => {
@@ -100,10 +98,10 @@ export const Profile = () => {
   return (
     <Container>
       <Header>
-        <TitleTopo>Perfil</TitleTopo>
         <ExitContainer onPress={signOut}>
-          <Icon name="exit-outline" size={24} color="white" />
+          <Icon name="exit-outline" size={35} color="white" />
         </ExitContainer>
+        <TitleTopo>Perfil</TitleTopo>
         <NomeAluno>email@email.com</NomeAluno>
       </Header>
 
@@ -132,14 +130,6 @@ export const Profile = () => {
         <IMCLabel>{calcularIMC()}</IMCLabel>
         <AnamneseContainerPai>
           <AnamneseContainerEsq>
-            <Field>
-              <Label>Busto (cm)</Label>
-              <Input
-                value={bust}
-                onChangeText={(text) => setBust(text)}
-                keyboardType="numeric"
-              />
-            </Field>
             <Field>
               <Label>Braço Esq. (cm)</Label>
               <Input
@@ -183,14 +173,6 @@ export const Profile = () => {
           </AnamneseContainerEsq>
           <AnamneseContainerDir>
             <Field>
-              <Label>Culote (cm)</Label>
-              <Input
-                value={saddlebags}
-                onChangeText={(text) => setSaddlebags(text)}
-                keyboardType="numeric"
-              />
-            </Field>
-            <Field>
               <Label>Coxa Esq. (cm)</Label>
               <Input
                 value={leftThigh}
@@ -224,13 +206,15 @@ export const Profile = () => {
             </Field>
           </AnamneseContainerDir>
         </AnamneseContainerPai>
-        <ApplyButton
+        <View style={{ justifyContent: "center", alignItems: "center" }}>
+          <ApplyButton
             onPress={() => {
               handleOnUpdate();
             }}
-        >
-          <ApplyButtonText>Atualizar</ApplyButtonText>
-        </ApplyButton>
+          >
+            <ApplyButtonText>Atualizar</ApplyButtonText>
+          </ApplyButton>
+        </View>
       </ScrollView>
     </Container>
   );
