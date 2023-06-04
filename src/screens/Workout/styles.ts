@@ -6,7 +6,7 @@ import { getStatusBarHeight } from "react-native-iphone-x-helper";
 import { Dimensions, FlatList, FlatListProps } from "react-native";
 import { IExercise } from "@Interfaces/index";
 
-export const Container = styled.View`
+export const AvoidView = styled.KeyboardAvoidingView`
   flex: 1;
   background-color: #495057;
 `;
@@ -43,10 +43,14 @@ export const DoneExercises = styled.Text`
   font-size: ${RFValue(15)}px;
 `;
 
-export const Main = styled.View``;
+export const Main = styled.View`
+  width: 100%;
+`;
 
 export const WorkoutListWrapper = styled.View`
   width: ${Dimensions.get("window").width - 50}px;
+  justify-content: center;
+  align-items: center;
 `;
 export const WorkoutList = styled(
   FlatList as new (props: FlatListProps<IExercise>) => FlatList<IExercise>
@@ -60,7 +64,6 @@ export const ExercisesIndexes = styled.View`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-
   gap: 5px;
 `;
 export const Footer = styled.View`

@@ -9,7 +9,6 @@ export const Content = styled.View`
   border-radius: 8px;
   margin-top: 30px;
   background-color: #fff;
-  margin-left: 15px;
 `;
 export const Header = styled.View`
   background-color: #fff;
@@ -37,7 +36,7 @@ export const ButtonDoneText = styled.Text`
   font-size: ${RFValue(15)}px;
   font-weight: bold;
   text-transform: uppercase;
-  letter-spacing: 1;
+  letter-spacing: 1px;
 `;
 
 export const ButtonDoneExercise = styled(RectButton)`

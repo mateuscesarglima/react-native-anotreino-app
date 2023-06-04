@@ -1,8 +1,18 @@
 import React, { useRef, useState } from "react";
 
+import { IExercise, ISheet } from "@Interfaces/index";
 import {
+  NavigationProp,
+  ParamListBase,
+  useNavigation,
+  useRoute,
+} from "@react-navigation/native";
+import { Dimensions, View, ViewToken } from "react-native";
+import { FlatList } from "react-native-gesture-handler";
+import { ExerciseCard } from "./components/ExerciseCard";
+import {
+  AvoidView,
   BackButton,
-  Container,
   Content,
   DoneExercises,
   EndWorkoutButton,
@@ -16,16 +26,8 @@ import {
   WorkoutList,
   WorkoutListWrapper,
 } from "./styles";
-import { ExerciseCard } from "./components/ExerciseCard";
-import {
-  NavigationProp,
-  ParamListBase,
-  useNavigation,
-  useRoute,
-} from "@react-navigation/native";
-import { IExercise, ISheet } from "@Interfaces/index";
-import { Dimensions, View, ViewToken } from "react-native";
-import { FlatList } from "react-native-gesture-handler";
+import { Alert } from "react-native";
+import { routeCodes } from "@Constants/routes";
 
 interface Params {
   sheet: ISheet;
@@ -39,7 +41,7 @@ interface ChangeExerciseProps {
 const { width } = Dimensions.get("window");
 
 export const Workout = () => {
-  const { goBack }: NavigationProp<ParamListBase> = useNavigation();
+  const { goBack, navigate }: NavigationProp<ParamListBase> = useNavigation();
   const route = useRoute();
   const { sheet } = route.params as Params;
   const [doneExercises, setDoneExercises] = useState<IExercise[]>([]);
@@ -69,12 +71,34 @@ export const Workout = () => {
   const [exerciseIndex, setExerciseIndex] = useState(0);
 
   const indexChanged = useRef((info: ChangeExerciseProps) => {
-    const index = info.viewableItems[0].index!;
+    const index = info?.viewableItems[0]?.index!;
     setExerciseIndex(index);
   });
 
+  const onFinishExercise = () => {
+    if (doneExercises.length < sheet.exercises.length) {
+      Alert.alert(
+        "Deseja realmente finalizar este treino?",
+        "Existe exercícios que não foram finalizados",
+        [
+          {
+            text: "Cancelar",
+            onPress: () => {},
+            style: "cancel",
+          },
+          {
+            text: "Finalizar",
+            onPress: () => {
+              navigate(routeCodes.HOME);
+            },
+          },
+        ]
+      );
+    }
+  };
+
   return (
-    <Container>
+    <AvoidView>
       <Header>
         <BackButton onPress={goBack}>
           <Icon name="chevron-left" size={30} />
@@ -89,11 +113,10 @@ export const Workout = () => {
       </Header>
       <Main>
         <WorkoutList
-          snapToAlignment="center"
           decelerationRate="fast"
           showsHorizontalScrollIndicator={false}
           snapToOffsets={[...Array(sheet.exercises.length)].map(
-            (_, i) => i * width
+            (_, i) => i * (width - 50)
           )}
           data={sheet.exercises}
           keyExtractor={(key) => key.id}
@@ -109,6 +132,9 @@ export const Workout = () => {
               />
             </WorkoutListWrapper>
           )}
+          viewabilityConfig={{
+            viewAreaCoveragePercentThreshold: 50,
+          }}
           onViewableItemsChanged={indexChanged.current}
         />
       </Main>
@@ -142,10 +168,10 @@ export const Workout = () => {
         />
       </ExercisesIndexes>
       <Footer>
-        <EndWorkoutButton>
+        <EndWorkoutButton onPress={onFinishExercise}>
           <EndWorkoutText>Finalizar treino</EndWorkoutText>
         </EndWorkoutButton>
       </Footer>
-    </Container>
+    </AvoidView>
   );
 };
