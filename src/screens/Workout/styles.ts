@@ -56,4 +56,31 @@ export const WorkoutList = styled(
   contentContainerStyle: {},
 })``;
 
-export const Footer = styled.View``;
+export const ExercisesIndexes = styled.View`
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  gap: 5px;
+`;
+export const Footer = styled.View`
+  justify-content: center;
+  align-items: center;
+  bottom: 0px;
+  margin-top: 40px;
+`;
+
+export const EndWorkoutButton = styled(RectButton)`
+  background-color: ${({ theme }) => theme.colors.primary};
+  width: 80%;
+  border-radius: 8px;
+  padding: 15px 0px;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const EndWorkoutText = styled.Text`
+  font-size: ${RFValue(15)}px;
+  color: #fff;
+  font-weight: bold;
+`;

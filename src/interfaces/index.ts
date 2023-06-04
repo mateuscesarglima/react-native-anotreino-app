@@ -35,6 +35,11 @@ export interface IExercise {
   note?: string;
 }
 
+export interface IActiveExercise {
+  id: string;
+  startDate: Date;
+}
+
 export interface ICharge {
   date: string;
   weight: number;

@@ -16,6 +16,7 @@ import * as Font from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import Toast from "react-native-toast-message";
 import { ThemeProvider } from "styled-components";
+import { CountdownProvider } from "@Context/Countdown";
 
 SplashScreen.preventAutoHideAsync().catch((err) => console.log(err));
 

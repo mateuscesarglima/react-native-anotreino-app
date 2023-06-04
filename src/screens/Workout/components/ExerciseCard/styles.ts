@@ -5,7 +5,7 @@ import { RectButton } from "react-native-gesture-handler";
 
 export const Container = styled.View``;
 export const Content = styled.View`
-  width: 95%;
+  width: 320px;
   border-radius: 8px;
   margin-top: 30px;
   background-color: #fff;
@@ -16,6 +16,36 @@ export const Header = styled.View`
   height: 180px;
   border-top-right-radius: 8px;
   border-top-left-radius: 8px;
+`;
+
+interface isDoneWrapperProps {
+  isDone: boolean;
+}
+
+export const IsDoneWrapper = styled.View<isDoneWrapperProps>`
+  position: absolute;
+  top: 160px;
+  background-color: ${({ isDone, theme }) =>
+    isDone ? theme.colors.quarternary : "orange"};
+  z-index: 1;
+  border-radius: 8px;
+  justify-content: center;
+  align-self: center;
+`;
+
+export const ButtonDoneText = styled.Text`
+  font-size: ${RFValue(15)}px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1;
+`;
+
+export const ButtonDoneExercise = styled(RectButton)`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  gap: 15px;
+  padding: 10px 10px;
 `;
 
 export const Body = styled.View`
@@ -88,7 +118,7 @@ export const TimeWrapper = styled.View`
   align-items: center;
 `;
 export const Time = styled.Text``;
-export const ButtonPlay = styled(Feather)`
+export const ButtonIcon = styled(Feather)`
   color: #fff;
 `;
 

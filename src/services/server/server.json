@@ -5,10 +5,10 @@
       "email": "Admin@email.com",
       "password": "testando123",
       "info": {
-        "peso": "80",
-        "altura": "1.80",
-        "braco_dir": "20",
-        "braco_esq": "20",
+        "peso": "90",
+        "altura": "2.00",
+        "braco_dir": "30",
+        "braco_esq": "30",
         "cintura": "10",
         "quadril": "10",
         "coxa_dir": "10",
@@ -94,7 +94,8 @@
                   "date": "28/05",
                   "weight": 20
                 }
-              ]
+              ],
+              "note": "banco 4,5\nTeste"
             },
             {
               "id": "1f671324-db94-4c93-ad37-ab915875c600",
@@ -177,7 +178,48 @@
         {
           "id": "9a2b6508-8248-4d16-bc9f-dc71cdecc3ca",
           "name": "Ficha B",
-          "exercises": []
+          "exercises": [
+            {
+              "id": "b5247cd0-ae7e-4f74-bf01-35cd567f3085",
+              "name": "Remada Curvada no Smith",
+              "description": " Um exercício de treinamento de força realizado no Smith Machine, onde o praticante se inclina para a frente e puxa uma barra em direção ao abdômen, focando nos músculos das costas.",
+              "videoId": "qnHNjVcVKYo",
+              "charge": [
+                {
+                  "date": "30/05",
+                  "weight": 0
+                },
+                {
+                  "date": "04/06",
+                  "weight": 20
+                }
+              ]
+            },
+            {
+              "id": "72036e86-5989-45ba-8071-373f76b4fb34",
+              "name": "Supino Inclinado c/ Halter",
+              "description": "Um exercício de treinamento de força realizado em um banco inclinado, onde o praticante segura halteres em cada mão e empurra-os para cima em direção ao peito.",
+              "videoId": "F4Q1g2z8MWM",
+              "charge": [
+                {
+                  "date": "04/06",
+                  "weight": 0
+                }
+              ]
+            },
+            {
+              "id": "32702f4c-c306-4a52-8436-0ef21344d271",
+              "name": "Supino reto",
+              "description": "Um exercício de treinamento de força realizado deitado em um banco plano, onde o praticante empurra uma barra carregada em direção ao peito.",
+              "videoId": "sqOw2Y6uDWQ",
+              "charge": [
+                {
+                  "date": "04/06",
+                  "weight": 0
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "93410f07-130a-4863-ace1-0988f7d35a0d",
