@@ -1,5 +1,5 @@
 export const routeCodes = {
-  HOME: "/",
+  HOME: "Home",
   EXERCISES: "Exercises",
   HIT: "Hit",
   PROFILE: "Profile",

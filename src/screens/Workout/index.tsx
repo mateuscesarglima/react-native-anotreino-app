@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import { IExercise, ISheet } from "@Interfaces/index";
 import {
@@ -96,6 +96,19 @@ export const Workout = () => {
       );
     }
   };
+
+  useEffect(() => {
+    if (doneExercises.length === sheet.exercises.length) {
+      Alert.alert("Parabéns!", "Você finalizou o treino com sucesso!", [
+        {
+          text: "Ok",
+          onPress: () => {
+            navigate(routeCodes.HOME);
+          },
+        },
+      ]);
+    }
+  }, [doneExercises]);
 
   return (
     <AvoidView>
