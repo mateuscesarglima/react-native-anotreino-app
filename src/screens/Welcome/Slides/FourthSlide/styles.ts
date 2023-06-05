@@ -32,5 +32,5 @@ export const ImageContainer = styled.View`
 
 export const AnotreinoLogoImage = styled.Image`
   width: 100%;
-  height: 300px;
+  height: 320px;
 `;
