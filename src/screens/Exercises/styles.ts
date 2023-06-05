@@ -29,7 +29,7 @@ export const BackButton = styled.TouchableOpacity`
 `;
 
 export const HeaderText = styled.Text`
-  font-size: 30px;
+  font-size: 20px;
   font-weight: bold;
   color: #fff;
   align-self: center;

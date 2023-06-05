@@ -19,7 +19,7 @@ export const Container = styled.View`
 `;
 
 export const Content = styled.View`
-  width: 200px;
+  flex: 1;
 `;
 
 export const Img = styled.Image`

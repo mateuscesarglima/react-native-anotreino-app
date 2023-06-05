@@ -9,7 +9,6 @@ import {
   Container,
   Content,
   Icon,
-  Img,
   ItemDescription,
   ItemName,
 } from "./styles";
@@ -58,11 +57,6 @@ export const ExerciseListItem = ({
         </LoadContainer>
       ) : (
         <>
-          <Img
-            source={{
-              uri: "https://img2.gratispng.com/20180713/thx/kisspng-pulldown-exercise-weight-training-latissimus-dorsi-neck-muscle-5b4922d8728b45.1547314915315197044692.jpg",
-            }}
-          />
           <Content style={{ padding: 10 }}>
             <ItemName>{name}</ItemName>
             <ScrollView>

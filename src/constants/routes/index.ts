@@ -8,4 +8,7 @@ export const routeCodes = {
   WORKOUT: "Workout",
   CHARGE: "Charge",
   NOTES: "Notes",
+  TIMER_SELECT: "TimerSelect",
+  SELECT_LEVEL: "SelectLevel",
+  HIT_RESUME: "HitResume",
 };

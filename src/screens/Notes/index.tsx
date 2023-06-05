@@ -20,6 +20,7 @@ import {
   Title,
 } from "./styles";
 import { useSheet } from "@Context/sheets";
+import { Toast } from "react-native-toast-message/lib/src/Toast";
 
 interface Params {
   exerciseId: string;
@@ -69,6 +70,12 @@ export const Notes = () => {
           enabled={note && note.length > 0 ? true : false}
           onPress={() => {
             updateNote(exerciseId, note as string);
+            Toast.show({
+              type: "success",
+              text1: "Alerta",
+              text2: "Anotação salva com sucesso!",
+              visibilityTime: 2000,
+            });
           }}
         >
           <SaveNoteButtonText enabled={note && note.length > 0 ? true : false}>

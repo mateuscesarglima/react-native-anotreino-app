@@ -9,6 +9,9 @@ import React from "react";
 import { BottomTabRoutes } from "./BottomTabRoutes";
 import { Charge } from "@Screens/Charge";
 import { Notes } from "@Screens/Notes";
+import { TimerSelect } from "@Screens/TimerSelect";
+import { SelectLevel } from "@Screens/SelectLevel";
+import { HitResume } from "@Screens/HitResume";
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -65,6 +68,9 @@ export const StackRoutes = () => {
       <Screen name="Workout" component={Workout} />
       <Screen name="Charge" component={Charge} />
       <Screen name="Notes" component={Notes} />
+      <Screen name="TimerSelect" component={TimerSelect} />
+      <Screen name="SelectLevel" component={SelectLevel} />
+      <Screen name="HitResume" component={HitResume} />
     </Navigator>
   );
 };

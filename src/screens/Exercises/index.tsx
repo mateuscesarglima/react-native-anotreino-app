@@ -90,7 +90,7 @@ export const Exercises = () => {
         <HeaderText>{currentSheet.name}</HeaderText>
         {currentSheet.exercises.length === 0 ? null : (
           <AddExerciseButton onPress={handleOnPress}>
-            <Icon name="plus-circle" size={50} color={"#FFF"} />
+            <Icon name="plus-circle" size={45} color={"#FFF"} />
           </AddExerciseButton>
         )}
       </Header>

@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 
 import { AddNewChargeModal } from "@Components/ui/molecule/AddNewChargeModal";
+import { useSheet } from "@Context/sheets";
+import { ICharge } from "@Interfaces/index";
 import { BackButton } from "@Screens/Exercises/styles";
 import {
   NavigationProp,
@@ -10,6 +12,7 @@ import {
 } from "@react-navigation/native";
 import { Dimensions, Platform } from "react-native";
 import { LineChart } from "react-native-chart-kit";
+import { RefreshControl, ScrollView } from "react-native-gesture-handler";
 import { Modalize } from "react-native-modalize";
 import { useTheme } from "styled-components";
 import {
@@ -22,11 +25,6 @@ import {
   Icon,
   Title,
 } from "./styles";
-import { ICharge } from "@Interfaces/index";
-import { format } from "date-fns";
-import { useSheet } from "@Context/sheets";
-import { RefreshControl, ScrollView } from "react-native-gesture-handler";
-import { get } from "react-native/Libraries/TurboModule/TurboModuleRegistry";
 const screenWidth = Dimensions.get("window").width;
 
 interface Params {

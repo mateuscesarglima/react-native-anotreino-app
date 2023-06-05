@@ -119,20 +119,17 @@ export const ExerciseCard = ({
   };
 
   async function playSound() {
-    console.log("Loading Sound");
     const { sound } = await Audio.Sound.createAsync(
       require("@Assets/sounds/interval.wav")
     );
     setAlarmSound(sound);
 
-    console.log("Playing Sound");
     await sound.playAsync();
   }
 
   React.useEffect(() => {
     return alarmSound
       ? () => {
-          console.log("Unloading alarmSound");
           alarmSound.unloadAsync();
         }
       : undefined;
