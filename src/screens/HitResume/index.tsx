@@ -19,7 +19,7 @@ import {
   TableRowItemEsforcoText,
   TableRowItemWrapper,
 } from "./styles";
-import { hitData } from "../../utils/HitData";
+import { hitData_10, hitData_15, hitData_25 } from "../../utils/HitData";
 import { ScrollView, View } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 
@@ -28,7 +28,7 @@ const colors: any = {
   Moderado: "#2f9e44",
   Moderado_Alto: "#fcc419",
   Máximo: "#e03131",
-  Forte: "#fd7e14",
+  Forte: "#df6e11",
 };
 
 interface Params {
@@ -48,26 +48,38 @@ export const HitResume = () => {
   const { navigate }: NavigationProp<ParamListBase> = useNavigation();
   const { level, time } = route.params as Params;
   const [levelData, setLevelData] = useState<LevelData[]>([]);
+  const [hitTime, setHitTime] = useState<LevelData[]>([]);
+
+  const getHitTime = (time: string) => {
+    switch (time) {
+      case "10'":
+        return hitData_10;
+      case "15'":
+        return hitData_15;
+      case "25'":
+        return hitData_25;
+    }
+  };
 
   const getLevelData = (level: string) => {
     switch (level) {
       case "0":
-        setLevelData(hitData.level_0);
+        setLevelData(getHitTime(time)?.level_0 as LevelData[]);
         break;
       case "1":
-        setLevelData(hitData.level_1);
+        setLevelData(getHitTime(time)?.level_1 as LevelData[]);
         break;
       case "2":
-        setLevelData(hitData.level_2);
+        setLevelData(getHitTime(time)?.level_2 as LevelData[]);
         break;
       case "3":
-        setLevelData(hitData.level_3);
+        setLevelData(getHitTime(time)?.level_3 as LevelData[]);
         break;
       case "4":
-        setLevelData(hitData.level_4);
+        setLevelData(getHitTime(time)?.level_4 as LevelData[]);
         break;
       case "5":
-        setLevelData(hitData.level_5);
+        setLevelData(getHitTime(time)?.level_5 as LevelData[]);
         break;
     }
   };

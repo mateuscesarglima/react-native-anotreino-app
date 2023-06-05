@@ -30,6 +30,7 @@ interface ChangeIndexProps {
 export const Welcome = () => {
   const { navigate }: NavigationProp<ParamListBase> = useNavigation();
   const [listIndex, setListIndex] = useState(0);
+
   const slides: SlidesProps[] = [
     { id: 1, component: <C.FirstSlide /> },
     { id: 2, component: <C.SecondSlide /> },

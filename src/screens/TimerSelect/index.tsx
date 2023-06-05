@@ -44,7 +44,7 @@ export const TimerSelect = () => {
     },
     {
       id: 3,
-      time: "20'",
+      time: "25'",
     },
   ];
 

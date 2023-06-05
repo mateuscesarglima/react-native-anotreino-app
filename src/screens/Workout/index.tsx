@@ -7,7 +7,8 @@ import {
   useNavigation,
   useRoute,
 } from "@react-navigation/native";
-import { Dimensions, View, ViewToken } from "react-native";
+import { Dimensions, LogBox, View, ViewToken } from "react-native";
+import ConfettiCannon from "react-native-confetti-cannon";
 import { FlatList } from "react-native-gesture-handler";
 import { ExerciseCard } from "./components/ExerciseCard";
 import {
@@ -28,6 +29,9 @@ import {
 } from "./styles";
 import { Alert } from "react-native";
 import { routeCodes } from "@Constants/routes";
+import { Audio } from "expo-av";
+
+LogBox.ignoreAllLogs(true);
 
 interface Params {
   sheet: ISheet;
@@ -45,6 +49,7 @@ export const Workout = () => {
   const route = useRoute();
   const { sheet } = route.params as Params;
   const [doneExercises, setDoneExercises] = useState<IExercise[]>([]);
+  const [alarmSound, setAlarmSound] = useState<Audio.Sound>();
 
   const handleOnDoneExercise = (exercise: IExercise) => {
     const exerciseAlreadyExists = doneExercises.findIndex(
@@ -74,7 +79,7 @@ export const Workout = () => {
     const index = info?.viewableItems[0]?.index!;
     setExerciseIndex(index);
   });
-
+  const confettiRef = useRef<ConfettiCannon>(null);
   const onFinishExercise = () => {
     if (doneExercises.length < sheet.exercises.length) {
       Alert.alert(
@@ -97,8 +102,21 @@ export const Workout = () => {
     }
   };
 
+  async function playSound() {
+    const { sound } = await Audio.Sound.createAsync(
+      require("@Assets/sounds/confetti.mp3")
+    );
+    setAlarmSound(sound);
+
+    await sound.playAsync();
+  }
+
   useEffect(() => {
     if (doneExercises.length === sheet.exercises.length) {
+      playSound();
+      setTimeout(() => {
+        confettiRef.current?.start();
+      }, 500);
       Alert.alert("Parabéns!", "Você finalizou o treino com sucesso!", [
         {
           text: "Ok",
@@ -110,8 +128,23 @@ export const Workout = () => {
     }
   }, [doneExercises]);
 
+  React.useEffect(() => {
+    return alarmSound
+      ? () => {
+          alarmSound.unloadAsync();
+        }
+      : undefined;
+  }, [alarmSound]);
+
   return (
     <AvoidView>
+      <ConfettiCannon
+        count={100}
+        origin={{ x: -10, y: 0 }}
+        autoStart={false}
+        ref={confettiRef}
+      />
+
       <Header>
         <BackButton onPress={goBack}>
           <Icon name="chevron-left" size={30} />

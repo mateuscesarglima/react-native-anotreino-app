@@ -66,7 +66,6 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
         `/users/?email=${email}&password=${password}`
       );
 
-      console.log(response);
       if (response) {
         saveOnAsyncStorage(response);
       }
