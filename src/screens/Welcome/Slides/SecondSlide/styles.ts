@@ -3,7 +3,8 @@ import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import styled from "styled-components/native";
 
 export const Container = styled.View`
-  width: 100%;
+  flex: 1;
+  padding: 0px 30px;
 `;
 
 export const TitleText = styled.Text`
@@ -31,11 +32,7 @@ export const ImageContainer = styled.View`
 `;
 
 export const AnotreinoLogoImage = styled.Image`
-  width: 100%;
-  height: 320px;
-`;
-
-export const BoasVindasImage = styled.Image`
-  width: ${RFPercentage(40)}px;
-  height: ${RFPercentage(15)}px;
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
 `;

@@ -47,23 +47,22 @@ export const Welcome = () => {
     <Container>
       <FlatList
         data={slides}
-        contentContainerStyle={{ width: width * 5 + 40 }}
         keyExtractor={(item) => item.id.toString()}
         horizontal
         renderItem={({ item }) => {
           return (
             <View
               style={{
-                width: 400,
-                paddingRight: 40,
-                paddingLeft: 40,
-                alignItems: "center",
+                width: width,
               }}
             >
               {item.component}
             </View>
           );
         }}
+        decelerationRate="fast"
+        showsHorizontalScrollIndicator={false}
+        snapToOffsets={[...Array(slides.length)].map((_, i) => i * width)}
         viewabilityConfig={{
           viewAreaCoveragePercentThreshold: 50,
         }}

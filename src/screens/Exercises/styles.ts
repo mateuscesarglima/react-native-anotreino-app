@@ -47,6 +47,7 @@ export const Icon = styled(Feather)``;
 
 export const AddExerciseContainer = styled.View`
   align-items: center;
+  margin-top: 30px;
 `;
 
 export const ButtonContainer = styled.View`

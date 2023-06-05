@@ -2,7 +2,9 @@ import { getStatusBarHeight } from "react-native-iphone-x-helper";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import styled from "styled-components/native";
 
-export const Container = styled.View``;
+export const Container = styled.View`
+  flex: 1;
+`;
 
 export const WelcomeText = styled.Text`
   margin-top: ${getStatusBarHeight() + RFPercentage(5)}px;
@@ -25,5 +27,4 @@ export const AnotreinoLogoImage = styled.Image`
 export const BoasVindasImage = styled.Image`
   width: ${RFPercentage(40)}px;
   height: ${RFPercentage(20)}px;
-  object-fit: contain;
 `;

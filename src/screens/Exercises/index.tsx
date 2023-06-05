@@ -96,7 +96,7 @@ export const Exercises = () => {
       </Header>
       {currentSheet.exercises.length === 0 ? (
         <AddExerciseContainer>
-          <Text>
+          <Text style={{ fontSize: 30, fontWeight: "500" }}>
             Lista vazia {`\n`} Adicione os exercicios clicando no ícone abaixo
           </Text>
           <ButtonContainer>

@@ -23,39 +23,6 @@
           "name": "Ficha A",
           "exercises": [
             {
-              "id": "1038ee55-f0db-4c77-9e7d-97b61270c11d",
-              "name": "Supino reto",
-              "description": "Um exercício de treinamento de força realizado deitado em um banco plano, onde o praticante empurra uma barra carregada em direção ao peito.",
-              "videoId": "sqOw2Y6uDWQ",
-              "note": "Testando",
-              "charge": [
-                {
-                  "date": "22/05",
-                  "weight": 0
-                },
-                {
-                  "date": "22/05",
-                  "weight": 10
-                },
-                {
-                  "date": "22/05",
-                  "weight": 10
-                },
-                {
-                  "date": "28/05",
-                  "weight": 30
-                },
-                {
-                  "date": "28/05",
-                  "weight": 40
-                },
-                {
-                  "date": "29/05",
-                  "weight": 50
-                }
-              ]
-            },
-            {
               "id": "bd2f749d-2ebf-4e85-a5a6-8b082d46a01e",
               "name": "Agachamento Smith",
               "description": "Um exercício de agachamento realizado utilizando a máquina Smith, que possui uma barra fixa em um trilho. O praticante posiciona-se embaixo da barra, apoia-a nos ombros e realiza movimentos de flexão e extensão dos joelhos, trabalhando os músculos das pernas.",
@@ -98,34 +65,6 @@
               "note": "banco 4,5\nTeste"
             },
             {
-              "id": "1f671324-db94-4c93-ad37-ab915875c600",
-              "name": "Crucifixo Polia",
-              "description": "Um exercício de treinamento de força realizado em uma máquina de polia, onde o praticante ajusta as alças de cada lado, estende os braços para os lados e, em seguida, os traz para a frente, cruzando-os na altura do peito.",
-              "videoId": "mNWyWEJNCDM",
-              "charge": [
-                {
-                  "date": "22/05",
-                  "weight": 0
-                },
-                {
-                  "date": "22/05",
-                  "weight": 50
-                }
-              ]
-            },
-            {
-              "id": "7ed8e6df-725e-463d-ac42-7b062f1e4321",
-              "name": "Rosca Direta Barra W",
-              "description": "Um exercício de treinamento de força realizado segurando uma barra W com as palmas das mãos voltadas para cima, o praticante flexiona os cotovelos para levantar a barra em direção aos ombros, enfatizando os músculos dos braços (bíceps).",
-              "videoId": "nQrobsCv8X4",
-              "charge": [
-                {
-                  "date": "28/05",
-                  "weight": 0
-                }
-              ]
-            },
-            {
               "id": "76a57de7-f33d-4006-b68d-82ccb95ab5b2",
               "name": "Rosca com Halteres ",
               "description": "Um exercício de treinamento de força realizado segurando halteres em cada mão com as palmas das mãos voltadas para cima, o praticante flexiona os cotovelos para levantar os halteres em direção aos ombros, trabalhando os músculos dos braços (bíceps).",
@@ -148,83 +87,13 @@
                   "weight": 0
                 }
               ]
-            },
-            {
-              "id": "56dfa2a2-8abf-4b67-9321-f65448111aa9",
-              "name": "Supino Reto c/ Halter",
-              "description": "Um exercício de treinamento de força realizado deitado em um banco plano, onde o praticante segura halteres em cada mão e os empurra em direção ao peito.",
-              "videoId": "SWVO95XzxKg",
-              "charge": [
-                {
-                  "date": "04/06",
-                  "weight": 0
-                }
-              ]
-            },
-            {
-              "id": "4ced2fca-5374-45bb-abb7-ef15281941d8",
-              "name": "Remada Curvada c/ Pegada Invertida",
-              "description": "Um exercício de treinamento de força realizado segurando uma barra com as palmas das mãos voltadas para o corpo, o praticante se inclina para a frente e puxa a barra em direção ao abdômen, trabalhando os músculos das costas.",
-              "videoId": "zaAGOp11wbc",
-              "charge": [
-                {
-                  "date": "04/06",
-                  "weight": 0
-                }
-              ]
             }
           ]
         },
         {
           "id": "9a2b6508-8248-4d16-bc9f-dc71cdecc3ca",
           "name": "Ficha B",
-          "exercises": [
-            {
-              "id": "b5247cd0-ae7e-4f74-bf01-35cd567f3085",
-              "name": "Remada Curvada no Smith",
-              "description": " Um exercício de treinamento de força realizado no Smith Machine, onde o praticante se inclina para a frente e puxa uma barra em direção ao abdômen, focando nos músculos das costas.",
-              "videoId": "qnHNjVcVKYo",
-              "charge": [
-                {
-                  "date": "30/05",
-                  "weight": 0
-                },
-                {
-                  "date": "04/06",
-                  "weight": 20
-                },
-                {
-                  "date": "04/06",
-                  "weight": 45
-                }
-              ],
-              "note": "Polia em tal altura x"
-            },
-            {
-              "id": "72036e86-5989-45ba-8071-373f76b4fb34",
-              "name": "Supino Inclinado c/ Halter",
-              "description": "Um exercício de treinamento de força realizado em um banco inclinado, onde o praticante segura halteres em cada mão e empurra-os para cima em direção ao peito.",
-              "videoId": "F4Q1g2z8MWM",
-              "charge": [
-                {
-                  "date": "04/06",
-                  "weight": 0
-                }
-              ]
-            },
-            {
-              "id": "32702f4c-c306-4a52-8436-0ef21344d271",
-              "name": "Supino reto",
-              "description": "Um exercício de treinamento de força realizado deitado em um banco plano, onde o praticante empurra uma barra carregada em direção ao peito.",
-              "videoId": "sqOw2Y6uDWQ",
-              "charge": [
-                {
-                  "date": "04/06",
-                  "weight": 0
-                }
-              ]
-            }
-          ]
+          "exercises": []
         },
         {
           "id": "93410f07-130a-4863-ace1-0988f7d35a0d",
@@ -365,6 +234,36 @@
               "charge": [
                 {
                   "date": "04/06",
+                  "weight": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fcd1ab1c-f2a2-44ef-ad6e-9ffc6e953813",
+          "name": "Testando ficha",
+          "exercises": [
+            {
+              "id": "73843c60-82c7-4492-a7f7-39efed8fc0df",
+              "name": "Supino reto",
+              "description": "Um exercício de treinamento de força realizado deitado em um banco plano, onde o praticante empurra uma barra carregada em direção ao peito.",
+              "videoId": "sqOw2Y6uDWQ",
+              "charge": [
+                {
+                  "date": "05/06",
+                  "weight": 0
+                }
+              ]
+            },
+            {
+              "id": "dc60ae9b-0ade-4d67-ad94-c6faf6c88fa1",
+              "name": "Supino Inclinado c/ Halter",
+              "description": "Um exercício de treinamento de força realizado em um banco inclinado, onde o praticante segura halteres em cada mão e empurra-os para cima em direção ao peito.",
+              "videoId": "F4Q1g2z8MWM",
+              "charge": [
+                {
+                  "date": "05/06",
                   "weight": 0
                 }
               ]

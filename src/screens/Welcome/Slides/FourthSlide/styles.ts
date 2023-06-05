@@ -4,6 +4,7 @@ import styled from "styled-components/native";
 
 export const Container = styled.View`
   flex: 1;
+  padding: 0px 30px;
 `;
 
 export const TitleText = styled.Text`
@@ -31,6 +32,7 @@ export const ImageContainer = styled.View`
 `;
 
 export const AnotreinoLogoImage = styled.Image`
-  width: 100%;
-  height: 320px;
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
 `;

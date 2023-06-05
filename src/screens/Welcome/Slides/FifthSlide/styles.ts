@@ -5,6 +5,7 @@ import styled from "styled-components/native";
 
 export const Container = styled.View`
   flex: 1;
+  padding: 0px 30px;
 `;
 
 export const TitleText = styled.Text`
@@ -27,7 +28,7 @@ export const EnterButton = styled(RectButton)`
 
 export const EnterButtonText = styled.Text`
   align-self: center;
-  font-size: ${RFValue(15)}px;
+  font-size: ${RFValue(18)}px;
   font-weight: bold;
   color: #fff;
 `;
@@ -42,7 +43,7 @@ export const RegisterButton = styled(RectButton)`
 `;
 export const RegisterButtonText = styled.Text`
   align-self: center;
-  font-size: ${RFValue(15)}px;
+  font-size: ${RFValue(18)}px;
   font-weight: bold;
   color: #fff;
 `;
@@ -63,6 +64,7 @@ export const ImageContainer = styled.View`
 `;
 
 export const AnotreinoLogoImage = styled.Image`
-  width: 100%;
+  width: 300px;
   height: 300px;
+  object-fit: contain;
 `;

@@ -124,7 +124,7 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
 
   useEffect(() => {
     loadData();
-  }, []);
+  }, [isAuthenticated]);
 
   return (
     <AuthContext.Provider

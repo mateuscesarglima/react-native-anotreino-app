@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 
 import { Header } from "@Components/ui/organism/Header";
-import {
-  NavigationProp,
-  ParamListBase,
-  useNavigation,
-  useRoute,
-} from "@react-navigation/native";
+import { useRoute } from "@react-navigation/native";
+import { View } from "react-native";
+import { FlatList } from "react-native-gesture-handler";
+import { hitData_10, hitData_15, hitData_25 } from "../../utils/HitData";
 import {
   Container,
   Main,
@@ -19,9 +17,6 @@ import {
   TableRowItemEsforcoText,
   TableRowItemWrapper,
 } from "./styles";
-import { hitData_10, hitData_15, hitData_25 } from "../../utils/HitData";
-import { ScrollView, View } from "react-native";
-import { FlatList } from "react-native-gesture-handler";
 
 const colors: any = {
   Fácil: "#106fbc",
@@ -45,10 +40,8 @@ interface LevelData {
 
 export const HitResume = () => {
   const route = useRoute();
-  const { navigate }: NavigationProp<ParamListBase> = useNavigation();
   const { level, time } = route.params as Params;
   const [levelData, setLevelData] = useState<LevelData[]>([]);
-  const [hitTime, setHitTime] = useState<LevelData[]>([]);
 
   const getHitTime = (time: string) => {
     switch (time) {
