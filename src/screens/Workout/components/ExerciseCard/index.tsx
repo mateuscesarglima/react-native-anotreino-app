@@ -190,7 +190,9 @@ export const ExerciseCard = ({
                 />
               ) : null}
             </View>
-            <ButtonDoneText>Tá feito?</ButtonDoneText>
+            <ButtonDoneText>
+              {isDoneExercise(exercise.id) ? "Tá feito!" : "Tá feito?"}
+            </ButtonDoneText>
           </ButtonDoneExercise>
         </IsDoneWrapper>
 

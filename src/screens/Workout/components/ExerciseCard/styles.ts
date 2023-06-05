@@ -23,7 +23,7 @@ interface isDoneWrapperProps {
 
 export const IsDoneWrapper = styled.View<isDoneWrapperProps>`
   position: absolute;
-  top: 160px;
+  top: 150px;
   background-color: ${({ isDone, theme }) =>
     isDone ? theme.colors.quarternary : "orange"};
   z-index: 1;
