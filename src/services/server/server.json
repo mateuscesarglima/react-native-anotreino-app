@@ -370,65 +370,6 @@
               ]
             }
           ]
-        },
-        {
-          "id": "7f3cd7ea-bf27-4b4e-9a36-c45abe20099d",
-          "name": "Criando nova ficha",
-          "exercises": [
-            {
-              "id": "e85d2766-3244-4905-89c8-7af513773bc8",
-              "name": "Supino reto",
-              "description": "Um exercício de treinamento de força realizado deitado em um banco plano, onde o praticante empurra uma barra carregada em direção ao peito.",
-              "videoId": "sqOw2Y6uDWQ",
-              "charge": [
-                {
-                  "date": "04/06",
-                  "weight": 0
-                },
-                {
-                  "date": "04/06",
-                  "weight": 30
-                }
-              ],
-              "note": "Testando"
-            },
-            {
-              "id": "24467c2f-e293-4905-b352-52899cc186dd",
-              "name": "Supino Inclinado c/ Halter",
-              "description": "Um exercício de treinamento de força realizado em um banco inclinado, onde o praticante segura halteres em cada mão e empurra-os para cima em direção ao peito.",
-              "videoId": "F4Q1g2z8MWM",
-              "charge": [
-                {
-                  "date": "04/06",
-                  "weight": 0
-                }
-              ]
-            },
-            {
-              "id": "bafac7b3-74d0-4c0c-b2b5-802d82c0d917",
-              "name": "Supino Reto c/ Halter",
-              "description": "Um exercício de treinamento de força realizado deitado em um banco plano, onde o praticante segura halteres em cada mão e os empurra em direção ao peito.",
-              "videoId": "SWVO95XzxKg",
-              "charge": [
-                {
-                  "date": "04/06",
-                  "weight": 0
-                }
-              ]
-            },
-            {
-              "id": "01540747-384a-4864-a320-c7b9557d96e8",
-              "name": "Crucifixo Polia",
-              "description": "Um exercício de treinamento de força realizado em uma máquina de polia, onde o praticante ajusta as alças de cada lado, estende os braços para os lados e, em seguida, os traz para a frente, cruzando-os na altura do peito.",
-              "videoId": "mNWyWEJNCDM",
-              "charge": [
-                {
-                  "date": "04/06",
-                  "weight": 0
-                }
-              ]
-            }
-          ]
         }
       ]
     },

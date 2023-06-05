@@ -159,6 +159,10 @@ export const ExerciseCard = ({
               borderTopLeftRadius: 8,
               borderTopRightRadius: 8,
             }}
+            webViewProps={{
+              startInLoadingState: true,
+              onShouldStartLoadWithRequest: () => true,
+            }}
           />
         </Header>
 

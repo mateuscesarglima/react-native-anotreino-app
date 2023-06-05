@@ -12,12 +12,17 @@ import { Notes } from "@Screens/Notes";
 import { TimerSelect } from "@Screens/TimerSelect";
 import { SelectLevel } from "@Screens/SelectLevel";
 import { HitResume } from "@Screens/HitResume";
+import { Welcome } from "@Screens/Welcome";
 
 const { Navigator, Screen } = createStackNavigator();
 
 export const AuthRoutes = () => {
   return (
-    <Navigator screenOptions={{ headerShown: false }}>
+    <Navigator
+      screenOptions={{ headerShown: false }}
+      initialRouteName="Welcome"
+    >
+      <Screen name="Welcome" component={Welcome} />
       <Screen name="Login" component={Login} />
       <Screen name="Register" component={Register} />
     </Navigator>

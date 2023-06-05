@@ -11,4 +11,6 @@ export const routeCodes = {
   TIMER_SELECT: "TimerSelect",
   SELECT_LEVEL: "SelectLevel",
   HIT_RESUME: "HitResume",
+  LOGIN: "Login",
+  REGISTER: "Register",
 };
